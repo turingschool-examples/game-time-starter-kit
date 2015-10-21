@@ -1,0 +1,49 @@
+body {
+}
+
+div {
+    display: block;
+}
+
+.container {
+
+}
+
+.game-container {
+    background-color: #BBADA0;
+    border-radius: 4px;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 15px;
+    margin-top: 8%;
+    margin-left: 31%;
+    height: 470px;
+    width: 470px;
+}
+
+.grid-container {
+    height: 470px;
+    width: 470px;
+}
+.row-container {
+    margin-bottom: -3px;
+    margin-left: -3px;
+}
+
+.cell-container {
+    background-color: #CDC1B4;
+    border-radius: 4px;
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+
+/*2 color: #CDC1B4*/
+/*4 color: #CDC1B4*/
+/*8 color: #EDE0C8*/
+
+
+/*8 color: #F2B179*/
