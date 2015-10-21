@@ -20,10 +20,6 @@ describe('Renderer', function () {
 
   describe('renderBoard', function () {
 
-    //beforeEach(function () {
-    //  sinon.spy(Renderer.prototype, 'drawGrid')
-    //});
-
     it('should have a renderBoard method', function () {
       let board = new Board();
       let renderer = new Renderer(board);      
@@ -40,19 +36,21 @@ describe('Renderer', function () {
       assert.equal(renderedBoard[0].className, 'board');
     });
 
-    it('has a canvas element with a size of 500 X 500', function () {
+    it('should render with a div element with the class of grid-container', function () {
       let board = new Board();
       let renderer = new Renderer(board);
       let renderedBoard = renderer.renderBoard();
 
-      assert.equal(renderedBoard.find('#grid').length, 1);
-      assert.equal(renderedBoard.find('#grid')[0].width, 500);
-      assert.equal(renderedBoard.find('#grid')[0].height, 500);
+      assert.equal(renderedBoard.find('.grid-container').length, 1)
     });
 
-    //afterEach(function () {
-    //  Renderer.prototype.drawGrid.restore();
-    //});
+    it('should render with a div element with the class of tile-container', function () {
+      let board = new Board();
+      let renderer = new Renderer(board);
+      let renderedBoard = renderer.renderBoard();
+
+      assert.equal(renderedBoard.find('.tile-container').length, 1)
+    });
 
   });
 
