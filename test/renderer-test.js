@@ -18,23 +18,28 @@ describe('Renderer', function () {
     assert(Board.prototype.isPrototypeOf(renderer.board));
   });
 
-  describe('renderBoard', function () {
+  describe('renderTiles', function () {
 
-    it('should have a renderBoard method', function () {
+    it('should have a renderTiles method', function () {
       let board = new Board();
       let renderer = new Renderer(board);      
 
-      assert(renderer.renderBoard);
+      assert(renderer.renderTiles);
     });
 
-    it('should render with a class of board', function () {
+    it('should render with a class of tile', function () {
       let board = new Board();
       let renderer = new Renderer(board);      
-      let renderedBoard = renderer.renderBoard();
+      let renderedBoard = renderer.renderTiles();
 
       assert.equal(renderedBoard.length, 1);
-      assert.equal(renderedBoard[0].className, 'board');
+      assert.equal(renderedBoard[0].className, 'tile');
     });
+
+  });
+
+  describe.skip('renderTile', function () {
+    // code goes here
   });
 
   describe('renderBoardAndAppendTo', function () {
@@ -56,7 +61,7 @@ describe('Renderer', function () {
       let container = this.container;
       renderer.renderBoardAndAppendTo(container);
 
-      assert.equal(container.find('.board').length, 1);
+      assert.equal(container.find('.tile').length, 1);
     });
 
   });
