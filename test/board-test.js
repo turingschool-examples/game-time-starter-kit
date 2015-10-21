@@ -50,4 +50,14 @@ describe('the board', function () {
     });
 
   });
+
+  describe('addTile', function () {
+    it('should add a tile to the board spaces collection', function () {
+      var board = new Board('game');
+      board.addTile();
+
+      assert.equal(board.freeSpaces().length, 15);
+    });
+  });
+
 });
