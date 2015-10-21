@@ -35,31 +35,6 @@ describe('Renderer', function () {
       assert.equal(renderedBoard.length, 1);
       assert.equal(renderedBoard[0].className, 'board');
     });
-
-    it('should render with a div element with the class of grid-container', function () {
-      let board = new Board();
-      let renderer = new Renderer(board);
-      let renderedBoard = renderer.renderBoard();
-
-      assert.equal(renderedBoard.find('.grid-container').length, 1)
-    });
-
-    it('should render with a div element with the class of tile-container', function () {
-      let board = new Board();
-      let renderer = new Renderer(board);
-      let renderedBoard = renderer.renderBoard();
-
-      assert.equal(renderedBoard.find('.tile-container').length, 1)
-    });
-
-    it('should render with four div elements with the class of row-container', function () {
-      let board = new Board();
-      let renderer = new Renderer(board);
-      let renderedBoard = renderer.renderBoard();
-
-      assert.equal(renderedBoard.find('.row-container').length, 4)
-    });
-
   });
 
   describe('renderBoardAndAppendTo', function () {
