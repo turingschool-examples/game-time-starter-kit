@@ -52,12 +52,23 @@ describe('the board', function () {
   });
 
   describe('addTile', function () {
+
     it('should add a tile to the board spaces collection', function () {
       var board = new Board('game');
       board.addTile();
 
       assert.equal(board.freeSpaces().length, 15);
     });
+  });
+
+  describe('addTwoTiles', function () {
+    it('should add two tiles to the board', function () {
+      var board = new Board('game');
+      board.addTwoTiles();
+
+      assert.equal(board.freeSpaces().length, 14);
+    });
+
   });
 
 });
