@@ -1,6 +1,7 @@
 const assert = require('assert');
 const Board = require('../lib/board');
 const Game = require('../lib/game');
+const Tile = require('../lib/tile');
 
 describe('the board', function () {
   it('should instantiate', function () {
@@ -54,7 +55,7 @@ describe('the board', function () {
   describe('addTile', function () {
 
     it('should add a tile to the board spaces collection', function () {
-      var board = new Board('game');
+      let board = new Board('game');
       board.addTile();
 
       assert.equal(board.freeSpaces().length, 15);
@@ -63,12 +64,23 @@ describe('the board', function () {
 
   describe('addTwoTiles', function () {
     it('should add two tiles to the board', function () {
-      var board = new Board('game');
+      let board = new Board('game');
       board.addTwoTiles();
 
       assert.equal(board.freeSpaces().length, 14);
     });
 
+  });
+
+  describe('insertTileAt', function () {
+    it('should insert a tile at a given position on board', function () {
+      let board = new Board('game');
+      let tile = new Tile(board);
+      board.insertTileAt([1, 1], tile);
+      
+      assert.deepEqual(tile.position, [1, 1]);
+      assert.equal(board.spaces[1][1], tile);
+    });
   });
 
 });
