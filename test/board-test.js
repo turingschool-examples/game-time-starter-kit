@@ -75,11 +75,24 @@ describe('the board', function () {
   describe('insertTileAt', function () {
     it('should insert a tile at a given position on board', function () {
       let board = new Board('game');
-      let tile = new Tile(board);
+      let tile = new Tile('position', board);
       board.insertTileAt([1, 1], tile);
-      
+
       assert.deepEqual(tile.position, [1, 1]);
       assert.equal(board.spaces[1][1], tile);
+    });
+  });
+
+  describe('shiftLeft', function () {
+    it('should shift one tile to the left edge', function () {
+      let board = new Board('game');
+      let tile = new Tile('position', board);
+      board.insertTileAt([1, 1], tile);
+
+      board.shiftLeft();
+
+      assert.deepEqual(tile.position, [0, 1]);
+      assert.equal(board.spaces[1][0], tile);
     });
   });
 
