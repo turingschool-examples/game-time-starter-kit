@@ -106,8 +106,6 @@ describe('the board', function () {
 
       board.shiftLeft();
 
-      debugger;
-
       assert.deepEqual(tile1.position, [1, 0]);
       assert.deepEqual(tile2.position, [1, 1]);
       assert.deepEqual(tile1.value, 2);
