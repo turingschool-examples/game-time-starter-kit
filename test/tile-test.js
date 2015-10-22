@@ -3,11 +3,6 @@ const Tile = require('../lib/tile');
 const Board = require('../lib/board');
 
 describe('the tile', function () {
-  it('should instantiate with a value of 2', function () {
-    let tile = new Tile();
-
-    assert.equal(tile.value, 2);
-  });
 
   it('should accept position as an argument', function () {
     let tile = new Tile([1,3]);
@@ -20,6 +15,13 @@ describe('the tile', function () {
     let tile = new Tile('position', board);
 
     assert.equal(tile.board, board);
+  });
+
+  it('should accept a value as an argument', function () {
+    let board = new Board();
+    let tile = new Tile('position', board, 4);
+
+    assert.equal(tile.value, 4);
   });
 
   describe('checkPrecedingSpace', function () {
@@ -35,7 +37,7 @@ describe('the tile', function () {
     it('should return preceding element if tile is not adjacent to left edge', function () {
       let board = new Board();
       let tile = new Tile(null, board);
-      board.insertTileAt([1, 0], tile);
+      board.insertTileAt([0, 1], tile);
       let precedingSpace = tile.checkPrecedingSpace();
 
       assert.equal(precedingSpace, null);
