@@ -20,9 +20,9 @@ describe('the board', function () {
     let board = new Board();
     let spaces = board.spaces;
     let expected = [[null, null, null, null],
-                    [null, null, null, null],
-                    [null, null, null, null],
-                    [null, null, null, null]];
+    [null, null, null, null],
+    [null, null, null, null],
+    [null, null, null, null]];
 
     assert.deepEqual(spaces, expected)
   });
@@ -42,9 +42,9 @@ describe('the board', function () {
 
       // [ columnIndex, rowIndex ]
       let expected = [ [0, 0], [0, 1], [0, 2], [0, 3],
-                       [1, 0], [1, 1], [1, 2], [1, 3],
-                       [2, 0], [2, 1], [2, 2], [2, 3],
-                       [3, 0], [3, 1], [3, 2], [3, 3] ];
+      [1, 0], [1, 1], [1, 2], [1, 3],
+      [2, 0], [2, 1], [2, 2], [2, 3],
+      [3, 0], [3, 1], [3, 2], [3, 3] ];
 
       assert.deepEqual(freeSpaces, expected);
 
@@ -153,11 +153,11 @@ describe('the board', function () {
       assert.deepEqual(tile3.position, [0, 0]);
       assert.deepEqual(tile4.position, [3, 0]);
       assert.deepEqual(tile5.position, [3, 1]);
-      assert.deepEqual(tile1.value, 1);
-      assert.deepEqual(tile2.value, 2);
-      assert.deepEqual(tile3.value, 3);
-      assert.deepEqual(tile4.value, 4);
-      assert.deepEqual(tile5.value, 5);
+      assert.equal(tile1.value, 1);
+      assert.equal(tile2.value, 2);
+      assert.equal(tile3.value, 3);
+      assert.equal(tile4.value, 4);
+      assert.equal(tile5.value, 5);
       assert.equal(board.spaces[1][0], tile1);
       assert.equal(board.spaces[2][0], tile2);
       assert.equal(board.spaces[0][0], tile3);
@@ -166,5 +166,134 @@ describe('the board', function () {
     });
   });
 
+  describe('collapse', function () {
+    it('should collapse two tiles of equal value in the same row', function () {
+      let board = new Board('game');
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 2);
+
+      board.insertTileAt([0, 2], tile1);
+      board.insertTileAt([0, 3], tile2);
+      board.shiftLeft();
+      board.collapse();
+
+      assert.deepEqual(tile1.position, [0, 0]);
+      assert.equal(tile1.value, 4);
+      assert.equal(board.freeSpaces().length, 15);
+      assert.equal(board.spaces[0][0], tile1);
+    });
+
+    it('should collapse four tiles of equal value in the same row', function () {
+      let board = new Board('game');
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 2);
+      let tile3 = new Tile('position', board, 2);
+      let tile4 = new Tile('position', board, 2);
+
+      board.insertTileAt([0, 0], tile1);
+      board.insertTileAt([0, 1], tile2);
+      board.insertTileAt([0, 2], tile3);
+      board.insertTileAt([0, 3], tile4);
+      board.shiftLeft();
+      board.collapse();
+      board.shiftLeft();
+
+      assert.deepEqual(tile1.position, [0, 0]);
+      assert.equal(tile1.value, 4);
+      assert.deepEqual(tile3.position, [0, 1]);
+      assert.equal(tile3.value, 4);
+      assert.equal(board.freeSpaces().length, 14);
+      assert.equal(board.spaces[0][0], tile1);
+      assert.equal(board.spaces[0][1], tile3);
+    });
+
+    it('should collapse multiple tiles in different rows', function () {
+      let board = new Board('game');
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 2);
+      let tile3 = new Tile('position', board, 4);
+      let tile4 = new Tile('position', board, 4);
+
+      board.insertTileAt([0, 1], tile1);
+      board.insertTileAt([0, 2], tile2);
+      board.insertTileAt([1, 1], tile3);
+      board.insertTileAt([1, 3], tile4);
+      board.shiftLeft();
+      board.collapse();
+      board.shiftLeft();
+
+      assert.deepEqual(tile1.position, [0, 0]);
+      assert.equal(tile1.value, 4);
+      assert.deepEqual(tile3.position, [1, 0]);
+      assert.equal(tile3.value, 8);
+      assert.equal(board.freeSpaces().length, 14);
+      assert.equal(board.spaces[0][0], tile1);
+      assert.equal(board.spaces[1][0], tile3);
+    });
+
+    it('should collapse multiple tiles in different rows', function () {
+      let board = new Board('game');
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 3);
+      let tile3 = new Tile('position', board, 4);
+      let tile4 = new Tile('position', board, 2);
+      let tile5 = new Tile('position', board, 4);
+
+      board.insertTileAt([0, 1], tile1);
+      board.insertTileAt([0, 2], tile2);
+      board.insertTileAt([1, 1], tile3);
+      board.insertTileAt([1, 2], tile4);
+      board.insertTileAt([1, 3], tile5);
+      board.shiftLeft();
+      board.collapse();
+      board.shiftLeft();
+
+      assert.deepEqual(tile1.position, [0, 0]);
+      assert.deepEqual(tile2.position, [0, 1]);
+      assert.deepEqual(tile3.position, [1, 0]);
+      assert.deepEqual(tile4.position, [1, 1]);
+      assert.deepEqual(tile5.position, [1, 2]);
+      assert.equal(tile1.value, 2);
+      assert.equal(tile2.value, 3);
+      assert.equal(tile3.value, 4);
+      assert.equal(tile4.value, 2);
+      assert.equal(tile5.value, 4);
+      assert.equal(board.freeSpaces().length, 11);
+      assert.equal(board.spaces[0][0], tile1);
+      assert.equal(board.spaces[0][1], tile2);
+      assert.equal(board.spaces[1][0], tile3);
+      assert.equal(board.spaces[1][1], tile4);
+      assert.equal(board.spaces[1][2], tile5);
+    });
+
+  });
+
+  describe('moveLeft', function () {
+    it('should collapse two tiles of equal value in row with four tiles', function () {
+      let board = new Board('game');
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 4);
+      let tile3 = new Tile('position', board, 4);
+      let tile4 = new Tile('position', board, 2);
+
+      board.insertTileAt([0, 0], tile1);
+      board.insertTileAt([0, 1], tile2);
+      board.insertTileAt([0, 2], tile3);
+      board.insertTileAt([0, 3], tile4);
+      board.moveLeft();
+
+      assert.deepEqual(tile1.position, [0, 0]);
+      assert.deepEqual(tile2.position, [0, 1]);
+      assert.deepEqual(tile4.position, [0, 2]);
+      assert.equal(tile1.value, 2);
+      assert.equal(tile2.value, 8);
+      assert.equal(tile4.value, 2);
+      assert.equal(board.freeSpaces().length, 13);
+      assert.equal(board.spaces[0][0], tile1);
+      assert.equal(board.spaces[0][1], tile2);
+      assert.equal(board.spaces[0][2], tile4);
+    });
+
+  });
 
 });
