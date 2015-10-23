@@ -3,6 +3,7 @@ const Board = require('../lib/board');
 const Game = require('../lib/game');
 const Tile = require('../lib/tile');
 
+
 describe('the board', function () {
   it('should instantiate', function () {
     let board = new Board();
@@ -20,9 +21,9 @@ describe('the board', function () {
     let board = new Board();
     let spaces = board.spaces;
     let expected = [[null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null],
-    [null, null, null, null]];
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null]];
 
     assert.deepEqual(spaces, expected)
   });
@@ -41,10 +42,10 @@ describe('the board', function () {
       let freeSpaces = board.freeSpaces();
 
       // [ columnIndex, rowIndex ]
-      let expected = [ [0, 0], [0, 1], [0, 2], [0, 3],
-      [1, 0], [1, 1], [1, 2], [1, 3],
-      [2, 0], [2, 1], [2, 2], [2, 3],
-      [3, 0], [3, 1], [3, 2], [3, 3] ];
+      let expected = [[0, 0], [0, 1], [0, 2], [0, 3],
+        [1, 0], [1, 1], [1, 2], [1, 3],
+        [2, 0], [2, 1], [2, 2], [2, 3],
+        [3, 0], [3, 1], [3, 2], [3, 3]];
 
       assert.deepEqual(freeSpaces, expected);
 
@@ -292,6 +293,26 @@ describe('the board', function () {
       assert.equal(board.spaces[0][0], tile1);
       assert.equal(board.spaces[0][1], tile2);
       assert.equal(board.spaces[0][2], tile4);
+    });
+
+  });
+
+  describe('moveDown', function () {
+    it('should collapse two tiles of equal value in one column', function () {
+      let board = new Board('game');
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 2);
+
+      board.insertTileAt([0, 0], tile1);
+      board.insertTileAt([1, 0], tile2);
+      debugger;
+      board.moveDown();
+
+
+      assert.deepEqual(tile1.position, [3, 0]);
+      assert.equal(tile1.value, 4);
+      assert.equal(board.freeSpaces().length, 15);
+      assert.equal(board.spaces[3][0], tile1);
     });
 
   });
