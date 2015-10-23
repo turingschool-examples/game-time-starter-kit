@@ -31,7 +31,7 @@ describe('the tile', function () {
       board.insertTileAt([0, 0], tile);
       let precedingSpace = tile.checkPrecedingSpace();
 
-      assert.equal(precedingSpace, "No preceding space.");
+      assert.equal(precedingSpace, "No space found.");
     });
 
     it('should return preceding element if tile is not adjacent to left edge', function () {
