@@ -1,6 +1,7 @@
 const assert = require('assert');
 const Game = require('../lib/game');
 const Board = require('../lib/board');
+const Tile = require('../lib/tile');
 
 describe('Game', function () {
   it('should have a score property', function () {
@@ -27,6 +28,25 @@ describe('Game', function () {
       game.updateScore('4');
 
       assert.equal(game.score, 4); 
+    });
+  });
+
+  describe('gameOver', function () {
+    it('should return true if no moves are possible', function () {
+      let game = new Game();
+      let board = game.board;
+
+      let tile1 = new Tile('position', board, 2);
+      let tile2 = new Tile('position', board, 4);
+      let tile3 = new Tile('position', board, 8);
+      let tile4 = new Tile('position', board, 16);
+
+      board.spaces = [[tile1, tile2, tile3, tile4],
+                      [tile4, tile3, tile2, tile1],
+                      [tile1, tile2, tile3, tile4],
+                      [tile4, tile3, tile2, tile1]];
+
+      assert(game.gameOver());
     });
   });
 });
