@@ -20,4 +20,13 @@ describe('Game', function () {
 
     assert.equal(game.board.freeSpaces().length, 14);
   });
+
+  describe('updateScore', function () {
+    it('should update the score', function () {
+      let game = new Game();
+      game.updateScore('4');
+
+      assert.equal(game.score, 4); 
+    });
+  });
 });
