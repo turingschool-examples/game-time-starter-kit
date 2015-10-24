@@ -61,6 +61,16 @@ describe('the board', function () {
 
       assert.equal(board.freeSpaces().length, 15);
     });
+
+    it('should set the value of the new tile to two or four', function () {
+      let board = new Board('game');
+      let tile = board.addTile();
+      let values = [2, 4];
+
+      let hasCorrectValue = values.indexOf(tile.value) != -1;
+
+      assert(hasCorrectValue);
+    });
   });
 
   describe('addTwoTiles', function () {
