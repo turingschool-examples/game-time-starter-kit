@@ -49,4 +49,23 @@ describe('Game', function () {
       assert(game.gameOver());
     });
   });
+
+  describe('isGameWon', function () {
+    it('should return true if a tile has the value 2048', function () {
+      let game = new Game();
+      let board = game.board;
+
+      let tile1 = new Tile('position', board, 2048);
+      board.insertTileAt([3, 3], tile1);
+
+      assert(game.isGameWon());
+    });
+
+    it('should return false if no tile has the value 2048', function () {
+      let game = new Game();
+      let board = game.board;
+
+      assert(!game.isGameWon());
+    });
+  });
 });
