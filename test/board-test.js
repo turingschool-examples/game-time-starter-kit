@@ -169,7 +169,9 @@ describe('the board', function () {
 
   describe('collapse', function () {
     it('should collapse two tiles of equal value in the same row', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
 
@@ -185,7 +187,9 @@ describe('the board', function () {
     });
 
     it('should collapse four tiles of equal value in the same row', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 2);
@@ -209,7 +213,9 @@ describe('the board', function () {
     });
 
     it('should collapse multiple tiles in different rows', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 4);
@@ -233,7 +239,9 @@ describe('the board', function () {
     });
 
     it('should collapse multiple tiles in different rows', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 3);
       let tile3 = new Tile('position', board, 4);
@@ -272,7 +280,9 @@ describe('the board', function () {
 
   describe('moveLeft', function () {
     it('should collapse two tiles of equal value in row with four tiles', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 4);
       let tile3 = new Tile('position', board, 4);
@@ -301,7 +311,9 @@ describe('the board', function () {
 
   describe('moveUp', function () {
     it('should collapse two tiles of equal value in one column', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
 
@@ -317,7 +329,9 @@ describe('the board', function () {
     });
 
     it('should collapse two columns of two tiles each', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 2);
@@ -340,7 +354,9 @@ describe('the board', function () {
     });
 
     it('should collapse multiple columns with multiple tiles each', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 4);
@@ -376,7 +392,9 @@ describe('the board', function () {
 
   describe('moveDown', function () {
     it('should collapse two tiles of equal value in one column', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
 
@@ -392,7 +410,9 @@ describe('the board', function () {
     });
 
     it('should collapse two columns of two tiles each', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 2);
@@ -415,7 +435,9 @@ describe('the board', function () {
     });
 
     it('should collapse multiple columns with multiple tiles each', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 4);
@@ -452,7 +474,9 @@ describe('the board', function () {
 
   describe('moveRight', function () {
     it('should collapse two tiles of equal value in row', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
 
@@ -468,7 +492,9 @@ describe('the board', function () {
     });
 
     it('should collapse multiple tiles in different rows', function () {
-      let board = new Board('game');
+      let game = new Game();
+      game.board.clearAllTiles();
+      let board = game.board;
       let tile1 = new Tile('position', board, 2);
       let tile2 = new Tile('position', board, 2);
       let tile3 = new Tile('position', board, 4);
