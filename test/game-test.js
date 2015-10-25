@@ -46,7 +46,7 @@ describe('Game', function () {
                       [tile1, tile2, tile3, tile4],
                       [tile4, tile3, tile2, tile1]];
 
-      assert(game.gameOver());
+      assert(game.isGameOver());
     });
   });
 
@@ -63,7 +63,6 @@ describe('Game', function () {
 
     it('should return false if no tile has the value 2048', function () {
       let game = new Game();
-      let board = game.board;
 
       assert(!game.isGameWon());
     });
