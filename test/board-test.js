@@ -36,6 +36,21 @@ describe('Board', function() {
 
   it('should start with an empty player object array', function() {
     let board = new Board();
-    assert.isArray(board.player);
+    assert.isArray(board.players);
+  });
+
+  describe('when player is instantiated', function() {
+    it('the board should add the player to its player array', function() {
+      let board = new Board();
+      let player = board.addPlayer();
+      assert.include(board.players, player);
+    });
+
+    it('the board should add the player to the bottom middle', function() {
+      let board = new Board();
+      let player = board.addPlayer();
+      assert.equal(player.x, board.width / 2)
+      assert.equal(player.y, board.height - 10)
+    });
   });
 });
