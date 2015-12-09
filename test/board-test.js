@@ -69,4 +69,21 @@ describe('Board', function() {
       assert.equal(meteor.y, 0)
     });
   });
+
+  describe('when bullet is instantiated', function() {
+    it('the board should add the bullet to its bullets array', function() {
+      let board = new Board();
+      board.addPlayer();
+      let bullet = board.addBullet();
+      assert.include(board.bullets, bullet);
+    });
+
+    it('the board should add the bullet to the same location as the player', function() {
+      let board = new Board();
+      let player = board.addPlayer();
+      let bullet = board.addBullet();
+      assert.equal(bullet.x, player.x);
+      assert.equal(bullet.y, player.y);
+    });
+  });
 });
