@@ -43,8 +43,22 @@ describe('Player', function() {
   });
 
   describe('movement', function() {
-    xit('should move left when left arrow is pressed', function() {
+    it('should move left when left arrow is pressed', function() {
       let player = new Player(this.board);
+      let originalCenterX = player.center.x;
+
+      player.moveLeft();
+
+      assert.equal(player.center.x, originalCenterX - 7);
+    });
+
+    it('should move right when right arrow is pressed', function() {
+      let player = new Player(this.board);
+      let originalCenterX = player.center.x;
+
+      player.moveRight();
+
+      assert.equal(player.center.x, originalCenterX + 7);
     });
   });
 });
