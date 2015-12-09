@@ -9,34 +9,56 @@ describe('Player', function() {
     this.board = new Board();
   });
 
-  it('should instantiate a new player', function() {
-    let player = new Player(this.board);
-    assert.isObject(player);
+  describe('instantiation', function() {
+    it('should instantiate a new player', function() {
+      let player = new Player(this.board);
+      assert.isObject(player);
+    });
+
+    it('should reference the board object passed as the first parameter', function() {
+      let player = new Player(this.board);
+      assert.equal(player.board, this.board);
+    });
+
+    it('should have a default center x coordinate of half the board width', function() {
+      let player = new Player(this.board);
+      assert.equal(player.center.x, this.board.width / 2);
+    });
+
+    it('should have a constant center y coordinate ten less than board height', function() {
+      let player = new Player(this.board, 0);
+      assert.equal(player.center.y, this.board.height-10);
+    });
+
+    it('should have a default size of 16 by 16 pixels', function() {
+      let player = new Player(this.board);
+      assert.equal(player.size.x, 16);
+      assert.equal(player.size.y, 16);
+    });
+
+    it('should be included in the board\'s array of players', function() {
+      let player = new Player(this.board, 0);
+      assert.include(this.board.players, player);
+    });
   });
 
-  it('should reference the board object passed as the first parameter', function() {
-    let player = new Player(this.board);
-    assert.equal(player.board, this.board);
-  });
+  describe('movement', function() {
+    it('should move left when left arrow is pressed', function() {
+      let player = new Player(this.board);
+      let originalCenterX = player.center.x;
 
-  it('should have a default center x coordinate of half the board width', function() {
-    let player = new Player(this.board);
-    assert.equal(player.center.x, this.board.width / 2);
-  });
+      player.moveLeft();
 
-  it('should have a constant center y coordinate ten less than board height', function() {
-    let player = new Player(this.board, 0);
-    assert.equal(player.center.y, this.board.height-10);
-  });
+      assert.equal(player.center.x, originalCenterX - 7);
+    });
 
-  it('should have a default size of 16 by 16 pixels', function() {
-    let player = new Player(this.board);
-    assert.equal(player.size.x, 16);
-    assert.equal(player.size.y, 16);
-  });
+    it('should move right when right arrow is pressed', function() {
+      let player = new Player(this.board);
+      let originalCenterX = player.center.x;
 
-  it('should be included in the board\'s array of players', function() {
-    let player = new Player(this.board, 0);
-    assert.include(this.board.players, player);
+      player.moveRight();
+
+      assert.equal(player.center.x, originalCenterX + 7);
+    });
   });
 });
