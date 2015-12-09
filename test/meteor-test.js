@@ -23,10 +23,25 @@ describe('Meteor', function() {
     let meteor = new Meteor(this.board);
     assert.isAbove(meteor.x, 0);
     assert.isBelow(meteor.x, this.board.width);
-  })
+  });
 
   it('should initialize y coordinate at top of the board', function() {
     let meteor = new Meteor(this.board);
     assert.equal(meteor.y, 0);
-  })
+  });
+
+  it('should have an x coordinate passed as the second arguement', function() {
+    let meteor = new Meteor(this.board, 22);
+    assert.equal(meteor.x, 22);
+  });
+
+  it('should have a Y coordinate passed as the third arguement', function() {
+    let meteor = new Meteor(this.board, 22, 40);
+    assert.equal(meteor.y, 40);
+  });
+
+  it('should be included in the board\'s array of meteor objects', function() {
+    let meteor = new Meteor(this.board);
+    assert.include(this.board.meteors, meteor);
+  });
 });
