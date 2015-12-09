@@ -53,4 +53,20 @@ describe('Board', function() {
       assert.equal(player.y, board.height - 10)
     });
   });
+
+  describe('when meteor is instantiated', function() {
+    it('the board should add the meteor to its meteors array', function() {
+      let board = new Board();
+      let meteor = board.addMeteor();
+      assert.include(board.meteors, meteor);
+    });
+
+    it('the board should add the meteor to the top of the board within board\'s width', function() {
+      let board = new Board();
+      let meteor = board.addMeteor();
+      assert.isAbove(meteor.x, 0);
+      assert.isBelow(meteor.x, board.width);
+      assert.equal(meteor.y, 0)
+    });
+  });
 });
