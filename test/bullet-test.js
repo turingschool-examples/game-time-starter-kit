@@ -10,29 +10,50 @@ describe('Bullet', function() {
     this.player = this.board.addPlayer();
   });
 
-  it('should instantiate a new bullet object', function() {
-    let bullet = new Bullet(this.board);
-    assert.isObject(bullet);
+  describe('instantiation', function() {
+    it('should instantiate a new bullet object', function() {
+      let bullet = new Bullet(this.board);
+      assert.isObject(bullet);
+    });
+
+    it('should reference board object passed as the first parameter', function() {
+      let bullet = new Bullet(this.board);
+      assert.equal(bullet.board, this.board);
+    });
+
+    it('should initialize at center x coordinate of player object center x coordinate', function() {
+      let bullet = new Bullet(this.board);
+      assert.equal(this.player.x, bullet.x);
+    });
+
+    it('should initialize at center y coordinate of player object center y coordinate', function() {
+      let bullet = new Bullet(this.board);
+      assert.equal(this.player.y, bullet.y);
+    });
+
+    it('should have a default size of 5 by 5 pixels', function() {
+      let bullet = new Bullet(this.board);
+      assert.equal(bullet.size.x, 5);
+      assert.equal(bullet.size.y, 5);
+    });
   });
 
-  it('should reference board object passed as the first parameter', function() {
-    let bullet = new Bullet(this.board);
-    assert.equal(bullet.board, this.board);
-  });
+  describe('movement', function() {
+    it('should have a constant Y velocity of -6', function() {
+      let bullet = new Bullet(this.board);
 
-  it('should initialize at center x coordinate of player object center x coordinate', function() {
-    let bullet = new Bullet(this.board);
-    assert.equal(this.player.x, bullet.x);
-  });
+      assert.equal(bullet.velocity.y, -6);
+    });
 
-  it('should initialize at center y coordinate of player object center y coordinate', function() {
-    let bullet = new Bullet(this.board);
-    assert.equal(this.player.y, bullet.y);
-  });
+    it('should move straight down from its starting position', function() {
+      let bullet = new Bullet(this.board);
+      let originalCenterX = bullet.center.x;
+      let originalCenterY = bullet.center.y;
 
-  it('should have a default size of 5 by 5 pixels', function() {
-    let bullet = new Bullet(this.board);
-    assert.equal(bullet.size.x, 5);
-    assert.equal(bullet.size.y, 5);
+      bullet.moveUp();
+
+      assert.equal(bullet.center.x, originalCenterX);
+      assert.equal(bullet.center.y, originalCenterY - 6);
+    });
   });
 });
