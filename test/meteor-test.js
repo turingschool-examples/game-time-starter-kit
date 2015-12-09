@@ -19,25 +19,23 @@ describe('Meteor', function() {
     assert.equal(meteor.board, this.board);
   });
 
-  it('should initialize x coordinate within range of board width', function() {
+  it('should initialize center x coordinate within range of board width', function() {
     let meteor = new Meteor(this.board);
-    assert.isAbove(meteor.x, 0);
-    assert.isBelow(meteor.x, this.board.width);
+    assert.isAbove(meteor.center.x, 0);
+    assert.isBelow(meteor.center.x, this.board.width);
   });
 
-  it('should initialize y coordinate at top of the board', function() {
+  it('should initialize center y coordinate at top of the board', function() {
     let meteor = new Meteor(this.board);
-    assert.equal(meteor.y, 0);
+    assert.equal(meteor.center.y, 0 - (meteor.size.height / 2));
   });
 
-  it('should have an x coordinate passed as the second arguement', function() {
-    let meteor = new Meteor(this.board, 22);
-    assert.equal(meteor.x, 22);
-  });
-
-  it('should have a Y coordinate passed as the third arguement', function() {
-    let meteor = new Meteor(this.board, 22, 40);
-    assert.equal(meteor.y, 40);
+  it('should have a height and width between 16 and 41 pixels', function() {
+    let meteor = new Meteor(this.board);
+    assert.isAbove(meteor.size.width, 15);
+    assert.isBelow(meteor.size.width, 42);
+    assert.isAbove(meteor.size.height, 15);
+    assert.isBelow(meteor.size.height, 42);
   });
 
   it('should be included in the board\'s array of meteor objects', function() {

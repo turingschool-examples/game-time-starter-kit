@@ -49,8 +49,8 @@ describe('Board', function() {
     it('the board should add the player to the bottom middle', function() {
       let board = new Board();
       let player = board.addPlayer();
-      assert.equal(player.x, board.width / 2)
-      assert.equal(player.y, board.height - 10)
+      assert.equal(player.center.x, board.width / 2)
+      assert.equal(player.center.y, board.height - 10)
     });
   });
 
@@ -64,9 +64,9 @@ describe('Board', function() {
     it('the board should add the meteor to the top of the board within board\'s width', function() {
       let board = new Board();
       let meteor = board.addMeteor();
-      assert.isAbove(meteor.x, 0);
-      assert.isBelow(meteor.x, board.width);
-      assert.equal(meteor.y, 0)
+      assert.isAbove(meteor.center.x, 0);
+      assert.isBelow(meteor.center.x, board.width);
+      assert.equal(meteor.center.y, 0 - (meteor.size.height / 2));
     });
   });
 
@@ -82,8 +82,8 @@ describe('Board', function() {
       let board = new Board();
       let player = board.addPlayer();
       let bullet = board.addBullet();
-      assert.equal(bullet.x, player.x);
-      assert.equal(bullet.y, player.y);
+      assert.equal(bullet.center.x, player.center.x);
+      assert.equal(bullet.center.y, player.center.y);
     });
   });
 });
