@@ -9,37 +9,58 @@ describe('Meteor', function() {
     this.board = new Board();
   });
 
-  it('should instantiate a new meteor', function() {
-    let meteor = new Meteor(this.board);
-    assert.isObject(meteor);
+  describe('instantiation', function() {
+    it('should instantiate a new meteor', function() {
+      let meteor = new Meteor(this.board);
+      assert.isObject(meteor);
+    });
+
+    it('should reference the board object passed as the first parameter', function() {
+      let meteor = new Meteor(this.board);
+      assert.equal(meteor.board, this.board);
+    });
+
+    it('should initialize center x coordinate within range of board width', function() {
+      let meteor = new Meteor(this.board);
+      assert.isAbove(meteor.center.x, 0);
+      assert.isBelow(meteor.center.x, this.board.width);
+    });
+
+    it('should initialize center y coordinate at top of the board', function() {
+      let meteor = new Meteor(this.board);
+      assert.equal(meteor.center.y, 0 - (meteor.size.height / 2));
+    });
+
+    it('should have a height and width between 16 and 41 pixels', function() {
+      let meteor = new Meteor(this.board);
+      assert.isAbove(meteor.size.width, 15);
+      assert.isBelow(meteor.size.width, 42);
+      assert.isAbove(meteor.size.height, 15);
+      assert.isBelow(meteor.size.height, 42);
+    });
+
+    it('should be included in the board\'s array of meteor objects', function() {
+      let meteor = new Meteor(this.board);
+      assert.include(this.board.meteors, meteor);
+    });
   });
 
-  it('should reference the board object passed as the first parameter', function() {
-    let meteor = new Meteor(this.board);
-    assert.equal(meteor.board, this.board);
-  });
+  describe('movement', function() {
+    it('should have a random Y velocity between 1 and 4', function() {
+      let meteor = new Meteor(this.board);
+      assert.isAbove(meteor.velocity.y, 0);
+      assert.isBelow(meteor.velocity.y, 5);
+    });
 
-  it('should initialize center x coordinate within range of board width', function() {
-    let meteor = new Meteor(this.board);
-    assert.isAbove(meteor.center.x, 0);
-    assert.isBelow(meteor.center.x, this.board.width);
-  });
+    it('should move straight down from its starting position', function() {
+      let meteor = new Meteor(this.board);
+      let originalCenterX = meteor.center.x;
+      let originalCenterY = meteor.center.y;
 
-  it('should initialize center y coordinate at top of the board', function() {
-    let meteor = new Meteor(this.board);
-    assert.equal(meteor.center.y, 0 - (meteor.size.height / 2));
-  });
+      meteor.moveDown();
 
-  it('should have a height and width between 16 and 41 pixels', function() {
-    let meteor = new Meteor(this.board);
-    assert.isAbove(meteor.size.width, 15);
-    assert.isBelow(meteor.size.width, 42);
-    assert.isAbove(meteor.size.height, 15);
-    assert.isBelow(meteor.size.height, 42);
-  });
-
-  it('should be included in the board\'s array of meteor objects', function() {
-    let meteor = new Meteor(this.board);
-    assert.include(this.board.meteors, meteor);
+      assert.equal(meteor.center.x, originalCenterX);
+      assert.isAbove(meteor.center.y, originalCenterY);
+    });
   });
 });
