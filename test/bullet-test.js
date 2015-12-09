@@ -20,13 +20,19 @@ describe('Bullet', function() {
     assert.equal(bullet.board, this.board);
   });
 
-  it('should initialize at x coordinate of player object x coordinate', function() {
+  it('should initialize at center x coordinate of player object center x coordinate', function() {
     let bullet = new Bullet(this.board);
     assert.equal(this.player.x, bullet.x);
   });
 
-  it('should initialize at y coordinate of player object y coordinate', function() {
+  it('should initialize at center y coordinate of player object center y coordinate', function() {
     let bullet = new Bullet(this.board);
     assert.equal(this.player.y, bullet.y);
+  });
+
+  it('should have a default size of 5 by 5 pixels', function() {
+    let bullet = new Bullet(this.board);
+    assert.equal(bullet.size.x, 5);
+    assert.equal(bullet.size.y, 5);
   });
 });
