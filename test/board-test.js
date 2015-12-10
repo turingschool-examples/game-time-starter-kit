@@ -144,4 +144,26 @@ describe('Board', function() {
 
     });
   });
+
+  describe('when bullets collide with meteors', function() {
+    it('the board removes a single bullet and single meteor from the meteors and bullets collection', function(){
+      let board = new Board();
+      board.addPlayer();
+      let bullet = board.addBullet();
+      let meteor = board.addMeteor();
+
+      assert.equal(board.bullets.length, 1)
+      assert.equal(board.meteors.length, 1)
+
+      meteor.center.x = 70;
+      meteor.center.y = 70;
+      bullet.center.x = 70;
+      bullet.center.y = 70;
+
+      board.checkBulletMeteorCollisions();
+
+      assert.equal(board.bullets.length, 0)
+      assert.equal(board.meteors.length, 0)
+    });
+  });
 });

@@ -68,4 +68,82 @@ describe('Bullet', function() {
       assert.equal(bullet.center.y, originalCenterY - 6);
     });
   });
+
+  describe('collision', function() {
+    it('should have a collision range', function() {
+      let bullet = new Bullet(this.board);
+      let xRange = bullet.range().xmax - bullet.range().xmin;
+      let yRange = bullet.range().ymax - bullet.range().ymin;
+
+      assert.equal(bullet.range().xmin, bullet.center.x - (bullet.size.width / 2));
+      assert.equal(bullet.range().xmax, bullet.center.x + (bullet.size.width / 2));
+      assert.equal(xRange, bullet.size.width);
+      assert.equal(bullet.range().ymin, bullet.center.y - (bullet.size.height / 2));
+      assert.equal(bullet.range().ymax, bullet.center.y + (bullet.size.height / 2));
+      assert.equal(yRange, bullet.size.height);
+    });
+
+    it('should have a collision range that changes as the bullet moves', function() {
+      let bullet = new Bullet(this.board);
+      let velocity = bullet.velocity.y;
+      let beforeMoveXMin = bullet.range().xmin;
+      let beforeMoveXMax = bullet.range().xmax;
+      let beforeMoveYMin = bullet.range().ymin;
+      let beforeMoveYMax = bullet.range().ymax;
+      let beforeMoveXRange = bullet.range().xmax - bullet.range().xmin;
+      let beforeMoveYRange = bullet.range().ymax - bullet.range().ymin;
+
+      bullet.moveUp();
+
+      let afterMoveXMin = bullet.range().xmin;
+      let afterMoveXMax = bullet.range().xmax;
+      let afterMoveYMin = bullet.range().ymin;
+      let afterMoveYMax = bullet.range().ymax;
+      let afterMoveXRange = bullet.range().xmax - bullet.range().xmin;
+      let afterMoveYRange = bullet.range().ymax - bullet.range().ymin;
+
+      assert.equal(beforeMoveXMin, afterMoveXMin);
+      assert.equal(beforeMoveXMax, afterMoveXMax);
+      assert.equal(beforeMoveYMin + velocity, afterMoveYMin);
+      assert.equal(beforeMoveYMax + velocity, afterMoveYMax);
+      assert.equal(beforeMoveXRange, afterMoveXRange);
+      assert.equal(beforeMoveYRange, afterMoveYRange);
+    });
+
+    // it('should return true if it has had a collision with an object where part of the X and part of the Y range is within the bullets X and Y range', function() {
+    //   let bullet = new Bullet(this.board);
+    //   let objectRange = {
+    //     xmin: bullet.range().xmin + bullet.size.width / 5,
+    //     xmax: bullet.range().xmax + 2 * bullet.size.width,
+    //     ymin: bullet.range().ymin + bullet.size.height / 5,
+    //     ymax: bullet.range().ymax + 2 * bullet.size.height
+    //   };
+    //
+    //   assert.isTrue(bullet.collisionWith(objectRange), 'the bullet and object haven\'t collided');
+    // });
+    //
+    // it('should return false if the object\'s Y range is not within the bullet\'s Y range, but the X range is', function() {
+    //   let bullet = new Bullet(this.board);
+    //   let objectRange = {
+    //     xmin: bullet.range().xmin + bullet.size.width / 5,
+    //     xmax: bullet.range().xmax - bullet.size.width / 5,
+    //     ymin: bullet.range().ymin + 2 * bullet.size.height,
+    //     ymax: bullet.range().ymax + 5 * bullet.size.height
+    //   };
+    //
+    //   assert.isFalse(bullet.collisionWith(objectRange), 'the bullet and object have collided');
+    // });
+    //
+    // it('should return false if the object\'s X range is not within the bullet\'s X range, but the Y range is', function() {
+    //   let bullet = new Bullet(this.board);
+    //   let objectRange = {
+    //     xmin: bullet.range().xmin + 2 * bullet.size.width,
+    //     xmax: bullet.range().xmax + 5 * bullet.size.width,
+    //     ymin: bullet.range().ymin + bullet.size.height / 5,
+    //     ymax: bullet.range().ymax - bullet.size.height / 5
+    //   };
+    //
+    //   assert.isFalse(bullet.collisionWith(objectRange), 'the bullet and object have collided');
+    // });
+  });
 });

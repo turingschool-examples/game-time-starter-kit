@@ -72,4 +72,83 @@ describe('Meteor', function() {
       assert.isAbove(meteor.center.y, originalCenterY);
     });
   });
+
+  describe('collision', function() {
+    it('should have a collision range', function() {
+      let meteor = new Meteor(this.board);
+      let xRange = meteor.range().xmax - meteor.range().xmin;
+      let yRange = meteor.range().ymax - meteor.range().ymin;
+
+      assert.equal(meteor.range().xmin, meteor.center.x - (meteor.size.width / 2));
+      assert.equal(meteor.range().xmax, meteor.center.x + (meteor.size.width / 2));
+      assert.equal(xRange, meteor.size.width);
+      assert.equal(meteor.range().ymin, meteor.center.y - (meteor.size.height / 2));
+      assert.equal(meteor.range().ymax, meteor.center.y + (meteor.size.height / 2));
+      assert.equal(yRange, meteor.size.height);
+    });
+
+    it('should have a collision range that changes as the meteor moves', function() {
+      let player = this.board.addPlayer();
+      let meteor = new Meteor(this.board);
+      let velocity = meteor.velocity.y;
+      let beforeMoveXMin = meteor.range().xmin;
+      let beforeMoveXMax = meteor.range().xmax;
+      let beforeMoveYMin = meteor.range().ymin;
+      let beforeMoveYMax = meteor.range().ymax;
+      let beforeMoveXRange = meteor.range().xmax - meteor.range().xmin;
+      let beforeMoveYRange = meteor.range().ymax - meteor.range().ymin;
+
+      meteor.moveDown();
+
+      let afterMoveXMin = meteor.range().xmin;
+      let afterMoveXMax = meteor.range().xmax;
+      let afterMoveYMin = meteor.range().ymin;
+      let afterMoveYMax = meteor.range().ymax;
+      let afterMoveXRange = meteor.range().xmax - meteor.range().xmin;
+      let afterMoveYRange = meteor.range().ymax - meteor.range().ymin;
+
+      assert.equal(beforeMoveXMin, afterMoveXMin);
+      assert.equal(beforeMoveXMax, afterMoveXMax);
+      assert.equal(beforeMoveYMin + velocity, afterMoveYMin);
+      assert.equal(beforeMoveYMax + velocity, afterMoveYMax);
+      assert.equal(beforeMoveXRange, afterMoveXRange);
+      assert.equal(beforeMoveYRange, afterMoveYRange);
+    });
+
+    it('should return true if it has had a collision with an object where part of the X and part of the Y range is within the meteor\'s X and Y range', function() {
+      let meteor = new Meteor(this.board);
+      let objectRange = {
+        xmin: meteor.range().xmin + meteor.size.width / 5,
+        xmax: meteor.range().xmax + 2 * meteor.size.width,
+        ymin: meteor.range().ymin + meteor.size.height / 5,
+        ymax: meteor.range().ymax + 2 * meteor.size.height
+      };
+
+      assert.isTrue(meteor.collisionWith(objectRange), 'the meteor and object haven\'t collided');
+    });
+
+    it('should return false if the object\'s Y range is not within the meteor\'s Y range, but the X range is', function() {
+      let meteor = new Meteor(this.board);
+      let objectRange = {
+        xmin: meteor.range().xmin + meteor.size.width / 5,
+        xmax: meteor.range().xmax - meteor.size.width / 5,
+        ymin: meteor.range().ymin + 2 * meteor.size.height,
+        ymax: meteor.range().ymax + 5 * meteor.size.height
+      };
+
+      assert.isFalse(meteor.collisionWith(objectRange), 'the meteor and object have collided');
+    });
+
+    it('should return false if the object\'s X range is not within the meteor\'s X range, but the Y range is', function() {
+      let meteor = new Meteor(this.board);
+      let objectRange = {
+        xmin: meteor.range().xmin + 2 * meteor.size.width,
+        xmax: meteor.range().xmax + 5 * meteor.size.width,
+        ymin: meteor.range().ymin + meteor.size.height / 5,
+        ymax: meteor.range().ymax - meteor.size.height / 5
+      };
+
+      assert.isFalse(meteor.collisionWith(objectRange), 'the meteor and object have collided');
+    });
+  });
 });
