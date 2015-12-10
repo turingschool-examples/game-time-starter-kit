@@ -37,13 +37,6 @@ describe('Bullet', function() {
       assert.equal(bullet.size.height, 5);
     });
 
-    it('should have knowledge of its impact coordinates based on its position and size', function() {
-      let bullet = new Bullet(this.board);
-      assert.equal(bullet.impactCoordinates.xmin, bullet.center.x - (bullet.size.width / 2));
-      assert.equal(bullet.impactCoordinates.xmax, bullet.center.x + (bullet.size.width / 2));
-      assert.equal(bullet.impactCoordinates.y, bullet.center.y - (bullet.size.height / 2));
-    });
-
     it('should be included in the board\'s array of bullets', function() {
       let bullet = new Bullet(this.board);
       assert.include(this.board.bullets, bullet);

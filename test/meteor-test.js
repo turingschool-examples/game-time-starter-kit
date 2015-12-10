@@ -40,13 +40,6 @@ describe('Meteor', function() {
       assert.isBelow(meteor.size.height, 42);
     });
 
-    it('should have knowledge of its impact coordinates based on its position and size', function() {
-      let meteor = new Meteor(this.board);
-      assert.equal(meteor.impactCoordinates.xmin, meteor.center.x - (meteor.size.width / 2));
-      assert.equal(meteor.impactCoordinates.xmax, meteor.center.x + (meteor.size.width / 2));
-      assert.equal(meteor.impactCoordinates.y, meteor.center.y + (meteor.size.height / 2));
-    });
-
     it('should be included in the board\'s array of meteor objects', function() {
       let meteor = new Meteor(this.board);
       assert.include(this.board.meteors, meteor);
