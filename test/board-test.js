@@ -85,40 +85,42 @@ describe('Board', function() {
       let player = board.addPlayer();
       let bullet = board.addBullet();
       assert.equal(bullet.center.x, player.center.x);
-      assert.equal(bullet.center.y, player.center.y);
+      assert.equal(bullet.center.y, player.center.y - (player.size.height / 2) - 1);
     });
   });
 
-  describe('when a collision occurs between a bullet and meteor', function() {
-    xit('the board should identify the collision', function() {
+  describe('when a collision occurs between a meteor and the player', function() {
+    it('the board should identify the collision and remove the meteor', function() {
       let board = new Board();
-      board.addPlayer();
-      let bullet = board.addBullet();
+      let player = board.addPlayer();
+      let meteor = board.addMeteor();
 
+      player.impactCoordinates.xmin = 50;
+      player.impactCoordinates.xmax = 66;
+      player.impactCoordinates.y = 582;
 
+      meteor.impactCoordinates.xmin = 48;
+      meteor.impactCoordinates.xmax = 68;
+      meteor.impactCoordinates.y = 586;
+
+      assert.include(board.meteors, meteor);
+
+      board.checkCollision();
+
+      assert.notInclude(board.meteors, meteor);
     });
 
-    xit('the board should identify the collision and remove bullet and meteor', function() {
+    xit('the board should end the game', function() {
 
     });
   });
 
-  xdescribe('when a collision occurs between a meteor and the player', function() {
-    it('the board should identify the collision', function() {
+  describe('when a collision occurs between a meteor and a bullet', function() {
+    xit('the board should identify the collision', function() {
 
     });
 
-    it('the board should end the game', function() {
-
-    });
-  });
-
-  xdescribe('when a collision occurs between a meteor and the ground', function() {
-    it('the board should identify the collision', function() {
-
-    });
-
-    it('the board should end the game', function() {
+    xit('the board should end the game', function() {
 
     });
   });
