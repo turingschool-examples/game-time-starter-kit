@@ -55,7 +55,6 @@ describe('Meteor', function() {
 
     it('should move straight down from its starting position', function() {
       let meteor = new Meteor(this.board);
-      let player = new Player(this.board);
       let originalCenterX = meteor.center.x;
       let originalCenterY = meteor.center.y;
 

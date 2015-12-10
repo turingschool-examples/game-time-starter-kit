@@ -2,6 +2,7 @@ const chai = require('chai');
 const assert = chai.assert;
 
 const Board = require('../lib/board');
+const Player = require('../lib/player');
 
 describe('Board', function() {
   describe('when board is instantiated', function() {
@@ -107,6 +108,27 @@ describe('Board', function() {
       board.checkBulletMeteorCollisions();
 
       assert.equal(board.bullets.length, 0)
+      assert.equal(board.meteors.length, 0)
+    });
+  });
+
+  describe('when player collides with meteor', function() {
+    it('the board removes the player and meteor from the player and meteor collections', function(){
+      let board = new Board();
+      let player = board.addPlayer();
+      let meteor = board.addMeteor();
+
+      assert.equal(board.players.length, 1)
+      assert.equal(board.meteors.length, 1)
+
+      meteor.center.x = 70;
+      meteor.center.y = 70;
+      player.center.x = 70;
+      player.center.y = 70;
+
+      board.checkPlayerMeteorCollisions();
+
+      assert.equal(board.players.length, 0)
       assert.equal(board.meteors.length, 0)
     });
   });
