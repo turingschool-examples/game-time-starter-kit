@@ -90,7 +90,7 @@ describe('Board', function() {
   });
 
   describe('when bullets collide with meteors', function() {
-    xit('the board removes a single bullet and single meteor from the meteors and bullets collection', function(){
+    it('the board removes a single bullet and single meteor from the meteors and bullets collection', function(){
       let board = new Board();
       board.addPlayer();
       let bullet = board.addBullet();
