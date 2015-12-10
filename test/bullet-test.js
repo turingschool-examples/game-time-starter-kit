@@ -43,6 +43,11 @@ describe('Bullet', function() {
       assert.equal(bullet.impactCoordinates.xmax, bullet.center.x + (bullet.size.width / 2));
       assert.equal(bullet.impactCoordinates.y, bullet.center.y - (bullet.size.height / 2));
     });
+
+    it('should be included in the board\'s array of bullets', function() {
+      let bullet = new Bullet(this.board);
+      assert.include(this.board.bullets, bullet);
+    });
   });
 
   describe('movement', function() {
