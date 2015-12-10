@@ -89,62 +89,6 @@ describe('Board', function() {
     });
   });
 
-  describe('when a collision occurs between a meteor and the player', function() {
-    it('the board should be able to identify a centered collision and remove the meteor', function() {
-      let board = new Board();
-      let player = board.addPlayer();
-      let meteor = board.addMeteor();
-
-      player.impactCoordinates.xmin = 50;
-      player.impactCoordinates.xmax = 66;
-      player.impactCoordinates.y = 582;
-
-      meteor.impactCoordinates.xmin = 48;
-      meteor.impactCoordinates.xmax = 68;
-      meteor.impactCoordinates.y = 582;
-
-      assert.include(board.meteors, meteor);
-
-      board.checkCollision();
-
-      assert.notInclude(board.meteors, meteor);
-    });
-
-    it('the board should be able to identify an off-center collision and remove the meteor', function() {
-      let board = new Board();
-      let player = board.addPlayer();
-      let meteor = board.addMeteor();
-
-      player.impactCoordinates.xmin = 50;
-      player.impactCoordinates.xmax = 66;
-      player.impactCoordinates.y = 582;
-
-      meteor.impactCoordinates.xmin = 58;
-      meteor.impactCoordinates.xmax = 70;
-      meteor.impactCoordinates.y = 582;
-
-      assert.include(board.meteors, meteor);
-
-      board.checkCollision();
-
-      assert.notInclude(board.meteors, meteor);
-    });
-
-    xit('the board should end the game', function() {
-
-    });
-  });
-
-  describe('when a collision occurs between a meteor and a bullet', function() {
-    xit('the board should identify the collision', function() {
-
-    });
-
-    xit('the board should end the game', function() {
-
-    });
-  });
-
   describe('when bullets collide with meteors', function() {
     it('the board removes a single bullet and single meteor from the meteors and bullets collection', function(){
       let board = new Board();
