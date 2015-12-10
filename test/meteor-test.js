@@ -3,6 +3,7 @@ const assert = chai.assert;
 
 const Board = require('../lib/board');
 const Meteor = require('../lib/meteor');
+const Player = require('../lib/player');
 
 describe('Meteor', function() {
   beforeEach(function() {
@@ -39,6 +40,13 @@ describe('Meteor', function() {
       assert.isBelow(meteor.size.height, 42);
     });
 
+    it('should have knowledge of its impact coordinates based on its position and size', function() {
+      let meteor = new Meteor(this.board);
+      assert.equal(meteor.impactCoordinates.xmin, meteor.center.x - (meteor.size.width / 2));
+      assert.equal(meteor.impactCoordinates.xmax, meteor.center.x + (meteor.size.width / 2));
+      assert.equal(meteor.impactCoordinates.y, meteor.center.y + (meteor.size.height / 2));
+    });
+
     it('should be included in the board\'s array of meteor objects', function() {
       let meteor = new Meteor(this.board);
       assert.include(this.board.meteors, meteor);
@@ -54,6 +62,7 @@ describe('Meteor', function() {
 
     it('should move straight down from its starting position', function() {
       let meteor = new Meteor(this.board);
+      let player = new Player(this.board);
       let originalCenterX = meteor.center.x;
       let originalCenterY = meteor.center.y;
 
