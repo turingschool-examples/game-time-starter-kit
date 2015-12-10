@@ -33,8 +33,15 @@ describe('Bullet', function() {
 
     it('should have a default size of 5 by 5 pixels', function() {
       let bullet = new Bullet(this.board);
-      assert.equal(bullet.size.x, 5);
-      assert.equal(bullet.size.y, 5);
+      assert.equal(bullet.size.width, 5);
+      assert.equal(bullet.size.height, 5);
+    });
+
+    it('should have knowledge of its impact coordinates based on its position and size', function() {
+      let bullet = new Bullet(this.board);
+      assert.equal(bullet.impactCoordinates.xmin, bullet.center.x - (bullet.size.width / 2));
+      assert.equal(bullet.impactCoordinates.xmax, bullet.center.x + (bullet.size.width / 2));
+      assert.equal(bullet.impactCoordinates.y, bullet.center.y - (bullet.size.height / 2));
     });
   });
 

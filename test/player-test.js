@@ -32,8 +32,8 @@ describe('Player', function() {
 
     it('should have a default size of 16 by 16 pixels', function() {
       let player = new Player(this.board);
-      assert.equal(player.size.x, 16);
-      assert.equal(player.size.y, 16);
+      assert.equal(player.size.width, 16);
+      assert.equal(player.size.height, 16);
     });
 
     it('should be included in the board\'s array of players', function() {

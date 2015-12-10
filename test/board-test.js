@@ -88,4 +88,38 @@ describe('Board', function() {
       assert.equal(bullet.center.y, player.center.y);
     });
   });
+
+  describe('when a collision occurs between a bullet and meteor', function() {
+    xit('the board should identify the collision', function() {
+      let board = new Board();
+      board.addPlayer();
+      let bullet = board.addBullet();
+
+
+    });
+
+    xit('the board should identify the collision and remove bullet and meteor', function() {
+
+    });
+  });
+
+  xdescribe('when a collision occurs between a meteor and the player', function() {
+    it('the board should identify the collision', function() {
+
+    });
+
+    it('the board should end the game', function() {
+
+    });
+  });
+
+  xdescribe('when a collision occurs between a meteor and the ground', function() {
+    it('the board should identify the collision', function() {
+
+    });
+
+    it('the board should end the game', function() {
+
+    });
+  });
 });
