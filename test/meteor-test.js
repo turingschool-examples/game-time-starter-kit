@@ -67,35 +67,35 @@ describe('Meteor', function() {
   describe('collision', function() {
     it('should have a collision range', function() {
       let meteor = new Meteor(this.board);
-      let xRange = meteor.collisionRange().xmax - meteor.collisionRange().xmin;
-      let yRange = meteor.collisionRange().ymax - meteor.collisionRange().ymin;
+      let xRange = meteor.range().xmax - meteor.range().xmin;
+      let yRange = meteor.range().ymax - meteor.range().ymin;
 
-      assert.equal(meteor.collisionRange().xmin, meteor.center.x - (meteor.size.width / 2));
-      assert.equal(meteor.collisionRange().xmax, meteor.center.x + (meteor.size.width / 2));
+      assert.equal(meteor.range().xmin, meteor.center.x - (meteor.size.width / 2));
+      assert.equal(meteor.range().xmax, meteor.center.x + (meteor.size.width / 2));
       assert.equal(xRange, meteor.size.width);
-      assert.equal(meteor.collisionRange().ymin, meteor.center.y - (meteor.size.height / 2));
-      assert.equal(meteor.collisionRange().ymax, meteor.center.y + (meteor.size.height / 2));
+      assert.equal(meteor.range().ymin, meteor.center.y - (meteor.size.height / 2));
+      assert.equal(meteor.range().ymax, meteor.center.y + (meteor.size.height / 2));
       assert.equal(yRange, meteor.size.height);
     });
 
     it('should have a collision range that changes as the meteor moves', function() {
       let meteor = new Meteor(this.board);
       let velocity = meteor.velocity.y;
-      let beforeMoveXMin = meteor.collisionRange().xmin;
-      let beforeMoveXMax = meteor.collisionRange().xmax;
-      let beforeMoveYMin = meteor.collisionRange().ymin;
-      let beforeMoveYMax = meteor.collisionRange().ymax;
-      let beforeMoveXRange = meteor.collisionRange().xmax - meteor.collisionRange().xmin;
-      let beforeMoveYRange = meteor.collisionRange().ymax - meteor.collisionRange().ymin;
+      let beforeMoveXMin = meteor.range().xmin;
+      let beforeMoveXMax = meteor.range().xmax;
+      let beforeMoveYMin = meteor.range().ymin;
+      let beforeMoveYMax = meteor.range().ymax;
+      let beforeMoveXRange = meteor.range().xmax - meteor.range().xmin;
+      let beforeMoveYRange = meteor.range().ymax - meteor.range().ymin;
 
       meteor.moveDown();
 
-      let afterMoveXMin = meteor.collisionRange().xmin;
-      let afterMoveXMax = meteor.collisionRange().xmax;
-      let afterMoveYMin = meteor.collisionRange().ymin;
-      let afterMoveYMax = meteor.collisionRange().ymax;
-      let afterMoveXRange = meteor.collisionRange().xmax - meteor.collisionRange().xmin;
-      let afterMoveYRange = meteor.collisionRange().ymax - meteor.collisionRange().ymin;
+      let afterMoveXMin = meteor.range().xmin;
+      let afterMoveXMax = meteor.range().xmax;
+      let afterMoveYMin = meteor.range().ymin;
+      let afterMoveYMax = meteor.range().ymax;
+      let afterMoveXRange = meteor.range().xmax - meteor.range().xmin;
+      let afterMoveYRange = meteor.range().ymax - meteor.range().ymin;
 
       assert.equal(beforeMoveXMin, afterMoveXMin);
       assert.equal(beforeMoveXMax, afterMoveXMax);
