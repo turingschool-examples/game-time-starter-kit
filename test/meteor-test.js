@@ -65,7 +65,7 @@ describe('Meteor', function() {
     });
   });
 
-  describe('collision', function() {
+  xdescribe('collision', function() {
     it('should have a collision range', function() {
       let meteor = new Meteor(this.board);
       let xRange = meteor.range().xmax - meteor.range().xmin;

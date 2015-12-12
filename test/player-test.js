@@ -62,7 +62,7 @@ describe('Player', function() {
     });
   });
 
-  describe('collision', function() {
+  xdescribe('collision', function() {
     it('should have a collision range', function() {
       let player = new Player(this.board);
       let xRange = player.range().xmax - player.range().xmin;

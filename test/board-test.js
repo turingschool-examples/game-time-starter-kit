@@ -91,9 +91,9 @@ describe('Board', function() {
   });
 
   describe('when bullets collide with meteors', function() {
-    it('the board removes a single bullet and single meteor from the meteors and bullets collection', function(){
-      let board = new Board();
-      board.addPlayer();
+    it('the board removes a single bullet and single meteor from the meteors and bullets collection, but leaves player', function(){
+      let board  = new Board();
+      let player = board.addPlayer();
       let bullet = board.addBullet();
       let meteor = board.addMeteor();
 
@@ -105,15 +105,16 @@ describe('Board', function() {
       bullet.center.x = 70;
       bullet.center.y = 70;
 
-      board.checkBulletMeteorCollisions();
+      board.checkMeteorCollisions();
 
       assert.equal(board.bullets.length, 0)
       assert.equal(board.meteors.length, 0)
+      assert.equal(board.players.length, 1)
     });
   });
 
   describe('when player collides with meteor', function() {
-    it('the board removes the player and meteor from the player and meteor collections', function(){
+    it('the board removes the player and meteor from the player and meteor collections, with no bullet objects', function(){
       let board = new Board();
       let player = board.addPlayer();
       let meteor = board.addMeteor();
@@ -126,7 +127,7 @@ describe('Board', function() {
       player.center.x = 70;
       player.center.y = 70;
 
-      board.checkPlayerMeteorCollisions();
+      board.checkMeteorCollisions();
 
       assert.equal(board.players.length, 0)
       assert.equal(board.meteors.length, 0)
