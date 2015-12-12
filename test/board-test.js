@@ -155,8 +155,8 @@ describe('Board', function() {
 
       meteor2.center.x = 300;
       meteor2.center.y = 300;
-      bullet2.center.x = 300;
-      bullet2.center.y = 300;
+      bullet2.center.x = 310;
+      bullet2.center.y = 310;
 
       meteor3.center.x = 150;
       meteor3.center.y = 150;
@@ -171,10 +171,6 @@ describe('Board', function() {
       assert.equal(board.meteors[0], meteor1)
       assert.equal(board.bullets[1], bullet3)
       assert.equal(board.meteors[1], meteor3)
-      // assert.equal(board.bullets[1].active, true)
-      // assert.equal(board.meteors[1].active, true)
-      // assert.equal(board.bullets[2].active, true)
-      // assert.equal(board.meteors[2].active, true)
     });
   });
 
