@@ -91,7 +91,7 @@ describe('Board', function() {
   });
 
   describe('when bullets collide with meteors', function() {
-    it('the board removes a single bullet and single meteor from the meteors and bullets collection, but leaves player', function(){
+    xit('the board removes a single bullet and single meteor from the meteors and bullets collection, but leaves player', function(){
       let board  = new Board();
       let player = board.addPlayer();
       let bullet = board.addBullet();
@@ -111,10 +111,75 @@ describe('Board', function() {
       assert.equal(board.meteors.length, 0)
       assert.equal(board.players.length, 1)
     });
+
+    xit('removes only bullet and meteor, when meteor is in the same location as player', function(){
+      let board  = new Board();
+      let player = board.addPlayer();
+      let bullet = board.addBullet();
+      let meteor = board.addMeteor();
+
+      assert.equal(board.bullets.length, 1)
+      assert.equal(board.meteors.length, 1)
+
+      meteor.center.x = 70;
+      meteor.center.y = 70;
+      bullet.center.x = 70;
+      bullet.center.y = 70;
+      player.center.x = 70;
+      player.center.y = 70;
+
+      board.checkMeteorCollisions();
+
+      assert.equal(board.bullets.length, 0)
+      assert.equal(board.meteors.length, 0)
+      assert.equal(board.players.length, 1)
+    });
+
+    it('removes correct bullet and meteor', function(){
+      let board  = new Board();
+      let player = board.addPlayer();
+      let bullet1 = board.addBullet();
+      let meteor1 = board.addMeteor();
+      let bullet2 = board.addBullet();
+      let meteor2 = board.addMeteor();
+      let bullet3 = board.addBullet();
+      let meteor3 = board.addMeteor();
+
+      assert.equal(board.bullets.length, 3)
+      assert.equal(board.meteors.length, 3)
+
+      meteor1.center.x = 70;
+      meteor1.center.y = 70;
+      bullet1.center.x = 10;
+      bullet1.center.y = 10;
+
+      meteor2.center.x = 300;
+      meteor2.center.y = 300;
+      bullet2.center.x = 300;
+      bullet2.center.y = 300;
+
+      meteor3.center.x = 150;
+      meteor3.center.y = 150;
+      bullet3.center.x = 100;
+      bullet3.center.y = 100;
+
+      board.checkMeteorCollisions();
+
+      assert.equal(board.bullets.length, 2)
+      assert.equal(board.meteors.length, 2)
+      assert.equal(board.bullets[0], bullet1)
+      assert.equal(board.meteors[0], meteor1)
+      assert.equal(board.bullets[1], bullet3)
+      assert.equal(board.meteors[1], meteor3)
+      // assert.equal(board.bullets[1].active, true)
+      // assert.equal(board.meteors[1].active, true)
+      // assert.equal(board.bullets[2].active, true)
+      // assert.equal(board.meteors[2].active, true)
+    });
   });
 
   describe('when player collides with meteor', function() {
-    it('the board removes the player and meteor from the player and meteor collections, with no bullet objects', function(){
+    xit('the board removes the player and meteor from the player and meteor collections, with no bullet objects', function(){
       let board = new Board();
       let player = board.addPlayer();
       let meteor = board.addMeteor();

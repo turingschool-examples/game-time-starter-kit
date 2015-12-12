@@ -61,46 +61,4 @@ describe('Bullet', function() {
       assert.equal(bullet.center.y, originalCenterY - 6);
     });
   });
-
-  xdescribe('collision', function() {
-    it('should have a collision range', function() {
-      let bullet = new Bullet(this.board);
-      let xRange = bullet.range().xmax - bullet.range().xmin;
-      let yRange = bullet.range().ymax - bullet.range().ymin;
-
-      assert.equal(bullet.range().xmin, bullet.center.x - (bullet.size.width / 2));
-      assert.equal(bullet.range().xmax, bullet.center.x + (bullet.size.width / 2));
-      assert.equal(xRange, bullet.size.width);
-      assert.equal(bullet.range().ymin, bullet.center.y - (bullet.size.height / 2));
-      assert.equal(bullet.range().ymax, bullet.center.y + (bullet.size.height / 2));
-      assert.equal(yRange, bullet.size.height);
-    });
-
-    it('should have a collision range that changes as the bullet moves', function() {
-      let bullet = new Bullet(this.board);
-      let velocity = bullet.velocity.y;
-      let beforeMoveXMin = bullet.range().xmin;
-      let beforeMoveXMax = bullet.range().xmax;
-      let beforeMoveYMin = bullet.range().ymin;
-      let beforeMoveYMax = bullet.range().ymax;
-      let beforeMoveXRange = bullet.range().xmax - bullet.range().xmin;
-      let beforeMoveYRange = bullet.range().ymax - bullet.range().ymin;
-
-      bullet.moveUp();
-
-      let afterMoveXMin = bullet.range().xmin;
-      let afterMoveXMax = bullet.range().xmax;
-      let afterMoveYMin = bullet.range().ymin;
-      let afterMoveYMax = bullet.range().ymax;
-      let afterMoveXRange = bullet.range().xmax - bullet.range().xmin;
-      let afterMoveYRange = bullet.range().ymax - bullet.range().ymin;
-
-      assert.equal(beforeMoveXMin, afterMoveXMin);
-      assert.equal(beforeMoveXMax, afterMoveXMax);
-      assert.equal(beforeMoveYMin + velocity, afterMoveYMin);
-      assert.equal(beforeMoveYMax + velocity, afterMoveYMax);
-      assert.equal(beforeMoveXRange, afterMoveXRange);
-      assert.equal(beforeMoveYRange, afterMoveYRange);
-    });
-  });
 });
