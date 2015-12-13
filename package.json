@@ -1,7 +1,7 @@
 {
-  "name": "game-time-starter-kit",
+  "name": "2048",
   "version": "1.0.0",
-  "description": "A starter kit for Turing School's Game Time project.",
+  "description": "A javascript clone of the 2048 game.",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/turingschool-examples/game-time-starter-kit.git"
+    "url": "https://github.com/sabondano/2048"
   },
-  "author": "Steve Kinney",
+  "author": "Sebastian Abondano and Jai Misra",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/turingschool-examples/game-time-starter-kit/issues"
+    "url": "https://github.com/sabondano/2048"
   },
-  "homepage": "https://github.com/turingschool-examples/game-time-starter-kit",
+  "homepage": "https://github.com/sabondano/2048",
   "devDependencies": {
     "babel": "^5.8.3",
     "babel-core": "^5.7.4",
@@ -29,8 +29,13 @@
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",
     "sass-loader": "^1.0.2",
+    "sinon": "^1.17.1",
     "style-loader": "^0.12.3",
     "webpack": "^1.10.1",
     "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1"
   }
 }
