@@ -235,6 +235,7 @@ describe('Board', function() {
       board.removeInActiveObjects();
 
       assert.equal(board.players.length, 0)
+      assert.equal(board.meteors.length, 1)
       assert.isFalse(meteor1.active)
       assert.isTrue(meteor2.active)
     });
