@@ -216,5 +216,27 @@ describe('Board', function() {
       assert.equal(board.players[0], player2)
       assert.equal(board.meteors.length, 0)
     });
+
+    it('should not return an exception when no players are left', function(){
+      let board = new Board();
+      let player1 = board.addPlayer();
+      let meteor1 = board.addMeteor();
+      let meteor2 = board.addMeteor();
+
+      assert.equal(board.players.length, 1)
+      assert.isTrue(meteor1.active)
+      assert.isTrue(meteor2.active)
+
+      meteor1.center.x = 70;
+      meteor1.center.y = 70;
+      player1.center.x = 70;
+      player1.center.y = 70;
+
+      board.removeInActiveObjects();
+
+      assert.equal(board.players.length, 0)
+      assert.isFalse(meteor1.active)
+      assert.isTrue(meteor2.active)
+    });
   });
 });
