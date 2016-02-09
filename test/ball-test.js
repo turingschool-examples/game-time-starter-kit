@@ -6,12 +6,7 @@ describe('Ball', function() {
   context('with default attributes', function() {
 
     var ball = new Ball({});
-// ctx.beginPath();
-// ctx.arc(50,50,8,0,2*Math.PI);
-// x,y,r,sAngle,eAngle,counterclockwise
-// ctx.stroke();
-// ctx.fillStyle = 'blue';
-// ctx.fill();
+
     it('should assign an x coordinate', function() {
       assert.equal(ball.x, 8);
     });
@@ -31,6 +26,18 @@ describe('Ball', function() {
     it('should assign a eAngle', function(){
       assert.equal(ball.eAngle, 2 * Math.PI);
     });
+  });
+
+  describe('move right with defaults', function() {
+
+    var ball = new Ball({});
+
+    it('x should move one pixel to the right', function() {
+      assert.equal(ball.x, 8);
+      dingus.moveRight()
+      assert.equal(ball.x, 9);
+    });
+
   });
 
 });
