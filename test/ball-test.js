@@ -28,16 +28,4 @@ describe('Ball', function() {
     });
   });
 
-  describe('move right with defaults', function() {
-
-    var ball = new Ball({});
-
-    it('x should move one pixel to the right', function() {
-      assert.equal(ball.x, 8);
-      dingus.moveRight()
-      assert.equal(ball.x, 9);
-    });
-
-  });
-
 });
