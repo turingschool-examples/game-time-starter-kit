@@ -83,6 +83,31 @@ describe('Ball', function() {
     });
   });
 
+  describe('will override angle options', function() {
+
+    var ball = new Ball({ sAngle: 10, eAngel:2 });
+
+    it('should assign an x coordinate', function() {
+      assert.equal(ball.x, 8);
+    });
+
+    it('should assign a radius', function() {
+      assert.equal(ball.r, 8);
+    });
+
+    it('should assign a y coordinate', function() {
+      assert.equal(ball.y, 8);
+    });
+
+    it('should assign a sAngle', function(){
+      assert.equal(ball.sAngle, 0);
+    });
+
+    it('should assign a eAngle', function(){
+      assert.equal(ball.eAngle, 2 * Math.PI);
+    });
+  });
+
   describe('with negative radius', function() {
 
     var ball = new Ball({ r: -10 });
@@ -108,31 +133,6 @@ describe('Ball', function() {
     });
   });
 
-  describe('with negative radius', function() {
-
-    var ball = new Ball({ r: -10 });
-
-    it('should assign an x coordinate', function() {
-      assert.equal(ball.x, 8);
-    });
-
-    it('should assign a radius', function() {
-      assert.equal(ball.r, 8);
-    });
-
-    it('should assign a y coordinate', function() {
-      assert.equal(ball.y, 8);
-    });
-
-    it('should assign a sAngle', function(){
-      assert.equal(ball.sAngle, 0);
-    });
-
-    it('should assign a eAngle', function(){
-      assert.equal(ball.eAngle, 2 * Math.PI);
-    });
-  });
-  
   describe('draw', function() {
 
     var ball = new Ball({});
