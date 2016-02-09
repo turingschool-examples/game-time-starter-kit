@@ -42,15 +42,24 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Snake = __webpack_require__(1);
+
+	Snake.startGame();
+
+/***/ },
+/* 1 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	var sayHello = function sayHello() {
-	  return console.log('Hello');
-	};
+	var canvas = document.getElementById('game');
+	var context = canvas.getContext('2d');
 
-	sayHello();
+	context.fillRect(50, 50, 10, 10);
 
 /***/ }
 /******/ ]);
