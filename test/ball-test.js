@@ -1,11 +1,14 @@
 const assert = require('chai').assert;
 const Ball = require('../lib/ball');
 
+
 describe('Ball', function() {
+  // var canvas = document.getElementById("game");
+  // var ctx = canvas.getContext('2d');
 
   context('with default attributes', function() {
 
-    var ball = new Ball({});
+    var ball = new Ball({}, { width: 1000, height: 600 });
 
     it('should assign an x coordinate', function() {
       assert.equal(ball.x, 8);
@@ -35,6 +38,9 @@ describe('Ball', function() {
                           y: 30,
                           sAngle: 20,
                           eAngle: 40
+                        },
+                        { width: 1000,
+                          height: 600
                         });
 
     it('should assign an x coordinate', function() {
@@ -60,7 +66,7 @@ describe('Ball', function() {
 
   describe('with zero radius', function() {
 
-    var ball = new Ball({ r: 0 });
+    var ball = new Ball({ r: 0 }, { width: 1000, height: 600 });
 
     it('should assign an x coordinate', function() {
       assert.equal(ball.x, 8);
@@ -85,7 +91,7 @@ describe('Ball', function() {
 
   describe('will override angle options', function() {
 
-    var ball = new Ball({ sAngle: 10, eAngel:2 });
+    var ball = new Ball({ sAngle: 10, eAngel:2 }, { width: 1000, height: 600 });
 
     it('should assign an x coordinate', function() {
       assert.equal(ball.x, 8);
@@ -110,7 +116,7 @@ describe('Ball', function() {
 
   describe('with negative radius', function() {
 
-    var ball = new Ball({ r: -10 });
+    var ball = new Ball({ r: -10 }, { width: 1000, height: 600 });
 
     it('should assign an x coordinate', function() {
       assert.equal(ball.x, 8);
@@ -135,7 +141,7 @@ describe('Ball', function() {
 
   describe('draw', function() {
 
-    var ball = new Ball({});
+    var ball = new Ball({}, { width: 1000, height: 600 });
 
     it('should be drawn', function() {
       ball.draw
