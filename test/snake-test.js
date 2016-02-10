@@ -54,13 +54,13 @@ describe('Snake#move', function() {
       assert.equal(snake.x, 0)
       snake.changeDirectionRight();
       snake.move();
-      assert.equal(snake.x, 1)
+      assert.equal(snake.x, 10)
     });
     it('1 to the y position', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionDown();
       snake.move();
-      assert.equal(snake.y, 1)
+      assert.equal(snake.y, 10)
     });
   });
 
@@ -70,13 +70,13 @@ describe('Snake#move', function() {
       assert.equal(snake.x, 0)
       snake.changeDirectionLeft();
       snake.move();
-      assert.equal(snake.x, -1)
+      assert.equal(snake.x, -10)
     });
     it('1 from the y position', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionUp();
       snake.move();
-      assert.equal(snake.y, -1)
+      assert.equal(snake.y, -10)
     });
   });
 });
