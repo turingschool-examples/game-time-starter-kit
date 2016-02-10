@@ -19,25 +19,64 @@ describe('Snake', function() {
   });
 });
 
-describe('Snake#scoot', function() {
-  context('successfully moves', function(){
+describe('Snake#direction', function() {
+  context('successfully sets direction variable', function(){
     var snake = new Snake ({})
-    it('adds 1 to the x position', function(){
-      assert.equal(snake.x, 0)
-      snake.move();
-      assert.equal(snake.x, 1)
+    it('as up', function(){
+      assert.equal(snake.y, 0)
+      snake.changeDirectionUp();
+      assert.equal(snake.direction, 'up')
+    });
+    it('as down', function() {
+      assert.equal(snake.y, 0)
+      snake.changeDirectionDown();
+      assert.equal(snake.direction, 'down')
+    });
+    it('as left', function(){
+      assert.equal(snake.y, 0)
+      snake.changeDirectionLeft();
+      assert.equal(snake.direction, 'left')
+    });
+    it('as right', function(){
+      assert.equal(snake.y, 0)
+      snake.changeDirectionRight();
+      assert.equal(snake.direction, 'right')
     });
   });
 });
 
-// describe('Snake#changeDirectionUp', function (){
-//   context('can change direction to move up', function(){
-//     var snake = new Snake ({})
-//     it('stops at furthest x position', function(){
-//       assert.equal(snake.x, 0)
-//       snake.scoot(500);
-//       snake.stop();
-//       assert.equal(snake.x, 500)
-//     });
-//   });
-// });
+
+
+describe('Snake#move', function() {
+  context('successfully adds', function(){
+    var snake = new Snake ({})
+    it('1 to the x position', function(){
+      assert.equal(snake.x, 0)
+      snake.changeDirectionRight();
+      snake.move();
+      assert.equal(snake.x, 1)
+    });
+    it('1 to the y position', function(){
+      assert.equal(snake.y, 0)
+      snake.changeDirectionDown();
+      snake.move();
+      assert.equal(snake.y, 1)
+    });
+  });
+
+  context('successfully subtracts', function(){
+    var snake = new Snake ({})
+    it('1 from the x position', function(){
+      assert.equal(snake.x, 0)
+      snake.changeDirectionLeft();
+      snake.move();
+      assert.equal(snake.x, -1)
+    });
+    it('1 from the y position', function(){
+      assert.equal(snake.y, 0)
+      snake.changeDirectionUp();
+      snake.move();
+      assert.equal(snake.y, -1)
+    });
+  });
+});
