@@ -24,7 +24,7 @@ describe('Snake#scoot', function() {
     var snake = new Snake ({})
     it('adds 1 to the x position', function(){
       assert.equal(snake.x, 0)
-      snake.scoot();
+      snake.move();
       assert.equal(snake.x, 1)
     });
   });
