@@ -30,8 +30,8 @@ describe('Snake#scoot', function() {
   });
 });
 
-// describe('Snake#stop', function (){
-//   context('successfully stops at wall', function(){
+// describe('Snake#changeDirectionUp', function (){
+//   context('can change direction to move up', function(){
 //     var snake = new Snake ({})
 //     it('stops at furthest x position', function(){
 //       assert.equal(snake.x, 0)
