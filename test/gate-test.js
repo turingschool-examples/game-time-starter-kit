@@ -30,7 +30,6 @@ describe('Gate', function() {
                           gateStart: 50,
                           gateEnd: 100,
                         }, viewPort);
-    debugger;
     it('can accept a y coordinate for y position on canvas', function() {
       assert.equal(gate.y, 100);
     });
