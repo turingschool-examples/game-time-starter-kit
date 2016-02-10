@@ -1,15 +1,16 @@
 const assert = require('chai').assert;
 const Gate = require('../lib/gate');
+const ViewPort = require('../lib/viewport');
 
 describe('Gate', function() {
 
   context('with default attributes', function() {
 
-    var canvas = document.getElementById("game");
-    var gate = new Gate({});
+    var viewPort = new ViewPort(300, 200)
+    var gate = new Gate({}, viewPort);
 
-    it('should have a y coordinate that is 5 less than the canvas height', function() {
-      assert.equal(gate.y, (canvas.height - 5));
+    it('should have a y coordinate that is 10 less than the canvas height', function() {
+      assert.equal(gate.y, (viewPort.height - 10));
     });
 
     it('should have an x coordinate for where the hole starts', function() {
@@ -24,11 +25,11 @@ describe('Gate', function() {
 
   context('with given attributes', function() {
 
-    var canvas = document.getElementById("game");
+    var viewPort = new ViewPort(300, 200)
     var gate = new Gate({ y: 100,
                           gateStart: 50,
                           gateEnd: 100,
-                        });
+                        }, viewPort);
     debugger;
     it('can accept a y coordinate for y position on canvas', function() {
       assert.equal(gate.y, 100);
