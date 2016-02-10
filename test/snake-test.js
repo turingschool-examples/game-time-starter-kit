@@ -20,12 +20,24 @@ describe('Snake', function() {
 });
 
 describe('Snake#scoot', function() {
-  context('successfully', function(){
+  context('successfully moves', function(){
     var snake = new Snake ({})
     it('adds 1 to the x position', function(){
       assert.equal(snake.x, 0)
-      snake.scoot();
+      snake.move();
       assert.equal(snake.x, 1)
     });
   });
 });
+
+// describe('Snake#stop', function (){
+//   context('successfully stops at wall', function(){
+//     var snake = new Snake ({})
+//     it('stops at furthest x position', function(){
+//       assert.equal(snake.x, 0)
+//       snake.scoot(500);
+//       snake.stop();
+//       assert.equal(snake.x, 500)
+//     });
+//   });
+// });
