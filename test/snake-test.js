@@ -20,24 +20,24 @@ describe('Snake', function() {
 });
 
 describe('Snake#direction', function() {
-  context('successfully moves', function(){
+  context('successfully sets direction variable', function(){
     var snake = new Snake ({})
-    it('up on the page', function(){
+    it('as up', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionUp();
       assert.equal(snake.direction, 'up')
     });
-    it('down on the page', function() {
+    it('as down', function() {
       assert.equal(snake.y, 0)
       snake.changeDirectionDown();
       assert.equal(snake.direction, 'down')
     });
-    it('left on the page', function(){
+    it('as left', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionLeft();
       assert.equal(snake.direction, 'left')
     });
-    it('right on the page', function(){
+    it('as right', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionRight();
       assert.equal(snake.direction, 'right')
