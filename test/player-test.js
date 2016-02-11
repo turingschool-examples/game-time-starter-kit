@@ -13,7 +13,7 @@ describe('Player', function() {
     assert.equal(player.size.y, 15);
   });
 
-  it('has default x position', function () {
+  it('has a default x position', function () {
     const player = new Player(game);
 
     assert.equal(player.position.x, 150);
@@ -24,5 +24,4 @@ describe('Player', function() {
 
     assert.equal(player.position.y, 115);
   });
-  
 });
