@@ -113,7 +113,7 @@ describe('Snake#eats', function() {
       food.draw();
       assert.equal(food.x, 300);
       assert.equal(food.y, 50);
-      game.reposition_food();
+      game.repositionFood();
       refute.equal(food.x, 300)
     });
   });
