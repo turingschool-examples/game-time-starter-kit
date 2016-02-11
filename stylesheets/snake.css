@@ -1,0 +1,19 @@
+h1 {
+  color: #FF3300;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 3.5rem;
+}
+
+h4 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 3.5rem;
+}
+
+h5 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.9rem;
+}
+
+.container {
+  background-image: url(http://annstreetstudio.com/wp-content/uploads/2014/07/Flying-Cover2.jpg);
+}
