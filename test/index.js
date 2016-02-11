@@ -1,2 +1,3 @@
 //const Game = require('../lib/index.js');
-require('./bullet.js');
+require('./bullet-test.js');
+require('./player-test.js');
