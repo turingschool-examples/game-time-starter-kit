@@ -1,5 +1,7 @@
 const assert = require('chai').assert;
 const Snake = require('../lib/snake');
+const Food = require('../lib/food');
+const Game = require('../lib/game');
 
 describe('Snake', function() {
   context('with default attributes', function() {
@@ -50,13 +52,13 @@ describe('Snake#direction', function() {
 describe('Snake#move', function() {
   context('successfully adds', function(){
     var snake = new Snake ({})
-    it('1 to the x position', function(){
+    it('10 to the x position', function(){
       assert.equal(snake.x, 0)
       snake.changeDirectionRight();
       snake.move();
       assert.equal(snake.x, 10)
     });
-    it('1 to the y position', function(){
+    it('10 to the y position', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionDown();
       snake.move();
@@ -66,17 +68,33 @@ describe('Snake#move', function() {
 
   context('successfully subtracts', function(){
     var snake = new Snake ({})
-    it('1 from the x position', function(){
+    it('10 from the x position', function(){
       assert.equal(snake.x, 0)
       snake.changeDirectionLeft();
       snake.move();
-      assert.equal(snake.x, -10)
+      assert.equal(snake.x, 10)
     });
-    it('1 from the y position', function(){
+    it('10 from the y position', function(){
       assert.equal(snake.y, 0)
       snake.changeDirectionUp();
       snake.move();
-      assert.equal(snake.y, -10)
+      assert.equal(snake.y, 10)
     });
   });
 });
+
+// describe('Snake#eats', function() {
+//   context('successfully', function(){
+//     let context = canvas.getContext('2d');
+//     var game = new Game({})
+//     var snake = new Snake ({});
+//     var food = new Food ({x: 300, y: 50, width: 10, height: 10}, context);
+//     it('and repositions food', function(){
+//       food.draw();
+//       assert.equal(food.x, 300);
+//       assert.equal(food.y, 50);
+//       game.reposition_food();
+//       refute.equal(food.x, 300)
+//     });
+//   });
+// });
