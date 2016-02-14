@@ -17,7 +17,7 @@ describe('Ball', function() {
     });
 
     it('should assign a y coordinate', function() {
-      assert.equal(ball.y, 8);
+      assert.equal(ball.y, 9);
     });
 
     it('should assign a sAngle', function(){
@@ -75,7 +75,7 @@ describe('Ball', function() {
     });
 
     it('should assign a y coordinate', function() {
-      assert.equal(ball.y, 8);
+      assert.equal(ball.y, 9);
     });
 
     it('should assign a sAngle', function(){
@@ -100,7 +100,7 @@ describe('Ball', function() {
     });
 
     it('should assign a y coordinate', function() {
-      assert.equal(ball.y, 8);
+      assert.equal(ball.y, 9);
     });
 
     it('should assign a sAngle', function(){
@@ -125,7 +125,7 @@ describe('Ball', function() {
     });
 
     it('should assign a y coordinate', function() {
-      assert.equal(ball.y, 8);
+      assert.equal(ball.y, 9);
     });
 
     it('should assign a sAngle', function(){
@@ -145,7 +145,7 @@ describe('Ball', function() {
       ball.draw
       assert.equal(ball.x, 500);
       assert.equal(ball.r, 8);
-      assert.equal(ball.y, 8);
+      assert.equal(ball.y, 9);
     });
 
     it('should be drawn with a r value', function() {
@@ -155,7 +155,7 @@ describe('Ball', function() {
 
     it('should be drawn with a y value', function() {
       ball.draw
-      assert.equal(ball.y, 8);
+      assert.equal(ball.y, 9);
     });
 
     it('should be drawn with a sAngle value', function() {
@@ -174,22 +174,6 @@ describe('Ball', function() {
     });
   });
 
-  describe('move right', function() {
 
-    var ball = new Ball({r: 0}, { width: 1000, height: 600 });
-
-    it('should move one pixel to the right', function() {
-      assert.equal(ball.x, 500);
-      ball.moveRight()
-      assert.equal(ball.x, 501);
-    });
-
-    it('should move one pixel to the right', function() {
-      assert.equal(ball.x, 500);
-      ball.moveRight()
-      assert.equal(ball.x, 501);
-    });
-
-  });
 
 });
