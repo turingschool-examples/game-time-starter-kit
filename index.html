@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +11,32 @@
   <link href="../stylesheets/snake.css" rel="stylesheet">
 </head>
 <body>
+<div class="application-body">
   <div class='container'>
     <h1 style="padding-top: 30px;" class='center-align'> Rakes on a Plane </h1>
-    <h5>"I've had it with these mother f'n rakes, on this mother f'n game!"</h5>
+    <h5>"I've had it with these mother f'n rakes, on this mother f'n game!" -SLJ</h5>
+    <br>
+    <h6 class='center-align'>Collect as many rakes from the plane as possible without running into yourself!</h6>
     <br>
     <div class="row">
-      <div class="col s10">
-        <canvas width="500px" height="500px" id="canvas" style="border: 1px solid black"></canvas>
+      <div class="col s6">
+        <div class="canvas">
+          <canvas width="500px" height="500px" id="canvas" style="border: 4px dashed red"></canvas>
+        </div>
+      </div>
+      <div class="col s3">
+          <p id=''></p>
       </div>
       <div class="col s2">
         <h4>Score:</h4>
+          <p id='score'>100</p>
       </div>
+      <br><br>
+    </div>
+      <div class="row">
     </div>
     <script src="main.bundle.js"></script>
   </div>
+</div>
 </body>
 </html>
