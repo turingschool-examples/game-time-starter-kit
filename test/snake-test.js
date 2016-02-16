@@ -21,18 +21,17 @@ describe('Snake', function() {
   });
 
   describe('Snake moves up', function() {
-    var snake = new Snake({});
     it('should increase y coordinate value', function() {
+      var snake = new Snake({});
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      var timeObject = new Date()
-      snake.moveUp(new Date(timeObject.getTime() + 1000))
+      snake.moveUp()
 
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 160);
     });
-  })
+  });
 
   describe('Snake moves down', function() {
     var snake = new Snake({});
@@ -40,8 +39,7 @@ describe('Snake', function() {
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      var timeObject = new Date()
-      snake.moveDown(new Date(timeObject.getTime() + 1000))
+      snake.moveDown()
 
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 140);
@@ -54,8 +52,7 @@ describe('Snake', function() {
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      var timeObject = new Date()
-      snake.moveRight(new Date(timeObject.getTime() + 1000))
+      snake.moveRight()
       assert.equal(snake.x, 310);
       assert.equal(snake.y, 150);
     });
@@ -67,10 +64,16 @@ describe('Snake', function() {
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      var timeObject = new Date()
-      snake.moveLeft(new Date(timeObject.getTime() + 1000))
+      snake.moveLeft()
       assert.equal(snake.x, 290);
       assert.equal(snake.y, 150);
     });
+  });
+
+  describe('Snake grows', function(){
+    var snake = new Snake({});
+    assert.equal(snake.positions.length, 1)
+    snake.grow()
+    assert.equal(snake.positions.length, 2)
   })
 });
