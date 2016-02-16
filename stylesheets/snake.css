@@ -13,6 +13,15 @@ h5 {
   font-family: 'Raleway', sans-serif;
   font-size: 1.9rem;
 }
+
+h6 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+}
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.2rem;
+}
 .application-body{
   background-image: url("https://img0.etsystatic.com/066/0/9426463/il_fullxfull.769540858_iepa.jpg");
 }
