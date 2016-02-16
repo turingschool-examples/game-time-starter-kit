@@ -1,4 +1,5 @@
 const assert = require('chai').assert;
+
 const Snake = require('../lib/snake');
 const Food = require('../lib/food');
 const Game = require('../lib/game');
@@ -103,27 +104,6 @@ describe('Snake#move', function() {
 
       this.snake.move(100);
       assert.equal(this.snake.x, 500)
-    });
-  });
-});
-
-describe('Snake#eats', function() {
-  context('successfully', function(){
-
-    beforeEach(function() {
-      var canvas = document.createElement("canvas");
-      var context = canvas.getContext('2d');
-    });
-
-    var game = new Game({})
-    var snake = new Snake ({});
-    var food = new Food ({x: 300, y: 50, width: 10, height: 10}, context);
-    it('and repositions food', function(){
-      food.draw();
-      assert.equal(food.x, 300);
-      assert.equal(food.y, 50);
-      game.reposition_food();
-      refute.equal(food.x, 300)
     });
   });
 });
