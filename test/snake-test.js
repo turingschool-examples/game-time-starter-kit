@@ -21,17 +21,17 @@ describe('Snake', function() {
   });
 
   describe('Snake moves up', function() {
-    var snake = new Snake({});
     it('should increase y coordinate value', function() {
+      var snake = new Snake({});
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      snake.moveUp();
+      snake.moveUp()
 
       assert.equal(snake.x, 300);
-      assert.equal(snake.y, 151);
+      assert.equal(snake.y, 160);
     });
-  })
+  });
 
   describe('Snake moves down', function() {
     var snake = new Snake({});
@@ -39,10 +39,10 @@ describe('Snake', function() {
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      snake.moveDown();
+      snake.moveDown()
 
       assert.equal(snake.x, 300);
-      assert.equal(snake.y, 149);
+      assert.equal(snake.y, 140);
     });
   })
 
@@ -52,9 +52,8 @@ describe('Snake', function() {
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      snake.moveRight();
-
-      assert.equal(snake.x, 301);
+      snake.moveRight()
+      assert.equal(snake.x, 310);
       assert.equal(snake.y, 150);
     });
   })
@@ -65,10 +64,16 @@ describe('Snake', function() {
       assert.equal(snake.x, 300);
       assert.equal(snake.y, 150);
 
-      snake.moveLeft();
-
-      assert.equal(snake.x, 299);
+      snake.moveLeft()
+      assert.equal(snake.x, 290);
       assert.equal(snake.y, 150);
     });
+  });
+
+  describe('Snake grows', function(){
+    var snake = new Snake({});
+    assert.equal(snake.positions.length, 1)
+    snake.grow()
+    assert.equal(snake.positions.length, 2)
   })
 });
