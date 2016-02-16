@@ -13,7 +13,7 @@ describe('Gate', function() {
       assert.equal(gate.y, (viewPort.height - gate.gateHeight));
     });
 
-    it('gateSTart should have a randomly generated x coordinate that is less than the x coord of the gateEnd', function() {
+    it('gateStart should have a randomly generated x coordinate that is less than the x coord of the gateEnd', function() {
       assert(gate.gateStart < gate.gateEnd);
     });
 
