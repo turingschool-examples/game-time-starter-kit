@@ -1,11 +1,42 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Game Time</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
+  <link href="../stylesheets/snake.css" rel="stylesheet">
 </head>
 <body>
-
-  <script src="main.bundle.js"></script>
+<div class="application-body">
+  <div class='container'>
+    <h1 style="padding-top: 30px;" class='center-align'> Rakes on a Plane </h1>
+    <h5>"I've had it with these mother f'n rakes, on this mother f'n game!" -SLJ</h5>
+    <br>
+    <h6 class='center-align'>Collect as many rakes from the plane as possible without running into yourself!</h6>
+    <br>
+    <div class="row">
+      <div class="col s6">
+        <div class="canvas">
+          <canvas width="500px" height="500px" id="canvas" style="border: 4px dashed red"></canvas>
+        </div>
+      </div>
+      <div class="col s3">
+          <p id=''></p>
+      </div>
+      <div id="score">
+          
+      </div>
+      <br><br>
+    </div>
+      <div class="row">
+    </div>
+    <script src="main.bundle.js"></script>
+     <center><button type="button" name="start" id="start-game">Start Game</button></center><br>
+  </div>
+</div>
 </body>
 </html>
