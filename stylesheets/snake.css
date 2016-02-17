@@ -13,6 +13,11 @@ h5 {
   font-family: 'Raleway', sans-serif;
   font-size: 1.9rem;
 }
+
+h6 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+}
 p {
   font-family: 'Raleway', sans-serif;
   font-size: 2.2rem;
@@ -21,3 +26,6 @@ p {
   background-image: url("https://oyestheydid.files.wordpress.com/2012/08/il_570xn-315910594.jpg");
   opacity: 0.6;
 }
+canvas {
+    background: #FFFFFF;
+}​

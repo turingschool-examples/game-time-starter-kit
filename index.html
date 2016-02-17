@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,29 +11,37 @@
   <link href="../stylesheets/snake.css" rel="stylesheet">
 </head>
 <body>
+<div class="application-body">
   <div class='container'>
     <h1 style="padding-top: 30px;" class='center-align'> Rakes on a Plane </h1>
-    <h5>"I've had it with these mother f'n rakes, on this mother f'n game!"</h5>
+    <h5>"I've had it with these mother f'n rakes, on this mother f'n game!" -SLJ</h5>
+    <br>
+    <h6 class='center-align'>Keep the rakes off the plane by collecting as many as possible without hitting yourself!</h6>
     <br>
     <div class="row">
       <div class="col s6">
-        <canvas width="500px" height="500px" id="canvas" style="border: 1px solid black"></canvas>
+        <div class="canvas">
+          <canvas width="500px" height="500px" id="canvas" style="border: 4px dashed black"></canvas>
+          <div style="display:none;">
+            <img id="source" src="http://sr.photos1.fotosearch.com/bthumb/CSP/CSP990/k11500871.jpg"
+                 width="300" height="300">
+            <img id="plane" src="http://icons.iconarchive.com/icons/unclebob/spanish-travel/1024/plane-icon.png"
+                 width="300" height="300">
+          </div>
+        </div>
       </div>
-      <div class="col s2">
-          <p id=''>100</p>
+      <div class="col s3">
+          <p id=''></p>
       </div>
-      <div class="col s2">
-        <h4>Score:</h4>
-          <p>100</p>
+      <div id="score">
+
       </div>
       <br><br>
-      <div class="col s2">
-        <h4>Level:</h4>
-          <p>Easy</p>
-      </div>
-
+    </div>
+      <div class="row">
     </div>
     <script src="main.bundle.js"></script>
   </div>
+</div>
 </body>
 </html>
