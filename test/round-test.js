@@ -92,4 +92,19 @@ describe('Round', function() {
       assert(!round.snakeIntersectsWall())
     })
   })
+
+  describe('prevents pellet from overlapping with snake on reset', function(){
+    it('should not exit method if pellet landed on snake', function(){
+      var round = new Round({});
+
+      round.snake.positions = [[1,1], [12,12]]
+      round.pellet.x = 10
+      round.pellet.y = 9
+
+      round.doesPelletOverlapWithSnake();
+
+      assert(round.pellet.x !== 10 && round.pellet.y !== 9)
+
+    })
+  })
 });
