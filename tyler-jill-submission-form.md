@@ -56,16 +56,22 @@ After over 10 hours on this one piece of functionality, we were annoyed, exhaust
 ## Code Quality
 
 ### Link to a specific block of your code on Github that you are proud of
-- Why were you proud of this piece of code?
+- [good-code](https://github.com/jillmd501/Rakes-on-a-Plane-JS/blob/master/lib/snake.js#L24-L30)
+- Why were you proud of this piece of code?  
+  We were able to figure out recursion before Steve even did his lesson!  This block of code is when recursion finally 'clicked!'
 
 ### Link to a specific block of your code on Github that you feel not great about
+- [bad-code](https://github.com/jillmd501/Rakes-on-a-Plane-JS/blob/master/lib/game.js#L19-L31)
 - Why do you feel not awesome about the code? What challenges did you face trying to write/refactor it?
+  This is a hacky way to prevent the snake from thinking it runs into itself when it eats moving to the left and is less than pretty.
 
 ### Attach a screenshot or paste the output from your terminal of the result of your test-suite running.
 
 ### Test Breakdown
 - How Many Unit Tests?
+
 - How Many Feature/Integration Tests?
+0
 
 ### Provide a link to an example, if you have one, of a unit test that covers an 'edge case' or 'unhappy path'
 NA
