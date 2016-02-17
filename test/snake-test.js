@@ -71,9 +71,24 @@ describe('Snake', function() {
   });
 
   describe('Snake grows', function(){
-    var snake = new Snake({});
-    assert.equal(snake.positions.length, 1)
-    snake.grow()
-    assert.equal(snake.positions.length, 2)
+    it('should increase the size of its positions array', function(){
+      var snake = new Snake({});
+      assert.equal(snake.positions.length, 1)
+      snake.grow()
+      assert.equal(snake.positions.length, 2)
+    })
   })
+
+  describe('Snake intersects itself', function(){
+    it('should return true if snake is overlapping with itself', function(){
+      var snake = new Snake({positions: [[1,1], [11,11], [22,22], [1,2]]});
+      assert(snake.snakeIntersectsItself())
+    })
+
+    it('should return false if snake is not overlapping with itself', function(){
+      var snake = new Snake({positions: [[1,1], [11,11], [22,22]]});
+      assert(!snake.snakeIntersectsItself())
+    })
+  })
+
 });

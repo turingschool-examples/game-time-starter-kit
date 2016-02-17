@@ -26,4 +26,70 @@ describe('Round', function() {
       assert.equal(round.score, 0);
     });
   });
+
+  describe('detects snake and pellet intersection', function(){
+    it('should return true if snake "eats" pellet', function(){
+      var round = new Round({});
+      round.snake.positions = [[1,1], [12,12]]
+      round.pellet.x = 1
+      round.pellet.y = 1
+
+      assert(round.snakeIntersectsPellet())
+    })
+
+    it('should return true if snake intersects pellet indirectly', function(){
+      var round = new Round({});
+      round.snake.positions = [[1,1], [12,12]]
+      round.pellet.x = 1
+      round.pellet.y = 9
+
+      assert(round.snakeIntersectsPellet())
+    })
+
+    it('should return false if snake does not pellet', function(){
+      var round = new Round({});
+      round.snake.positions = [[1,1], [12,12]]
+      round.pellet.x = 24
+      round.pellet.y = 24
+
+      assert(!round.snakeIntersectsPellet())
+    })
+  })
+
+  describe('detects intersection with wall', function(){
+    it('should return true if snake runs into left wall', function(){
+      var round = new Round({});
+      round.snake.positions = [[-1,1], [10,10]]
+
+      assert(round.snakeIntersectsWall())
+    })
+
+    it('should return true if snake runs into right wall', function(){
+      var round = new Round({});
+      round.snake.positions = [[500,1], [490,1]]
+
+      assert(round.snakeIntersectsWall())
+    })
+
+    it('should return true if snake runs into top wall', function(){
+      var round = new Round({});
+      round.snake.positions = [[10,-1], [19,1]]
+
+      assert(round.snakeIntersectsWall())
+    })
+
+    it('should return true if snake runs into down wall', function(){
+      var round = new Round({});
+      round.snake.positions = [[10, 410], [10,400]]
+
+      assert(round.snakeIntersectsWall())
+    })
+
+    it('should return false if snake is within canvas', function(){
+      var round = new Round({});
+      round.snake.positions = [[10,10], [19,10]]
+
+      assert(!round.snakeIntersectsWall())
+    })
+  })
 });
