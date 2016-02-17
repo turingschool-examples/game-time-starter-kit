@@ -11,15 +11,18 @@
   <link href="../stylesheets/snake.css" rel="stylesheet">
 </head>
 <body>
-<div class="application-body">
+  <div class="application-body">
   <div class='container'>
     <h1 style="padding-top: 30px;" class='center-align'> Rakes on a Plane </h1>
-    <h5>"I've had it with these mother f'n rakes, on this mother f'n game!" -SLJ</h5>
-    <br>
-    <h6 class='center-align'>Keep the rakes off the plane by collecting as many as possible without hitting yourself!</h6>
+    <div class="card">
+      <div class="card-content" style="border: 3px solid red">
+        <h5>"I've had it with these mother f'n rakes, on this mother f'n game!" -SLJ</h5>
+      </div>
+
+    </div>
     <br>
     <div class="row">
-      <div class="col s6">
+      <div class="col 5">
         <div class="canvas">
           <canvas width="500px" height="500px" id="canvas" style="border: 4px dashed black"></canvas>
           <div style="display:none;">
@@ -33,8 +36,14 @@
       <div class="col s3">
           <p id=''></p>
       </div>
-      <div id="score">
-
+        <div id="score">
+        </div>
+        <div class="col s5 offset-s1">
+          <div class="card">
+            <div class="card-content" style="border: 3px solid red">
+              <p>Keep the rakes off the plane by collecting as many as possible without hitting yourself!  <br>Press:<br> 'E' for easy <br>'M' for medium <br> 'H' for hard <br> 'S' for SAMUEL L JACKSON mode!</p>
+            </div>
+        </div>
       </div>
       <br><br>
     </div>

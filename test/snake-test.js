@@ -102,15 +102,6 @@ describe('Snake#move', function() {
       this.snake.previousTime = 0
       this.snake.direction = 'left'
 
-    var game = new Game({})
-    var snake = new Snake ({});
-    var food = new Food ({x: 300, y: 50, width: 10, height: 10}, context);
-    it('and repositions food', function(){
-      food.draw();
-      assert.equal(food.x, 300);
-      assert.equal(food.y, 50);
-      game.repositionFood();
-      refute.equal(food.x, 300)
       this.snake.move(100);
       assert.equal(this.snake.x, 500)
     });
