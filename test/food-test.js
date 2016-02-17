@@ -11,19 +11,19 @@ describe('Food', function() {
       this.context = this.canvas.getContext('2d');
     });
     it('should assign an x coordinate', function() {
-      var food = new Food({}, this.context)
+      var food = new Food({}, this.context);
       assert.isDefined(food.x);
     });
     it('should assign a y coordinate', function() {
-      var food = new Food({}, this.context)
+      var food = new Food({}, this.context);
       assert.isDefined(food.y);
     });
     it('should assign a height', function(){
-      var food = new Food({}, this.context)
+      var food = new Food({}, this.context);
       assert.equal(food.height, 10);
     });
     it('should assign a width', function(){
-      var food = new Food({}, this.context)
+      var food = new Food({}, this.context);
       assert.equal(food.width, 10);
     });
   });

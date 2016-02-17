@@ -1,8 +1,6 @@
 const assert = require('chai').assert;
 
 const Snake = require('../lib/snake');
-const Food = require('../lib/food');
-const Game = require('../lib/game');
 
 describe('Snake', function() {
   context('with default attributes', function() {
@@ -25,29 +23,29 @@ describe('Snake', function() {
 describe('Snake#direction', function() {
   context('successfully sets direction variable', function(){
     beforeEach(function() {
-      this.snake = new Snake({x: 0, y: 0, width: 10, height: 10})
+      this.snake = new Snake({x: 0, y: 0, width: 10, height: 10});
     });
 
     it('as up', function(){
-      assert.equal(this.snake.y, 0)
+      assert.equal(this.snake.y, 0);
       this.snake.changeDirection('up');
-      assert.equal(this.snake.direction, 'up')
+      assert.equal(this.snake.direction, 'up');
     });
 
     it('as down', function() {
-      assert.equal(this.snake.y, 0)
+      assert.equal(this.snake.y, 0);
       this.snake.changeDirection('down');
-      assert.equal(this.snake.direction, 'down')
+      assert.equal(this.snake.direction, 'down');
     });
     it('as left', function(){
-      assert.equal(this.snake.y, 0)
+      assert.equal(this.snake.y, 0);
       this.snake.changeDirection('left');
-      assert.equal(this.snake.direction, 'left')
+      assert.equal(this.snake.direction, 'left');
     });
     it('as right', function(){
-      assert.equal(this.snake.y, 0)
+      assert.equal(this.snake.y, 0);
       this.snake.changeDirection('right');
-      assert.equal(this.snake.direction, 'right')
+      assert.equal(this.snake.direction, 'right');
     });
   });
 });
@@ -63,21 +61,21 @@ describe('Snake#move', function() {
                               width: 10,
                               height: 10,
                               time: 500
-      })
+      });
     });
 
     it('10 to the y position', function(){
-      this.snake.previousTime = 0
-      this.snake.direction = 'up'
+      this.snake.previousTime = 0;
+      this.snake.direction = 'up';
       this.snake.move(100);
-      assert.equal(this.snake.y, 500)
+      assert.equal(this.snake.y, 500);
     });
 
     it('10 to the y position', function(){
-      this.snake.previousTime = 0
-      this.snake.direction = 'down'
+      this.snake.previousTime = 0;
+      this.snake.direction = 'down';
       this.snake.move(100);
-      assert.equal(this.snake.y, 10)
+      assert.equal(this.snake.y, 10);
     });
   });
 
@@ -88,22 +86,22 @@ describe('Snake#move', function() {
                               width: 10,
                               height: 10,
                               time: 500
-      })
+      });
     });
 
     it('10 from the x position', function(){
-      this.snake.previousTime = 0
-      this.snake.direction = 'right'
+      this.snake.previousTime = 0;
+      this.snake.direction = 'right';
 
       this.snake.move(100);
-      assert.equal(this.snake.x, 10)
+      assert.equal(this.snake.x, 10);
     });
     it('10 from the x position', function(){
-      this.snake.previousTime = 0
-      this.snake.direction = 'left'
+      this.snake.previousTime = 0;
+      this.snake.direction = 'left';
 
       this.snake.move(100);
-      assert.equal(this.snake.x, 500)
+      assert.equal(this.snake.x, 500);
     });
   });
 });
