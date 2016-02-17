@@ -6,16 +6,17 @@
   <title>Snake</title>
 </head>
 <body>
-  <div class="row">
-    <h1><center>Snake</center></h1>
-    <center><button type="button" name="start" id="start-game">Start Game</button></center><br>
-    <center><canvas id="game" width="400px" height="300px" style="border:solid"></canvas></center>
+  <div class="gameplay">
+    <div class="row">
+      <h1><center>Snake</center></h1>
+      <center><button type="button" name="start" id="start-game">Start New Game</button></center><br>
+      <center><canvas id="game" width="400px" height="300px" style="border:solid"></canvas></center>
 
 
-    <div class="score-card">
-      <center><h3> Score: <span id="score">0</span></h3><center>
+      <div class="score-card">
+        <center><h3> Score: <span id="score">0</span></h3><center>
+      </div>
     </div>
-  </div>
 
   <div class="row container">
     <h2><center>Highest Scores</center></h2>
@@ -30,9 +31,9 @@
       <tbody id="table_body"></tbody>
     </table>
   </div>
+</div>
 
-
-  <script src="main.bundle.js"></script>
+<script src="main.bundle.js"></script>
 
 </body>
 </html>
