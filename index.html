@@ -1,11 +1,56 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Game Time</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
+  <link href="../stylesheets/snake.css" rel="stylesheet">
 </head>
 <body>
+  <div class="application-body">
+  <div class='container'>
+    <h1 style="padding-top: 30px;" class='center-align'> Rakes on a Plane </h1>
+    <div class="card">
+      <div class="card-content" style="border: 3px solid red">
+        <h5>"I've had it with these mother f'n rakes, on this mother f'n game!" -SLJ</h5>
+      </div>
 
-  <script src="main.bundle.js"></script>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col 5">
+        <div class="canvas">
+          <canvas width="500px" height="500px" id="canvas" style="border: 4px dashed black"></canvas>
+          <div style="display:none;">
+            <img id="source" src="http://sr.photos1.fotosearch.com/bthumb/CSP/CSP990/k11500871.jpg"
+                 width="300" height="300">
+            <img id="plane" src="http://icons.iconarchive.com/icons/unclebob/spanish-travel/1024/plane-icon.png"
+                 width="300" height="300">
+          </div>
+        </div>
+      </div>
+      <div class="col s3">
+          <p id=''></p>
+      </div>
+        <div id="score">
+        </div>
+        <div class="col s5 offset-s1">
+          <div class="card">
+            <div class="card-content" style="border: 3px solid red">
+              <p>Keep the rakes off the plane by collecting as many as possible without hitting yourself!  <br>Press:<br> 'E' for easy <br>'M' for medium <br> 'H' for hard <br> 'S' for SAMUEL L JACKSON mode!</p>
+            </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
+      <div class="row">
+    </div>
+    <script src="main.bundle.js"></script>
+  </div>
+</div>
 </body>
 </html>
