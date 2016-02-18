@@ -52,52 +52,59 @@
 	var Game = __webpack_require__(4);
 
 	var canvas = document.getElementById("canvas");
-	var context = canvas.getContext('2d');
+	var ctx = canvas.getContext('2d');
 
 	snakeDidTurn();
-
-	function chooseLevel() {
-	  window.addEventListener('keyup', function (event) {
-	    if (event.keyCode === 69) {
-	      snake.interval = 150;
-	    } else if (event.keyCode === 77) {
-	      snake.interval = 110;
-	    } else if (event.keyCode === 72) {
-	      snake.interval = 70;
-	    } else if (event.keyCode === 67) {
-	      snake.interval = 30;
-	    } else {
-	      return false;
-	    }
-	  });
-	}
 
 	var x = 50;
 	var y = 50;
 	var width = 10;
 	var height = 10;
 	var interval = chooseLevel();
-	var time = new Date();
-	var food = new Food({ x: 300, y: 50, width: 10, height: 10 }, context);
+	var food = new Food({ x: 300, y: 50, width: 10, height: 10 }, ctx);
 	var snake = new Snake({ x: x, y: y, width: width, height: height,
-	  time: time, nextSnake: null, interval: interval }, context);
-	var game = new Game(canvas, context, snake, food);
-	// if (snake.level){
-	requestAnimationFrame(function gameLoop() {
-	  context.clearRect(0, 0, canvas.width, canvas.height);
-	  snake.setInterval();
-	  snake.draw();
-	  snake.move(new Date());
-	  food.draw();
-	  game.eatFace();
-	  score(game.score);
-	  if (game.collisionDetector() === 'collision') {
-	    alert("Learn how to rake, bro.");
-	    init();
-	  }
-	  requestAnimationFrame(gameLoop);
-	});
-	// }
+	  nextSnake: null, interval: interval }, ctx);
+	var game = new Game(canvas, ctx, snake, food);
+
+	function start() {
+	  requestAnimationFrame(function gameLoop() {
+	    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	    snake.setInterval();
+	    snake.draw();
+	    snake.move();
+	    food.draw();
+	    game.eatFace();
+	    score(game.score);
+	    if (game.collisionDetector() === 'collision') {
+	      alert("Learn how to rake, bro. Select your level and rake again!");
+	      init();
+	      return;
+	    }
+	    setTimeout(function () {
+	      requestAnimationFrame(gameLoop);
+	    }, snake.interval);
+	  });
+	}
+
+	function chooseLevel() {
+	  window.addEventListener('keyup', function (event) {
+	    if (event.keyCode === 69) {
+	      snake.interval = 150;
+	      start();
+	    } else if (event.keyCode === 77) {
+	      snake.interval = 120;
+	      start();
+	    } else if (event.keyCode === 72) {
+	      snake.interval = 90;
+	      start();
+	    } else if (event.keyCode === 83) {
+	      snake.interval = 70;
+	      start();
+	    } else {
+	      return false;
+	    }
+	  });
+	}
 
 	function score(score) {
 	  $("#score").html('<h4>Score:' + ' ' + score + '</h4>');
@@ -122,11 +129,10 @@
 	  y = 50;
 	  width = 10;
 	  height = 10;
-	  time = new Date();
-	  food = new Food({ x: 300, y: 50, width: 10, height: 10 }, context);
+	  food = new Food({ x: 300, y: 50, width: 10, height: 10 }, ctx);
 	  snake = new Snake({ x: x, y: y, width: width, height: height,
-	    time: time, nextSnake: null }, context);
-	  game = new Game(canvas, context, snake, food);
+	    nextSnake: null }, ctx);
+	  game = new Game(canvas, ctx, snake, food);
 	}
 
 /***/ },
@@ -9968,11 +9974,9 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	"use strict";
-
-	var Food = __webpack_require__(3);
 
 	function Snake(options, context) {
 	  this.x = options.x || 0;
@@ -9980,8 +9984,7 @@
 	  this.height = options.height || 10;
 	  this.width = options.width || 10;
 	  this.context = context;
-	  this.direction = "right";
-	  this.previousTime = options.time;
+	  this.direction = options.direction || 'right';
 	  this.interval = options.interval;
 	  this.nextSnake = options.nextSnake || null;
 	}
@@ -9992,38 +9995,37 @@
 	  if (this.nextSnake) {
 	    this.nextSnake.interval = this.interval;
 	  }
-	  if (this.nextSnake) this.nextSnake.setInterval();
+	  if (this.nextSnake) {
+	    this.nextSnake.setInterval();
+	  }
 	};
 
 	Snake.prototype.draw = function () {
 	  this.context.fillStyle = "#000000";
 	  this.context.drawImage(image, this.x, this.y, this.width, this.height);
-	  // while(current.nextSnake != null) {
-	  //   current = current.nextSnake
-	  //   current.context.fillStyle="#000000";
-	  //   current.context.fillRect(current.x, current.y, current.width, current.height);
-	  // }
 	  if (this.nextSnake) {
 	    this.nextSnake.draw();
 	  }
 	};
 
-	Snake.prototype.move = function (currentTime) {
-	  if (currentTime - this.previousTime > this.interval) {
-	    this.previousTime = currentTime;
-	    if (this.direction === 'right') {
-	      this.x === 500 ? this.x = 0 : this.x = this.x + 10;
-	    } else if (this.direction === 'down') {
-	      this.y === 500 ? this.y = 0 : this.y = this.y + 10;
-	    } else if (this.direction === 'up') {
-	      this.y === 0 ? this.y = 500 : this.y = this.y - 10;
-	    } else if (this.direction === 'left') {
-	      this.x === 0 ? this.x = 500 : this.x = this.x - 10;
-	    }
-	    if (this.nextSnake) {
-	      this.nextSnake.move(currentTime);
-	      this.nextSnake.changeDirection(this.direction);
-	    }
+	Snake.prototype.move = function () {
+	  this.pullBehind();
+	  if (this.direction === 'right') {
+	    this.x === 500 ? this.x = 0 : this.x = this.x + 10;
+	  } else if (this.direction === 'down') {
+	    this.y === 500 ? this.y = 0 : this.y = this.y + 10;
+	  } else if (this.direction === 'up') {
+	    this.y === 0 ? this.y = 500 : this.y = this.y - 10;
+	  } else if (this.direction === 'left') {
+	    this.x === 0 ? this.x = 500 : this.x = this.x - 10;
+	  }
+	};
+
+	Snake.prototype.pullBehind = function () {
+	  if (this.nextSnake) {
+	    this.nextSnake.pullBehind();
+	    this.nextSnake.x = this.x;
+	    this.nextSnake.y = this.y;
 	  }
 	};
 
@@ -10072,16 +10074,17 @@
 	  this.food = food;
 	  this.score = 0;
 	  this.possibleLocations = Array(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480);
-	};
+	}
 
 	Game.prototype.eatFace = function () {
 	  if (this.snake.x === this.food.x && this.snake.y === this.food.y) {
 	    this.grow();
 	    this.grow();
 	    this.grow();
-	    if (this.snake.interval === 30) {
+	    if (this.snake.interval === 70) {
 	      this.grow();
 	      this.grow();
+	      this.score += 20;
 	    }
 	    this.reposition_food();
 	    this.score += 10;
@@ -10100,7 +10103,7 @@
 	  while (current.nextSnake != null) {
 	    current = current.nextSnake;
 	  }
-	  current.nextSnake = new Snake({ x: current.x - 10, y: current.y, time: new Date(), nextSnake: null }, this.context);
+	  current.nextSnake = new Snake({ x: current.x, y: current.y, nextSnake: null, direction: current.direction }, this.context);
 	};
 
 	Game.prototype.collisionDetector = function () {
@@ -10109,12 +10112,11 @@
 	  while (current.nextSnake != null) {
 	    current = current.nextSnake;
 	    counter = counter + 1;
-	    if (this.snake.x === current.x && this.snake.y === current.y && counter > 6) {
+	    if (this.snake.x === current.x && this.snake.y === current.y && counter > 5) {
 	      return 'collision';
 	    }
 	  }
 	};
-
 	module.exports = Game;
 
 /***/ }

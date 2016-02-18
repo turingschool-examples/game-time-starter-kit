@@ -62,11 +62,9 @@
 /***/ },
 /* 1 */,
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	"use strict";
-
-	var Food = __webpack_require__(3);
 
 	function Snake(options, context) {
 	  this.x = options.x || 0;
@@ -74,8 +72,7 @@
 	  this.height = options.height || 10;
 	  this.width = options.width || 10;
 	  this.context = context;
-	  this.direction = "right";
-	  this.previousTime = options.time;
+	  this.direction = options.direction || 'right';
 	  this.interval = options.interval;
 	  this.nextSnake = options.nextSnake || null;
 	}
@@ -86,38 +83,37 @@
 	  if (this.nextSnake) {
 	    this.nextSnake.interval = this.interval;
 	  }
-	  if (this.nextSnake) this.nextSnake.setInterval();
+	  if (this.nextSnake) {
+	    this.nextSnake.setInterval();
+	  }
 	};
 
 	Snake.prototype.draw = function () {
 	  this.context.fillStyle = "#000000";
 	  this.context.drawImage(image, this.x, this.y, this.width, this.height);
-	  // while(current.nextSnake != null) {
-	  //   current = current.nextSnake
-	  //   current.context.fillStyle="#000000";
-	  //   current.context.fillRect(current.x, current.y, current.width, current.height);
-	  // }
 	  if (this.nextSnake) {
 	    this.nextSnake.draw();
 	  }
 	};
 
-	Snake.prototype.move = function (currentTime) {
-	  if (currentTime - this.previousTime > this.interval) {
-	    this.previousTime = currentTime;
-	    if (this.direction === 'right') {
-	      this.x === 500 ? this.x = 0 : this.x = this.x + 10;
-	    } else if (this.direction === 'down') {
-	      this.y === 500 ? this.y = 0 : this.y = this.y + 10;
-	    } else if (this.direction === 'up') {
-	      this.y === 0 ? this.y = 500 : this.y = this.y - 10;
-	    } else if (this.direction === 'left') {
-	      this.x === 0 ? this.x = 500 : this.x = this.x - 10;
-	    }
-	    if (this.nextSnake) {
-	      this.nextSnake.move(currentTime);
-	      this.nextSnake.changeDirection(this.direction);
-	    }
+	Snake.prototype.move = function () {
+	  this.pullBehind();
+	  if (this.direction === 'right') {
+	    this.x === 500 ? this.x = 0 : this.x = this.x + 10;
+	  } else if (this.direction === 'down') {
+	    this.y === 500 ? this.y = 0 : this.y = this.y + 10;
+	  } else if (this.direction === 'up') {
+	    this.y === 0 ? this.y = 500 : this.y = this.y - 10;
+	  } else if (this.direction === 'left') {
+	    this.x === 0 ? this.x = 500 : this.x = this.x - 10;
+	  }
+	};
+
+	Snake.prototype.pullBehind = function () {
+	  if (this.nextSnake) {
+	    this.nextSnake.pullBehind();
+	    this.nextSnake.x = this.x;
+	    this.nextSnake.y = this.y;
 	  }
 	};
 
@@ -166,16 +162,17 @@
 	  this.food = food;
 	  this.score = 0;
 	  this.possibleLocations = Array(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480);
-	};
+	}
 
 	Game.prototype.eatFace = function () {
 	  if (this.snake.x === this.food.x && this.snake.y === this.food.y) {
 	    this.grow();
 	    this.grow();
 	    this.grow();
-	    if (this.snake.interval === 30) {
+	    if (this.snake.interval === 70) {
 	      this.grow();
 	      this.grow();
+	      this.score += 20;
 	    }
 	    this.reposition_food();
 	    this.score += 10;
@@ -194,7 +191,7 @@
 	  while (current.nextSnake != null) {
 	    current = current.nextSnake;
 	  }
-	  current.nextSnake = new Snake({ x: current.x - 10, y: current.y, time: new Date(), nextSnake: null }, this.context);
+	  current.nextSnake = new Snake({ x: current.x, y: current.y, nextSnake: null, direction: current.direction }, this.context);
 	};
 
 	Game.prototype.collisionDetector = function () {
@@ -203,12 +200,11 @@
 	  while (current.nextSnake != null) {
 	    current = current.nextSnake;
 	    counter = counter + 1;
-	    if (this.snake.x === current.x && this.snake.y === current.y && counter > 6) {
+	    if (this.snake.x === current.x && this.snake.y === current.y && counter > 5) {
 	      return 'collision';
 	    }
 	  }
 	};
-
 	module.exports = Game;
 
 /***/ },
@@ -501,10 +497,7 @@
 
 	'use strict';
 
-	var chai = __webpack_require__(14);
-	var assert = chai.assert;
-
-	__webpack_require__(54);
+	__webpack_require__(14);
 	__webpack_require__(55);
 	__webpack_require__(56);
 
@@ -512,11 +505,123 @@
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(15);
+	'use strict';
 
+	var assert = __webpack_require__(15).assert;
+
+	var Snake = __webpack_require__(2);
+
+	describe('Snake', function () {
+	  context('with default attributes', function () {
+	    var snake = new Snake({});
+	    it('should assign an x coordinate', function () {
+	      assert.equal(snake.x, 0);
+	    });
+	    it('should assign a y coordinate', function () {
+	      assert.equal(snake.y, 0);
+	    });
+	    it('should assign a height', function () {
+	      assert.equal(snake.height, 10);
+	    });
+	    it('should assign a width', function () {
+	      assert.equal(snake.width, 10);
+	    });
+	  });
+	});
+
+	describe('Snake#direction', function () {
+	  context('successfully sets direction variable', function () {
+	    beforeEach(function () {
+	      this.snake = new Snake({ x: 0, y: 0, width: 10, height: 10 });
+	    });
+
+	    it('as up', function () {
+	      assert.equal(this.snake.y, 0);
+	      this.snake.changeDirection('up');
+	      assert.equal(this.snake.direction, 'up');
+	    });
+
+	    it('as down', function () {
+	      assert.equal(this.snake.y, 0);
+	      this.snake.changeDirection('down');
+	      assert.equal(this.snake.direction, 'down');
+	    });
+	    it('as left', function () {
+	      assert.equal(this.snake.y, 0);
+	      this.snake.changeDirection('left');
+	      assert.equal(this.snake.direction, 'left');
+	    });
+	    it('as right', function () {
+	      assert.equal(this.snake.y, 0);
+	      this.snake.changeDirection('right');
+	      assert.equal(this.snake.direction, 'right');
+	    });
+	  });
+	});
+
+	describe('Snake#move', function () {
+	  context('successfully adds', function () {
+
+	    beforeEach(function () {
+	      this.snake = new Snake({ x: 0,
+	        y: 0,
+	        width: 10,
+	        height: 10,
+	        time: 500
+	      });
+	    });
+
+	    it('10 to the y position', function () {
+	      this.snake.previousTime = 0;
+	      this.snake.direction = 'up';
+	      this.snake.move(100);
+	      assert.equal(this.snake.y, 500);
+	    });
+
+	    it('10 to the y position', function () {
+	      this.snake.previousTime = 0;
+	      this.snake.direction = 'down';
+	      this.snake.move(100);
+	      assert.equal(this.snake.y, 10);
+	    });
+	  });
+
+	  context('successfully subtracts', function () {
+	    beforeEach(function () {
+	      this.snake = new Snake({ x: 0,
+	        y: 0,
+	        width: 10,
+	        height: 10,
+	        time: 500
+	      });
+	    });
+
+	    it('10 from the x position', function () {
+	      this.snake.previousTime = 0;
+	      this.snake.direction = 'right';
+
+	      this.snake.move(100);
+	      assert.equal(this.snake.x, 10);
+	    });
+	    it('10 from the x position', function () {
+	      this.snake.previousTime = 0;
+	      this.snake.direction = 'left';
+
+	      this.snake.move(100);
+	      assert.equal(this.snake.x, 500);
+	    });
+	  });
+	});
 
 /***/ },
 /* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(16);
+
+
+/***/ },
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -538,13 +643,13 @@
 	 * Assertion Error
 	 */
 
-	exports.AssertionError = __webpack_require__(16);
+	exports.AssertionError = __webpack_require__(17);
 
 	/*!
 	 * Utils for plugins (not exported)
 	 */
 
-	var util = __webpack_require__(17);
+	var util = __webpack_require__(18);
 
 	/**
 	 * # .use(function)
@@ -575,47 +680,47 @@
 	 * Configuration
 	 */
 
-	var config = __webpack_require__(30);
+	var config = __webpack_require__(31);
 	exports.config = config;
 
 	/*!
 	 * Primary `Assertion` prototype
 	 */
 
-	var assertion = __webpack_require__(49);
+	var assertion = __webpack_require__(50);
 	exports.use(assertion);
 
 	/*!
 	 * Core Assertions
 	 */
 
-	var core = __webpack_require__(50);
+	var core = __webpack_require__(51);
 	exports.use(core);
 
 	/*!
 	 * Expect interface
 	 */
 
-	var expect = __webpack_require__(51);
+	var expect = __webpack_require__(52);
 	exports.use(expect);
 
 	/*!
 	 * Should interface
 	 */
 
-	var should = __webpack_require__(52);
+	var should = __webpack_require__(53);
 	exports.use(should);
 
 	/*!
 	 * Assert interface
 	 */
 
-	var assert = __webpack_require__(53);
+	var assert = __webpack_require__(54);
 	exports.use(assert);
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/*!
@@ -733,7 +838,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -752,124 +857,124 @@
 	 * test utility
 	 */
 
-	exports.test = __webpack_require__(18);
+	exports.test = __webpack_require__(19);
 
 	/*!
 	 * type utility
 	 */
 
-	exports.type = __webpack_require__(20);
+	exports.type = __webpack_require__(21);
 
 	/*!
 	 * expectTypes utility
 	 */
-	exports.expectTypes = __webpack_require__(22);
+	exports.expectTypes = __webpack_require__(23);
 
 	/*!
 	 * message utility
 	 */
 
-	exports.getMessage = __webpack_require__(23);
+	exports.getMessage = __webpack_require__(24);
 
 	/*!
 	 * actual utility
 	 */
 
-	exports.getActual = __webpack_require__(24);
+	exports.getActual = __webpack_require__(25);
 
 	/*!
 	 * Inspect util
 	 */
 
-	exports.inspect = __webpack_require__(25);
+	exports.inspect = __webpack_require__(26);
 
 	/*!
 	 * Object Display util
 	 */
 
-	exports.objDisplay = __webpack_require__(29);
+	exports.objDisplay = __webpack_require__(30);
 
 	/*!
 	 * Flag utility
 	 */
 
-	exports.flag = __webpack_require__(19);
+	exports.flag = __webpack_require__(20);
 
 	/*!
 	 * Flag transferring utility
 	 */
 
-	exports.transferFlags = __webpack_require__(31);
+	exports.transferFlags = __webpack_require__(32);
 
 	/*!
 	 * Deep equal utility
 	 */
 
-	exports.eql = __webpack_require__(32);
+	exports.eql = __webpack_require__(33);
 
 	/*!
 	 * Deep path value
 	 */
 
-	exports.getPathValue = __webpack_require__(40);
+	exports.getPathValue = __webpack_require__(41);
 
 	/*!
 	 * Deep path info
 	 */
 
-	exports.getPathInfo = __webpack_require__(41);
+	exports.getPathInfo = __webpack_require__(42);
 
 	/*!
 	 * Check if a property exists
 	 */
 
-	exports.hasProperty = __webpack_require__(42);
+	exports.hasProperty = __webpack_require__(43);
 
 	/*!
 	 * Function name
 	 */
 
-	exports.getName = __webpack_require__(26);
+	exports.getName = __webpack_require__(27);
 
 	/*!
 	 * add Property
 	 */
 
-	exports.addProperty = __webpack_require__(43);
+	exports.addProperty = __webpack_require__(44);
 
 	/*!
 	 * add Method
 	 */
 
-	exports.addMethod = __webpack_require__(44);
+	exports.addMethod = __webpack_require__(45);
 
 	/*!
 	 * overwrite Property
 	 */
 
-	exports.overwriteProperty = __webpack_require__(45);
+	exports.overwriteProperty = __webpack_require__(46);
 
 	/*!
 	 * overwrite Method
 	 */
 
-	exports.overwriteMethod = __webpack_require__(46);
+	exports.overwriteMethod = __webpack_require__(47);
 
 	/*!
 	 * Add a chainable method
 	 */
 
-	exports.addChainableMethod = __webpack_require__(47);
+	exports.addChainableMethod = __webpack_require__(48);
 
 	/*!
 	 * Overwrite chainable method
 	 */
 
-	exports.overwriteChainableMethod = __webpack_require__(48);
+	exports.overwriteChainableMethod = __webpack_require__(49);
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -882,7 +987,7 @@
 	 * Module dependancies
 	 */
 
-	var flag = __webpack_require__(19);
+	var flag = __webpack_require__(20);
 
 	/**
 	 * # test(object, expression)
@@ -903,7 +1008,7 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	/*!
@@ -942,14 +1047,14 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(21);
+	module.exports = __webpack_require__(22);
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/*!
@@ -1089,7 +1194,7 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -1112,9 +1217,9 @@
 	 * @api public
 	 */
 
-	var AssertionError = __webpack_require__(16);
-	var flag = __webpack_require__(19);
-	var type = __webpack_require__(20);
+	var AssertionError = __webpack_require__(17);
+	var flag = __webpack_require__(20);
+	var type = __webpack_require__(21);
 
 	module.exports = function (obj, types) {
 	  var obj = flag(obj, 'object');
@@ -1137,7 +1242,7 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -1150,10 +1255,10 @@
 	 * Module dependancies
 	 */
 
-	var flag = __webpack_require__(19)
-	  , getActual = __webpack_require__(24)
-	  , inspect = __webpack_require__(25)
-	  , objDisplay = __webpack_require__(29);
+	var flag = __webpack_require__(20)
+	  , getActual = __webpack_require__(25)
+	  , inspect = __webpack_require__(26)
+	  , objDisplay = __webpack_require__(30);
 
 	/**
 	 * ### .getMessage(object, message, negateMessage)
@@ -1194,7 +1299,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/*!
@@ -1220,15 +1325,15 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// This is (almost) directly from Node.js utils
 	// https://github.com/joyent/node/blob/f8c335d0caf47f16d31413f89aa28eda3878e3aa/lib/util.js
 
-	var getName = __webpack_require__(26);
-	var getProperties = __webpack_require__(27);
-	var getEnumerableProperties = __webpack_require__(28);
+	var getName = __webpack_require__(27);
+	var getProperties = __webpack_require__(28);
+	var getEnumerableProperties = __webpack_require__(29);
 
 	module.exports = inspect;
 
@@ -1561,7 +1666,7 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/*!
@@ -1589,7 +1694,7 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/*!
@@ -1631,7 +1736,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	/*!
@@ -1663,7 +1768,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -1676,8 +1781,8 @@
 	 * Module dependancies
 	 */
 
-	var inspect = __webpack_require__(25);
-	var config = __webpack_require__(30);
+	var inspect = __webpack_require__(26);
+	var config = __webpack_require__(31);
 
 	/**
 	 * ### .objDisplay (object)
@@ -1719,7 +1824,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1780,7 +1885,7 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/*!
@@ -1831,14 +1936,14 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(33);
+	module.exports = __webpack_require__(34);
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -1851,14 +1956,14 @@
 	 * Module dependencies
 	 */
 
-	var type = __webpack_require__(34);
+	var type = __webpack_require__(35);
 
 	/*!
 	 * Buffer.isBuffer browser shim
 	 */
 
 	var Buffer;
-	try { Buffer = __webpack_require__(36).Buffer; }
+	try { Buffer = __webpack_require__(37).Buffer; }
 	catch(ex) {
 	  Buffer = {};
 	  Buffer.isBuffer = function() { return false; }
@@ -2101,14 +2206,14 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(35);
+	module.exports = __webpack_require__(36);
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	/*!
@@ -2256,7 +2361,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -2269,9 +2374,9 @@
 
 	'use strict'
 
-	var base64 = __webpack_require__(37)
-	var ieee754 = __webpack_require__(38)
-	var isArray = __webpack_require__(39)
+	var base64 = __webpack_require__(38)
+	var ieee754 = __webpack_require__(39)
+	var isArray = __webpack_require__(40)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -3808,10 +3913,10 @@
 	  return i
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -3941,7 +4046,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -4031,7 +4136,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -4042,7 +4147,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4052,7 +4157,7 @@
 	 * MIT Licensed
 	 */
 
-	var getPathInfo = __webpack_require__(41);
+	var getPathInfo = __webpack_require__(42);
 
 	/**
 	 * ### .getPathValue(path, object)
@@ -4091,7 +4196,7 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4100,7 +4205,7 @@
 	 * MIT Licensed
 	 */
 
-	var hasProperty = __webpack_require__(42);
+	var hasProperty = __webpack_require__(43);
 
 	/**
 	 * ### .getPathInfo(path, object)
@@ -4208,7 +4313,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4217,7 +4322,7 @@
 	 * MIT Licensed
 	 */
 
-	var type = __webpack_require__(20);
+	var type = __webpack_require__(21);
 
 	/**
 	 * ### .hasProperty(object, name)
@@ -4278,7 +4383,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4287,8 +4392,8 @@
 	 * MIT Licensed
 	 */
 
-	var config = __webpack_require__(30);
-	var flag = __webpack_require__(19);
+	var config = __webpack_require__(31);
+	var flag = __webpack_require__(20);
 
 	/**
 	 * ### addProperty (ctx, name, getter)
@@ -4332,7 +4437,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4341,7 +4446,7 @@
 	 * MIT Licensed
 	 */
 
-	var config = __webpack_require__(30);
+	var config = __webpack_require__(31);
 
 	/**
 	 * ### .addMethod (ctx, name, method)
@@ -4368,7 +4473,7 @@
 	 * @name addMethod
 	 * @api public
 	 */
-	var flag = __webpack_require__(19);
+	var flag = __webpack_require__(20);
 
 	module.exports = function (ctx, name, method) {
 	  ctx[name] = function () {
@@ -4382,7 +4487,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/*!
@@ -4443,7 +4548,7 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	/*!
@@ -4501,7 +4606,7 @@
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4514,9 +4619,9 @@
 	 * Module dependencies
 	 */
 
-	var transferFlags = __webpack_require__(31);
-	var flag = __webpack_require__(19);
-	var config = __webpack_require__(30);
+	var transferFlags = __webpack_require__(32);
+	var flag = __webpack_require__(20);
+	var config = __webpack_require__(31);
 
 	/*!
 	 * Module variables
@@ -4619,7 +4724,7 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/*!
@@ -4679,7 +4784,7 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -4689,7 +4794,7 @@
 	 * MIT Licensed
 	 */
 
-	var config = __webpack_require__(30);
+	var config = __webpack_require__(31);
 
 	module.exports = function (_chai, util) {
 	  /*!
@@ -4816,7 +4921,7 @@
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/*!
@@ -6682,7 +6787,7 @@
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	/*!
@@ -6722,7 +6827,7 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	/*!
@@ -6929,7 +7034,7 @@
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	/*!
@@ -8580,126 +8685,12 @@
 
 
 /***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var assert = __webpack_require__(14).assert;
-
-	var Snake = __webpack_require__(2);
-	var Food = __webpack_require__(3);
-	var Game = __webpack_require__(4);
-
-	describe('Snake', function () {
-	  context('with default attributes', function () {
-	    var snake = new Snake({});
-	    it('should assign an x coordinate', function () {
-	      assert.equal(snake.x, 0);
-	    });
-	    it('should assign a y coordinate', function () {
-	      assert.equal(snake.y, 0);
-	    });
-	    it('should assign a height', function () {
-	      assert.equal(snake.height, 10);
-	    });
-	    it('should assign a width', function () {
-	      assert.equal(snake.width, 10);
-	    });
-	  });
-	});
-
-	describe('Snake#direction', function () {
-	  context('successfully sets direction variable', function () {
-	    beforeEach(function () {
-	      this.snake = new Snake({ x: 0, y: 0, width: 10, height: 10 });
-	    });
-
-	    it('as up', function () {
-	      assert.equal(this.snake.y, 0);
-	      this.snake.changeDirection('up');
-	      assert.equal(this.snake.direction, 'up');
-	    });
-
-	    it('as down', function () {
-	      assert.equal(this.snake.y, 0);
-	      this.snake.changeDirection('down');
-	      assert.equal(this.snake.direction, 'down');
-	    });
-	    it('as left', function () {
-	      assert.equal(this.snake.y, 0);
-	      this.snake.changeDirection('left');
-	      assert.equal(this.snake.direction, 'left');
-	    });
-	    it('as right', function () {
-	      assert.equal(this.snake.y, 0);
-	      this.snake.changeDirection('right');
-	      assert.equal(this.snake.direction, 'right');
-	    });
-	  });
-	});
-
-	describe('Snake#move', function () {
-	  context('successfully adds', function () {
-
-	    beforeEach(function () {
-	      this.snake = new Snake({ x: 0,
-	        y: 0,
-	        width: 10,
-	        height: 10,
-	        time: 500
-	      });
-	    });
-
-	    it('10 to the y position', function () {
-	      this.snake.previousTime = 0;
-	      this.snake.direction = 'up';
-	      this.snake.move(100);
-	      assert.equal(this.snake.y, 500);
-	    });
-
-	    it('10 to the y position', function () {
-	      this.snake.previousTime = 0;
-	      this.snake.direction = 'down';
-	      this.snake.move(100);
-	      assert.equal(this.snake.y, 10);
-	    });
-	  });
-
-	  context('successfully subtracts', function () {
-	    beforeEach(function () {
-	      this.snake = new Snake({ x: 0,
-	        y: 0,
-	        width: 10,
-	        height: 10,
-	        time: 500
-	      });
-	    });
-
-	    it('10 from the x position', function () {
-	      this.snake.previousTime = 0;
-	      this.snake.direction = 'right';
-
-	      this.snake.move(100);
-	      assert.equal(this.snake.x, 10);
-	    });
-	    it('10 from the x position', function () {
-	      this.snake.previousTime = 0;
-	      this.snake.direction = 'left';
-
-	      this.snake.move(100);
-	      assert.equal(this.snake.x, 500);
-	    });
-	  });
-	});
-
-/***/ },
 /* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var assert = __webpack_require__(14).assert;
+	var assert = __webpack_require__(15).assert;
 
 	var Snake = __webpack_require__(2);
 	var Food = __webpack_require__(3);
