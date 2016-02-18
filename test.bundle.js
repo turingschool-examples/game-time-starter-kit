@@ -169,7 +169,7 @@
 	    this.grow();
 	    this.grow();
 	    this.grow();
-	    if (this.snake.interval === 70) {
+	    if (this.snake.interval === 35) {
 	      this.grow();
 	      this.grow();
 	      this.score += 20;

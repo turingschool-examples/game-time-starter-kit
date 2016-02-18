@@ -66,7 +66,10 @@
 	  nextSnake: null, interval: interval }, ctx);
 	var game = new Game(canvas, ctx, snake, food);
 
+	var gameRunning = false;
+
 	function start() {
+	  gameRunning = true;
 	  requestAnimationFrame(function gameLoop() {
 	    ctx.clearRect(0, 0, canvas.width, canvas.height);
 	    snake.setInterval();
@@ -78,6 +81,7 @@
 	    if (game.collisionDetector() === 'collision') {
 	      alert("Learn how to rake, bro. Select your level and rake again!");
 	      init();
+	      gameRunning = false;
 	      return;
 	    }
 	    setTimeout(function () {
@@ -88,20 +92,22 @@
 
 	function chooseLevel() {
 	  window.addEventListener('keyup', function (event) {
-	    if (event.keyCode === 69) {
-	      snake.interval = 150;
-	      start();
-	    } else if (event.keyCode === 77) {
-	      snake.interval = 120;
-	      start();
-	    } else if (event.keyCode === 72) {
-	      snake.interval = 90;
-	      start();
-	    } else if (event.keyCode === 83) {
-	      snake.interval = 70;
-	      start();
-	    } else {
-	      return false;
+	    if (!gameRunning) {
+	      if (event.keyCode === 69) {
+	        snake.interval = 115;
+	        start();
+	      } else if (event.keyCode === 77) {
+	        snake.interval = 85;
+	        start();
+	      } else if (event.keyCode === 72) {
+	        snake.interval = 65;
+	        start();
+	      } else if (event.keyCode === 83) {
+	        snake.interval = 35;
+	        start();
+	      } else {
+	        return false;
+	      }
 	    }
 	  });
 	}
@@ -10081,7 +10087,7 @@
 	    this.grow();
 	    this.grow();
 	    this.grow();
-	    if (this.snake.interval === 70) {
+	    if (this.snake.interval === 35) {
 	      this.grow();
 	      this.grow();
 	      this.score += 20;
