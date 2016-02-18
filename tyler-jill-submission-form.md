@@ -21,6 +21,7 @@
 
 ### Do You Consider the Application to be Fully Playable?
 YES, FINALLY!
+
  - If not, list what functionality is missing.
 
 ### What Extensions, as Requested By an Instructor, Did You Complete?
@@ -34,6 +35,10 @@ Extension #2:
 
 Extension #3:
 - Snake can go through walls without running into itself or dying.
+- ![crazy-mode](http://g.recordit.co/XCCj3xFRiB.gif)
+
+Extension #4:
+- Snake is a series of rake images collecting planes.
 - ![crazy-mode](http://g.recordit.co/XCCj3xFRiB.gif)
 
 
@@ -78,11 +83,10 @@ NA
 
 ### Provide a link to an example, if you have one, of a feature test that covers an 'edge case' or 'unhappy path'
 NA
------
+
 
 ### Please feel free to ask any other questions or make any other statements below!
 
------
 
 ## Instructor Feedback
 
