@@ -174,12 +174,12 @@
 	      this.grow();
 	      this.score += 20;
 	    }
-	    this.reposition_food();
+	    this.repositionFood();
 	    this.score += 10;
 	  }
 	};
 
-	Game.prototype.reposition_food = function () {
+	Game.prototype.repositionFood = function () {
 	  var number1 = this.possibleLocations[Math.floor(Math.random() * this.possibleLocations.length)];
 	  var number2 = this.possibleLocations[Math.floor(Math.random() * this.possibleLocations.length)];
 	  this.food.x = number1;
@@ -8732,7 +8732,7 @@
 	    var snake = new Snake({}, this.context);
 	    var game = new Game(this.canvas, this.context, snake, food);
 
-	    game.reposition_food();
+	    game.repositionFood();
 	    assert.isDefined(food.x !== 300 && food.y !== 100);
 	    assert.equal(food.height, 10);
 	    assert.equal(food.width, 10);

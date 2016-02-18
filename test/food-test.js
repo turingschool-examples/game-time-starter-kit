@@ -40,7 +40,7 @@ describe('Game switches to new position', function(){
     var snake = new Snake({}, this.context);
     var game = new Game(this.canvas, this.context, snake, food);
 
-    game.reposition_food();
+    game.repositionFood();
     assert.isDefined((food.x !== 300) && (food.y !== 100));
     assert.equal(food.height, 10);
     assert.equal(food.width, 10);
