@@ -1,5 +1,6 @@
 const assert = require('chai').assert;
 const Ball = require('../lib/ball');
+const sinon = require('sinon/pkg/sinon');
 
 
 describe('Ball', function() {
@@ -171,6 +172,60 @@ describe('Ball', function() {
     it('should be drawn with a keyboarder object', function() {
       ball.draw
       assert.isObject(ball.keyboarder, "keyboarder is here!");
+    });
+  });
+
+  describe('update with standard inputs', function() {
+
+    var ball = new Ball({}, { width: 1000, height: 600 });
+    ball.update(5, 0.5, true, ball.canvas)
+
+    it("should be updated with a r value", function () {
+      assert.equal(ball.x, 500);
+    });
+
+    it('should be updated with a r value', function() {
+      assert.equal(ball.r, 8);
+    });
+
+    it('should be updated with a y value', function() {
+      assert.equal(ball.y, 14);
+    });
+  });
+
+  describe('update with enhanced game speed', function() {
+
+    var ball = new Ball({}, { width: 1000, height: 600 });
+    ball.update(10, 0.5, true, ball.canvas)
+
+    it("returns the return value from the original function", function () {
+      assert.equal(ball.x, 500);
+    });
+
+    it('should be updated with a r value', function() {
+      assert.equal(ball.r, 8);
+    });
+
+    it('should be updated with a y value', function() {
+      assert.equal(ball.y, 14);
+    });
+  });
+
+  describe('update with game in play off', function() {
+
+    var ball = new Ball({}, { width: 1000, height: 600 });
+    ball.update(10, 0.5, false, ball.canvas)
+
+    it("returns the return value from the original function", function () {
+      assert.equal(ball.x, 500);
+    });
+
+    it('should be updated with a r value', function() {
+      assert.equal(ball.r, 8);
+    });
+
+    it('should be updated with a y value', function() {
+      assert.equal(ball.y, 14);
     });
   });
 
