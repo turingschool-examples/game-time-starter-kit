@@ -44,7 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
+
+	var highScores = [];
+	if (localStorage["high-scores"] != undefined) {
+	  highScores = JSON.parse(localStorage["high-scores"]);
+	}
+	displayHighScores();
 
 	var $ = __webpack_require__(1);
 	var Ball = __webpack_require__(2);
@@ -67,8 +73,8 @@
 	var gates = [];
 	var ball = new Ball({}, canvas);
 	var game = new Game(canvas, ctx);
-
 	var score = [];
+	var scoreAdded = false;
 
 	GateBuilder(gates, canvas);
 
@@ -83,22 +89,19 @@
 	});
 
 	requestAnimationFrame(function gameLoop() {
-	  var adjustedScore = score.length;
-	  game.score = adjustedScore;
 	  ctx.clearRect(0, 0, canvas.width, canvas.height);
 	  checkIfPlayerLost(ball, canvas);
 	  if (gameInPlay && !lost) {
-	    drawGame(ctx, fallSpeed, acceleration, ballSpeed, canvas, gameInPlay, gates, ball, adjustedScore);
+	    drawGame(ctx, fallSpeed, acceleration, ballSpeed, canvas, gameInPlay, gates, ball, game);
 	    requestAnimationFrame(gameLoop);
 	  } else if (lost) {
-	    game.lost(ctx);
-	    resetGame(ball, canvas);
+	    resetGame(ball, canvas, game, ctx);
 	    requestAnimationFrame(gameLoop);
 	  } else if (paused) {
 	    game.paused(ctx);
 	    requestAnimationFrame(gameLoop);
 	  } else {
-	    game['default'](ctx);
+	    game["default"](ctx);
 	    requestAnimationFrame(gameLoop);
 	  }
 	});
@@ -109,19 +112,62 @@
 	  }
 	}
 
-	function drawGame(ctx, fallSpeed, acceleration, ballSpeed, canvas, gameInPlay, gates, ball, adjustedScore) {
+	function drawGame(ctx, fallSpeed, acceleration, ballSpeed, canvas, gameInPlay, gates, ball, game) {
+	  var img = new Image();
+	  img.src = "../assets/wall.png";
+	  ctx.drawImage(img, 0, 0);
 	  ball.draw(ctx);
 	  ball.update(fallSpeed, acceleration, canvas, gameInPlay);
 	  GatePainter(gates, ctx, game.speed, canvas);
-	  CollisionDetect(ball, gates, score);
-	  game.update(adjustedScore, ball);
+	  CollisionDetect(ball, gates, score, game);
+	  game.update(game.score, ball);
 	  Scoring(ctx, game.score);
+	  if (scoreAdded === true) {
+	    game.score = 0;
+	    scoreAdded = false;
+	  }
 	}
 
-	function resetGame(ball, canvas) {
+	function resetGame(ball, canvas, game) {
 	  ball.y = 10;
 	  gates = [];
 	  GateBuilder(gates, canvas);
+	  if (scoreAdded === false) {
+	    updateHighScores(game.score, highScores);
+	    displayHighScores();
+	  }
+	  if (highScores.includes(game.score)) {
+	    game.newHighScore(ctx);
+	  } else {
+	    game.lost(ctx);
+	  }
+	  scoreAdded = true;
+	}
+
+	function addScoreToHighScoreList(score) {
+	  var node = document.createElement("LI");
+	  var textnode = document.createTextNode(score + " points");
+	  node.appendChild(textnode);
+	  document.getElementById("high-score-list").appendChild(node);
+	}
+
+	function displayHighScores() {
+	  document.getElementById("high-score-list").innerHTML = '';
+	  highScores.forEach(function (score) {
+	    addScoreToHighScoreList(score);
+	  });
+	}
+
+	function updateHighScores(gameScore, highScores, options) {
+	  var opts = options || { numberOfScoresToKeep: 5 };
+	  highScores.push(gameScore);
+	  highScores.sort(function (a, b) {
+	    return b - a;
+	  });
+	  if (highScores.length > opts.numberOfScoresToKeep) {
+	    highScores.pop();
+	  }
+	  localStorage["high-scores"] = JSON.stringify(highScores);
 	}
 
 /***/ },
@@ -10010,6 +10056,7 @@
 	}
 
 	function moveBallLaterally(ball, canvas, ballSpeed) {
+	  debugger;
 	  if (leftArrowKeyDown(ball)) {
 	    ball.x -= ballSpeed;
 	  } else if (rightArrowKeyDown(ball, canvas)) {
@@ -10060,7 +10107,7 @@
 	    ctx.beginPath();
 	    ctx.arc(that.x, that.y, that.r, that.sAngle, that.eAngle);
 	    ctx.stroke();
-	    ctx.fillStyle = "blue";
+	    ctx.fillStyle = "white";
 	    ctx.fill();
 	  },
 	  returnTrueIfKeyEventTriggers: function returnTrueIfKeyEventTriggers(keyStorage) {
@@ -10096,7 +10143,7 @@
 	  this.canvasWidth = canvas.width;
 	  this.scoreable = true;
 	  this.img = new Image();
-	  this.img.src = "./assets/board.png";
+	  this.img.src = "../assets/board.png";
 	}
 
 	Gate.prototype.update = function (gameSpeed, canvas) {
@@ -10111,8 +10158,8 @@
 	};
 
 	Gate.prototype.draw = function (ctx) {
-	  ctx.drawImage(this.img, 0, this.y);
-	  ctx.drawImage(this.img, this.gateEnd, this.y);
+	  ctx.drawImage(this.img, 0, this.y, this.gateStart, this.gateHeight);
+	  ctx.drawImage(this.img, this.gateEnd, this.y, this.canvasWidth, this.gateHeight);
 	};
 
 	module.exports = Gate;
@@ -10187,10 +10234,9 @@
 
 	'use strict';
 
-	var collisionDetect = function collisionDetect(ball, gates, score) {
+	var collisionDetect = function collisionDetect(ball, gates, score, game) {
 	  for (var i = 0; i < gates.length; i++) {
 
-	    // pull all vars out into helper
 	    var centerOfBall = ball.y;
 	    var bottomOfBall = centerOfBall + ball.r;
 	    var topOfBall = centerOfBall + ball.r;
@@ -10201,7 +10247,6 @@
 	    var rightGate = gates[i].gateEnd;
 	    var leftGate = gates[i].gateStart;
 
-	    // refactor ball resting on gate logic
 	    if (bottomOfBall > centerOfGate && centerOfBall < bottomOfGate && ball.x > rightGate) {
 	      ball.y = topOfGate;
 	      return;
@@ -10213,7 +10258,7 @@
 	    if (bottomOfGate < topOfBall && gate.scoreable === true) {
 
 	      // console.log(gate.scoreable)
-	      score.push(1);
+	      game.score++;
 	      gate.scoreable = false;
 	      console.log(score);
 	      // console.log(gate.scoreable)
@@ -10239,7 +10284,7 @@
 	  this.backgroundColor = options.backgroundColor || "cyan";
 	  this.width = canvas.width;
 	  this.height = canvas.height;
-	  this.largeFontSize = options.largeFontSize || "80px";
+	  this.largeFontSize = options.largeFontSize || "70px";
 	  this.smallFontSize = options.smallFontSize || "30px";
 	  this.fontFamily = options.fontFamily || "Open Sans";
 	  this.textColor = options.textColor || "black";
@@ -10278,6 +10323,19 @@
 	  ctx.font = this.largeFontSize + " " + this.fontFamily;
 	  ctx.textAlign = "center";
 	  ctx.fillText("You lost", this.width / 2, this.height / 2 - 20);
+	  ctx.font = this.smallFontSize + " " + this.fontFamily;
+	  ctx.fillText(this.instructions, this.width / 2, this.height / 2 + 35);
+	  ctx.fillText("Score: " + this.score, this.width / 2, this.height / 2 + 70);
+	  console.log(this.score);
+	};
+
+	Game.prototype.newHighScore = function (ctx) {
+	  ctx.fillStyle = this.backgroundColor;
+	  ctx.fillRect(0, 0, this.width, this.height);
+	  ctx.fillStyle = this.textColor;
+	  ctx.font = this.largeFontSize + " " + this.fontFamily;
+	  ctx.textAlign = "center";
+	  ctx.fillText("New High Score!", this.width / 2, this.height / 2 - 20);
 	  ctx.font = this.smallFontSize + " " + this.fontFamily;
 	  ctx.fillText(this.instructions, this.width / 2, this.height / 2 + 35);
 	  ctx.fillText("Score: " + this.score, this.width / 2, this.height / 2 + 70);
