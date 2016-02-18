@@ -68,14 +68,14 @@ describe('Snake#move', function() {
       this.snake.previousTime = 0;
       this.snake.direction = 'up';
       this.snake.move(100);
-      assert.equal(this.snake.y, 0);
+      assert.equal(this.snake.y, 500);
     });
 
     it('10 to the y position', function(){
       this.snake.previousTime = 0;
       this.snake.direction = 'down';
       this.snake.move(100);
-      assert.equal(this.snake.y, 0);
+      assert.equal(this.snake.y, 10);
     });
   });
 
@@ -94,14 +94,14 @@ describe('Snake#move', function() {
       this.snake.direction = 'right';
 
       this.snake.move(100);
-      assert.equal(this.snake.x, 0);
+      assert.equal(this.snake.x, 10);
     });
     it('10 from the x position', function(){
       this.snake.previousTime = 0;
       this.snake.direction = 'left';
 
       this.snake.move(100);
-      assert.equal(this.snake.x, 0);
+      assert.equal(this.snake.x, 500);
     });
   });
 });
