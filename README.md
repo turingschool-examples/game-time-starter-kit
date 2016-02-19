@@ -1,4 +1,4 @@
-# Snake - A Game Time project
+# Snake - A Game Time project for Turing School
 
 This ain't yo momma's snake from her old nokia phone!  This Javascript written game takes a page out of Samuel L. Jackson and has been dubbed "Rakes on a Plane."  Use your arrow keys to move and if you are feeling saucy, give SLJ mode a try as it speeds up and appends more snakes!
 
