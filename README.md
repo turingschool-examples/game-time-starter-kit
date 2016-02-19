@@ -34,4 +34,6 @@ npm start
 
 * `http://localhost:8080/webpack-dev-server/test.html` to run your test suite in the browser.
 
-HAPPY SNAKING!!
+### HAPPY SNAKING!!
+
+![alt text](http://funnyasduck.net/wp-content/uploads/2012/09/Funny-Nokia-Snake-Game-Over.jpg)
