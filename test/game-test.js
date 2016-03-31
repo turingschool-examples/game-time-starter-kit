@@ -1,37 +1,29 @@
 const assert = require("chai").assert;
-
 const Game = require("../lib/game");
 
 describe("Game", function(){
-  var game = new Game();
+  context('when created', function(){
+    var game = new Game();
+    it("has a KeyPressed", function(){
+      assert(game.KeyPressed.setState);
+    });
 
-  it("is an object", function() {
-    assert.typeOf(game, "Object");
+    it("has an empty occupiedPositions", function(){
+      assert.equal(game.occupiedPositions.length, 0);
+    });
+
+    it("has a first Player", function(){
+      assert(game.firstPlayer.move);
+    });
   });
 
-  it("has a first Player", function(){
-    assert(game.firstPlayer.move);
-  });
+  context('when running', function(){
+    it("logs positions", function(){
+      var game = new Game();
+      game.logPosition([12,7]);
+      assert(game.occupiedPositions[12][7]);
+    });
 
-  it("has player attributes", function() {
-    assert.equal(game.firstPlayer.x, 50);
-    assert.equal(game.firstPlayer.y, 50);
-    assert.equal(game.firstPlayer.width, 10);
-    assert.equal(game.firstPlayer.height, 10);
+    xit("updates the game", function(){});
   });
-
 });
-// const assert = require("chai").assert;
-//
-// const Game = require("../lib/game");
-//
-// describe("Game", function(){
-//   var game = new Game();
-//
-//   it("instantiates new player", function() {
-//     assert.equal(game.firstPlayer.x, 50);
-//     assert.equal(game.firstPlayer.y, 50);
-//     assert.equal(game.firstPlayer.width, 10);
-//     assert.equal(game.firstPlayer.height, 10);
-//   });
-// });
