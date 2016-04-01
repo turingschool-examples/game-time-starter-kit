@@ -28,6 +28,13 @@ describe("Player", function(){
       assert.equal(player.speedX, attributes.speed);
       assert.equal(player.speedY, 0);
     });
+
+    it("is not dead", function(){
+      var game = new Game();
+      var player = new Player(game, {});
+
+      assert.isNotTrue(player.died());
+    });
   });
 
   context('movement', function(){
@@ -85,6 +92,34 @@ describe("Player", function(){
       player.orient();
       assert.equal(player.speedX, 0);
       assert.equal(player.speedY, player.speed);
+    });
+  });
+
+  context('collisions', function(){
+    it('dies when hitting itself', function(){
+      var game = new Game();
+      var player = new Player(game, {});
+
+      game.logPosition(player.position());
+
+      assert(player.died());
+    });
+
+    it('dies when hitting a wall', function(){
+      var player;
+      var game = new Game(20, 20);
+
+      player = new Player(game, {x: -1});
+      assert(player.died());
+
+      player = new Player(game, {y: -1});
+      assert(player.died());
+
+      player = new Player(game, {x: game.width});
+      assert(player.died());
+
+      player = new Player(game, {y: game.height});
+      assert(player.died());
     });
   });
 });
