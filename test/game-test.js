@@ -68,8 +68,11 @@ describe("Game", function(){
 
     it("logs positions", function(){
       var game = new Game();
-      game.logPosition([12,7]);
-      assert(game.occupiedPositions[12][7]);
+
+      game.update();
+
+      assert(game.occupiedPositions[game.players[0].x][game.players[0].y]);
+      assert(game.occupiedPositions[game.players[1].x][game.players[1].y]);
     });
   });
 });
