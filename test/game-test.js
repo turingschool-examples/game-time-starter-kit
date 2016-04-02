@@ -3,7 +3,7 @@ const Game = require("../lib/game");
 
 describe("Game", function(){
   context('when created', function(){
-    var game = new Game();
+    var game = new Game(100, 100);
     it("has a KeyPressed", function(){
       assert(game.KeyPressed.setState);
     });
@@ -12,8 +12,20 @@ describe("Game", function(){
       assert.equal(game.occupiedPositions.length, 0);
     });
 
-    it("has a first Player", function(){
-      assert(game.firstPlayer.move);
+    it("creates player 1 at its position", function(){
+      var playerOneX = Math.floor(game.width / 8);
+      var playerOneY = Math.floor(game.height / 2);
+
+      assert.equal(game.players[0].x, playerOneX);
+      assert.equal(game.players[0].y, playerOneY);
+    });
+
+    it("creates player 2 at its position", function(){
+      var playerTwoX = Math.floor(game.width / 8) * 7;
+      var playerTwoY = Math.floor(game.height / 2);
+
+      assert.equal(game.players[1].x, playerTwoX);
+      assert.equal(game.players[1].y, playerTwoY);
     });
   });
 
