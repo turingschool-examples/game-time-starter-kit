@@ -36,6 +36,15 @@ describe("Game", function(){
       assert(game.occupiedPositions[12][7]);
     });
 
+    it("movePlayers", function(){
+      var game = new Game(100,100);
+      var playerOneX = game.players[0].x;
+
+      game.update();
+
+      assert.notEqual(game.players[0].x, playerOneX);
+    });
+
     xit("updates the game", function(){});
   });
 });
