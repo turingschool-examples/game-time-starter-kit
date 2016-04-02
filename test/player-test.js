@@ -136,12 +136,13 @@ describe("Player", function(){
     });
   });
 
-  xcontext('collisions', function(){
-    it('dies when hitting itself', function(){
-      var game = new Game();
+  context('collisions', function(){
+    it('dies when hitting occupied positions', function(){
+      var game = new Game(200,200);
       var player = new Player({game: game, controls: 'c'});
 
-      game.logPosition(player.position());
+      player.game.occupiedPositions[player.x] = [];
+      player.game.occupiedPositions[player.x][player.y] = true;
 
       assert(player.died());
     });
