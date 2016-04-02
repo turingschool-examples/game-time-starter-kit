@@ -5,9 +5,10 @@ const Game = require("../lib/game");
 describe("Player", function(){
   context('when created', function(){
     it("has default attributes", function(){
-      var player = new Player('game', {});
+      var player = new Player({game: 'game', controls: 'bananas'});
 
       assert.equal(player.game, 'game');
+      assert.equal(player.controls, 'bananas');
       assert.equal(player.x, 50);
       assert.equal(player.y, 50);
       assert.equal(player.speed, 10);
@@ -17,8 +18,9 @@ describe("Player", function(){
     });
 
     it('takes position and speed from options', function() {
-      var attributes = {x: 5, y: 44, speed: 8};
-      var player = new Player('game', attributes);
+      var attributes = {game: 'g', controls: 'c',
+                        x: 5, y: 44, speed: 8};
+      var player = new Player(attributes);
 
       assert.equal(player.x, attributes.x);
       assert.equal(player.y, attributes.y);
@@ -27,7 +29,7 @@ describe("Player", function(){
 
     it("is not dead", function(){
       var game = new Game();
-      var player = new Player(game, {});
+      var player = new Player({game: game});
 
       assert.isNotTrue(player.died());
     });
@@ -35,8 +37,7 @@ describe("Player", function(){
 
   context('movement', function(){
     it('moves according to speed', function(){
-      var game = new Game();
-      var player = new Player(game, {x: 1, y: 1} );
+      var player = new Player({game: 'g', controls:'c', x: 1, y: 1} );
       player.speedX = 10;
       player.speedY = 20;
 
@@ -47,10 +48,10 @@ describe("Player", function(){
     });
   });
 
-  context('control', function(){
+  context('control by arrows', function(){
     it('faces left when left arrow is pressed', function(){
       var game = new Game();
-      var player = new Player(game, {});
+      var player = new Player({game: game, controls: 'arrows'});
       game.KeyPressed.left = true;
 
       player.orient();
@@ -60,7 +61,7 @@ describe("Player", function(){
 
     it('faces right when right arrow is pressed', function(){
       var game = new Game();
-      var player = new Player(game, {});
+      var player = new Player({game: game, controls: 'arrows'});
       player.speedX = 'default';
       player.speedY = 'default';
       game.KeyPressed.right = true;
@@ -72,7 +73,7 @@ describe("Player", function(){
 
     it('faces up when up arrow is pressed', function(){
       var game = new Game();
-      var player = new Player(game, {});
+      var player = new Player({game: game, controls: 'arrows'});
       game.KeyPressed.up = true;
 
       player.orient();
@@ -82,8 +83,52 @@ describe("Player", function(){
 
     it('faces down when down arrow is pressed', function(){
       var game = new Game();
-      var player = new Player(game, {});
+      var player = new Player({game: game, controls: 'arrows'});
       game.KeyPressed.down = true;
+
+      player.orient();
+      assert.equal(player.speedX, 0);
+      assert.equal(player.speedY, player.speed);
+    });
+  });
+
+  context('control by wasd', function(){
+    it('faces left when A is pressed', function(){
+      var game = new Game();
+      var player = new Player({game: game, controls: 'wasd'});
+      game.KeyPressed.a = true;
+
+      player.orient();
+      assert.equal(player.speedX, -player.speed);
+      assert.equal(player.speedY, 0);
+    });
+
+    it('faces right when D is pressed', function(){
+      var game = new Game();
+      var player = new Player({game: game, controls: 'wasd'});
+      player.speedX = 'default';
+      player.speedY = 'default';
+      game.KeyPressed.d = true;
+
+      player.orient();
+      assert.equal(player.speedX, player.speed);
+      assert.equal(player.speedY, 0);
+    });
+
+    it('faces up when W is pressed', function(){
+      var game = new Game();
+      var player = new Player({game: game, controls: 'wasd'});
+      game.KeyPressed.w = true;
+
+      player.orient();
+      assert.equal(player.speedX, 0);
+      assert.equal(player.speedY, -player.speed);
+    });
+
+    it('faces down when S is pressed', function(){
+      var game = new Game();
+      var player = new Player({game: game, controls: 'wasd'});
+      game.KeyPressed.s = true;
 
       player.orient();
       assert.equal(player.speedX, 0);
@@ -94,7 +139,7 @@ describe("Player", function(){
   context('collisions', function(){
     it('dies when hitting itself', function(){
       var game = new Game();
-      var player = new Player(game, {});
+      var player = new Player({game: game, controls: 'c'});
 
       game.logPosition(player.position());
 
@@ -105,16 +150,16 @@ describe("Player", function(){
       var player;
       var game = new Game(200, 200);
 
-      player = new Player(game, {x: -1});
+      player = new Player({game: game, x: -1});
       assert(player.died(), 'West wall');
 
-      player = new Player(game, {y: -1});
+      player = new Player({game: game, y: -1});
       assert(player.died(), 'North wall');
 
-      player = new Player(game, {x: game.width});
+      player = new Player({game: game, x: game.width});
       assert(player.died(), 'East wall');
 
-      player = new Player(game, {y: game.height});
+      player = new Player({game: game, y: game.height});
       assert(player.died(), 'South wall');
     });
   });

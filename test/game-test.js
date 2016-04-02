@@ -11,19 +11,20 @@ describe("Game", function(){
     it("has an empty occupiedPositions", function(){
       assert.equal(game.occupiedPositions.length, 0);
     });
-
-    it("creates player 1 at its position", function(){
+    it("creates player 1", function(){
       var playerOneX = Math.floor(game.width / 8);
       var playerOneY = Math.floor(game.height / 2);
 
+      assert.equal(game.players[0].controls, 'wasd');
       assert.equal(game.players[0].x, playerOneX);
       assert.equal(game.players[0].y, playerOneY);
     });
 
-    it("creates player 2 at its position", function(){
+    it("creates player 2", function(){
       var playerTwoX = Math.floor(game.width / 8) * 7;
       var playerTwoY = Math.floor(game.height / 2);
 
+      assert.equal(game.players[1].controls, 'arrows');
       assert.equal(game.players[1].x, playerTwoX);
       assert.equal(game.players[1].y, playerTwoY);
     });
