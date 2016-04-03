@@ -11,6 +11,10 @@ describe("Game", function(){
     it("has an empty occupiedPositions", function(){
       assert.equal(game.occupiedPositions.length, 0);
     });
+
+    it("is not over", function(){
+      assert.isNotTrue(game.over);
+    });
     // Probably extract grid size to game property and pass it to the players
     // Extract and test grid/player creator
     xit("creates player 1", function(){
@@ -74,6 +78,15 @@ describe("Game", function(){
 
       assert(game.occupiedPositions[game.players[0].x][game.players[0].y]);
       assert(game.occupiedPositions[game.players[1].x][game.players[1].y]);
+    });
+
+    it("is over if a player dies", function(){
+      var game = new Game();
+      game.players[0].x = -100;
+
+      game.update();
+
+      assert(game.over);
     });
   });
 });
