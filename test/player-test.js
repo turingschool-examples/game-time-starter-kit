@@ -15,6 +15,7 @@ describe("Player", function(){
       assert.equal(player.size, 10);
       assert.equal(player.speedX, 10);
       assert.equal(player.speedY, 0);
+      assert.equal(player.score, 0);
     });
 
     it('takes position and speed from options', function() {
