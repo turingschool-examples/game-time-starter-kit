@@ -92,5 +92,16 @@ describe("Game", function(){
 
       assert(game.over);
     });
+
+    it("spawns fruits when eaten", function(){
+      var game = new Game();
+      var fruitX = game.fruit.x;
+      game.players[0].x = game.fruit.x - game.players[0].speedX;
+      game.players[0].y = game.fruit.y;
+
+      game.update();
+
+      assert.notEqual(fruitX, game.fruit.x);
+    });
   });
 });
