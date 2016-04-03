@@ -15,6 +15,7 @@ describe("Player", function(){
       assert.equal(player.size, 10);
       assert.equal(player.speedX, 10);
       assert.equal(player.speedY, 0);
+      assert.equal(player.score, 0);
     });
 
     it('takes position and speed from options', function() {
@@ -136,7 +137,7 @@ describe("Player", function(){
     });
   });
 
-  context('collisions', function(){
+  context('death', function(){
     it('dies when hitting occupied positions', function(){
       var game = new Game(200,200);
       var player = new Player({game: game, controls: 'c'});
@@ -162,6 +163,28 @@ describe("Player", function(){
 
       player = new Player({game: game, y: game.height});
       assert(player.died(), 'South wall');
+    });
+
+    it('looses points when dies', function(){
+      var game = new Game(200, 200);
+      var player = new Player({game: game, x: -1});
+
+      player.died();
+
+      assert(player.score < 0);
+    });
+  });
+
+  context('scoring', function(){
+    it('scores when hitting a fruit', function(){
+      var game = new Game(200,200);
+      var player = new Player({game: game, controls: 'c'});
+
+      player.x = game.fruit.x;
+      player.y = game.fruit.y;
+
+      assert(player.scored());
+      assert(player.score > 0);
     });
   });
 });
