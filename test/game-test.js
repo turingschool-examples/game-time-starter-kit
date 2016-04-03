@@ -15,6 +15,10 @@ describe("Game", function(){
     it("is not over", function(){
       assert.isNotTrue(game.over);
     });
+
+    it("has a fruit", function(){
+      assert(game.fruit);
+    });
     // Probably extract grid size to game property and pass it to the players
     // Extract and test grid/player creator
     xit("creates player 1", function(){
