@@ -174,4 +174,17 @@ describe("Player", function(){
       assert(player.score < 0);
     });
   });
+
+  context('scoring', function(){
+    it('scores when hitting a fruit', function(){
+      var game = new Game(200,200);
+      var player = new Player({game: game, controls: 'c'});
+
+      player.x = game.fruit.x;
+      player.y = game.fruit.y;
+
+      assert(player.scored());
+      assert(player.score > 0);
+    });
+  });
 });
