@@ -137,7 +137,7 @@ describe("Player", function(){
     });
   });
 
-  context('collisions', function(){
+  context('death', function(){
     it('dies when hitting occupied positions', function(){
       var game = new Game(200,200);
       var player = new Player({game: game, controls: 'c'});
@@ -163,6 +163,15 @@ describe("Player", function(){
 
       player = new Player({game: game, y: game.height});
       assert(player.died(), 'South wall');
+    });
+
+    it('looses points when dies', function(){
+      var game = new Game(200, 200);
+      var player = new Player({game: game, x: -1});
+
+      player.died();
+
+      assert(player.score < 0);
     });
   });
 });
