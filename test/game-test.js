@@ -19,26 +19,19 @@ describe("Game", function(){
     it("has a fruit", function(){
       assert(game.fruit);
     });
-    // Probably extract grid size to game property and pass it to the players
-    // Extract and test grid/player creator
-    xit("creates player 1", function(){
-      var playerOneX = Math.floor(game.width / 8);
-      var playerOneY = Math.floor(game.height / 2);
 
+    it("creates player 1", function(){
       assert.equal(game.players[0].controls, 'wasd');
-      assert.equal(game.players[0].x, playerOneX);
-      assert.equal(game.players[0].y, playerOneY);
+      assert(game.players[0].x < game.grid.realWidth / 2);
+      assert.equal(game.players[0].y, game.grid.realHeight / 2);
       assert.equal(game.players[0].speedX, game.players[0].speed);
       assert.equal(game.players[0].speedY, 0);
     });
 
-    xit("creates player 2", function(){
-      var playerTwoX = Math.floor(game.width / 8) * 7;
-      var playerTwoY = Math.floor(game.height / 2);
-
+    it("creates player 2", function(){
       assert.equal(game.players[1].controls, 'arrows');
-      assert.equal(game.players[1].x, playerTwoX);
-      assert.equal(game.players[1].y, playerTwoY);
+      assert(game.players[1].x > game.grid.realWidth / 2);
+      assert.equal(game.players[1].y, game.grid.realHeight / 2);
       assert.equal(game.players[1].speedX, -game.players[0].speed);
       assert.equal(game.players[1].speedY, 0);
     });
