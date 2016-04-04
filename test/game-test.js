@@ -76,7 +76,7 @@ describe("Game", function(){
     });
 
     it("logs positions", function(){
-      var game = new Game();
+      var game = new Game(100,100);
 
       game.update();
 
@@ -85,7 +85,7 @@ describe("Game", function(){
     });
 
     it("is over if a player dies", function(){
-      var game = new Game();
+      var game = new Game(100,100);
       game.players[0].x = -100;
 
       game.update();
@@ -94,7 +94,7 @@ describe("Game", function(){
     });
 
     it("spawns fruits when eaten", function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var fruitX = game.fruit.x;
       game.players[0].x = game.fruit.x - game.players[0].speedX;
       game.players[0].y = game.fruit.y;

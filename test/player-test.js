@@ -29,7 +29,7 @@ describe("Player", function(){
     });
 
     it("is not dead", function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game});
 
       assert.isNotTrue(player.died());
@@ -51,7 +51,7 @@ describe("Player", function(){
 
   context('control by arrows', function(){
     it('faces left when left arrow is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'arrows'});
       game.KeyPressed.left = true;
 
@@ -61,7 +61,7 @@ describe("Player", function(){
     });
 
     it('faces right when right arrow is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'arrows'});
       player.speedX = 'default';
       player.speedY = 'default';
@@ -73,7 +73,7 @@ describe("Player", function(){
     });
 
     it('faces up when up arrow is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'arrows'});
       game.KeyPressed.up = true;
 
@@ -83,7 +83,7 @@ describe("Player", function(){
     });
 
     it('faces down when down arrow is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'arrows'});
       game.KeyPressed.down = true;
 
@@ -95,7 +95,7 @@ describe("Player", function(){
 
   context('control by wasd', function(){
     it('faces left when A is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'wasd'});
       game.KeyPressed.a = true;
 
@@ -105,7 +105,7 @@ describe("Player", function(){
     });
 
     it('faces right when D is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'wasd'});
       player.speedX = 'default';
       player.speedY = 'default';
@@ -117,7 +117,7 @@ describe("Player", function(){
     });
 
     it('faces up when W is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'wasd'});
       game.KeyPressed.w = true;
 
@@ -127,7 +127,7 @@ describe("Player", function(){
     });
 
     it('faces down when S is pressed', function(){
-      var game = new Game();
+      var game = new Game(100,100);
       var player = new Player({game: game, controls: 'wasd'});
       game.KeyPressed.s = true;
 
