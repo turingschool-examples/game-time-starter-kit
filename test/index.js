@@ -1,6 +1,3 @@
-// to use jquery
-var $ = require('jquery');
-
-// to pull in extra files
-var add = require('add.js');
-//
+require('./collision-test');
+require('./surfer-test');
+require('./world-test');
