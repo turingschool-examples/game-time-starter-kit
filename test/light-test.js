@@ -30,4 +30,40 @@ describe('Light', function() {
     var light = new Light(1, 1, 100, 100);
     assert.equal(light.width, 100);
   });
+
+  it('should take the fifth argument and set it as the "state" property of the instantiated object', function() {
+    var light = new Light(1, 1, 100, 100, true || false);
+    assert.equal(light.state, true || false);
+  });
+
+});
+
+describe('light', function() {
+
+  describe('turnOn()', function() {
+    it('should have a method called "turnOn()"', function() {
+      var light = new Light(1, 1, 100, 100, true || false);
+      assert.isFunction(light.turnOn);
+    });
+
+    it('"turnOn()" should set the "state" of the instantiated object to "true"', function() {
+      var light = new Light(1, 1, 100, 100, true || false);
+      light.turnOn();
+      assert.equal(light.state, true);
+    });
+  });
+
+  describe('turnOff()', function() {
+    it('should have a method called "turnOff()"', function() {
+      var light = new Light(1, 1, 100, 100, true || false);
+      assert.isFunction(light.turnOff);
+    });
+
+    it('"turnOff()" should set the state of the instantiated object to "false"', function() {
+      var light = new Light(1, 1, 100, 100, true || false);
+      light.turnOff();
+      assert.equal(light.state, false);
+    });
+  });
+  
 });
