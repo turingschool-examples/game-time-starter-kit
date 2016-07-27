@@ -7,11 +7,11 @@ describe('Snake', function() {
     var snake = new Snake({});
 
     it('should assign an x coordinate', function() {
-      assert.equal(snake.x, 5);
+      assert.equal(snake.x, 250);
     });
 
     it('should assign a y coordinate', function() {
-      assert.equal(snake.y, 0);
+      assert.equal(snake.y, 250);
     });
 
     it('should assign a height', function(){
