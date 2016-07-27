@@ -1,10 +1,12 @@
 const assert = require('chai').assert;
 const $ = require('jquery');
 
-const snake = require('../lib/snake');
+const Snake = require('../lib/snake');
 
 
 describe('player inputs', function() {
+
+  var snake = new Snake();
 
   //Assert that keydown on up button moves snake up
   context('when up key is pressed', function() {
