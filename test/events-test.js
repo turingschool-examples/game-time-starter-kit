@@ -5,8 +5,8 @@ const Snake = require('../lib/snake');
 
 
 describe('player inputs', function() {
-  //Create snake
-  var snake = new Snake({});
+
+  var snake = new Snake();
 
   //Assert that keydown on up button moves snake up
   context('when up key is pressed', function() {
