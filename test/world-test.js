@@ -16,13 +16,13 @@ describe('World', function() {
     })
 
     it('should take take the first argument and set it as the "height" property', function() {
-      var world = new World(100, 50);
-      assert.equal(world.height, 100);
+      var world = new World(500, 50);
+      assert.equal(world.height, 500);
     });
 
     it('should take take the second argument and set it as the "width" property', function() {
-      var world = new World(50, 200);
-      assert.equal(world.width, 200);
+      var world = new World(50, 900);
+      assert.equal(world.width, 900);
     });
 
     it('should have a bricks property, which starts out as an empty array', function() {
