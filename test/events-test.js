@@ -5,15 +5,15 @@ const Snake = require('../lib/snake');
 
 
 describe('player inputs', function() {
-  //Create snake
-  var snake = new Snake({});
+
+  var snake = new Snake();
 
   //Assert that keydown on up button moves snake up
   context('when up key is pressed', function() {
     it('should change snakes direction to move up', function() {
       // setup
       $(document).trigger('keydown', { keyCode: 38 });
-      assert.equal(snake.y, 1);
+      assert.equal(snake.y, 249);
     });
   });
 
