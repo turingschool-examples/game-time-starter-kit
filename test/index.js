@@ -1,2 +1,3 @@
-require('./test-paddle')
-require('./test-bricks')
+require('./test-paddle');
+require('./test-ball');
+require('./test-bricks');
