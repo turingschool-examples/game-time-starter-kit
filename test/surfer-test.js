@@ -9,7 +9,7 @@ describe('Surfer', function() {
         assert.equal(surfer.x, 20);
       });
       it('has a default y value', function(){
-        assert.equal(surfer.y, -110);
+        assert.equal(surfer.y, 110);
       });
       it('has a default width value', function(){
         assert.equal(surfer.width, 20);
