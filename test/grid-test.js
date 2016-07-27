@@ -20,4 +20,11 @@ describe('Grid', function() {
     var grid = new Grid(500, 500);
     assert.equal(grid.height, 500);
   });
+
+  it('should have a "lights" property, which starts out as an open array', function() {
+    var grid = new Grid(500, 500);
+    assert.isArray(grid.lights);
+    assert.deepEqual(grid.lights, []);
+  });
+
 });
