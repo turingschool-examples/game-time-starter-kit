@@ -1,11 +1,10 @@
 const assert = require('chai').assert;
-
 const Paddle = require('../lib/paddle');
 
 describe('Paddle', function() {
   context('checks default values', function() {
 
-    var paddle = new Paddle({});
+    var paddle = new Paddle();
 
     it('has default values', function() {
       assert.equal(paddle.height, 5);
@@ -27,7 +26,8 @@ describe('Paddle', function() {
       x: xValue,
       y: yValue
     };
-    var paddle = new Paddle(properties);
+
+    const paddle = new Paddle(properties);
 
     it('assigns xValue to the paddle x', function() {
       assert.equal(paddle.x, xValue);
