@@ -14,7 +14,7 @@ describe('when surfing', function() {
       let world = new World(600, 150, surfer, rock);
       assert.isFunction(world.isCollision);
     });
-    it('the game is over', function(){
+    it('should return collision on', function(){
       let surfer = new Surfer({});
       let rock = new Rock({});
       let world = new World(600, 150, surfer, rock);
@@ -26,11 +26,3 @@ describe('when surfing', function() {
     });
   });
 });
-
-
-// if (i1 === true && i1 === true && i1 === true) {return true}
-//
-// function h2() {
-//   if (i1 === true && i1 === true && i1 === true)
-//   {return true}
-// };

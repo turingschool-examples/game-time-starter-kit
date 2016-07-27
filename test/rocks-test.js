@@ -25,9 +25,10 @@ describe('Rock', function() {
   });
 
   context('with an x value off-screen right', function() {
-    var rock = new Rock({});
     it.skip('has a value greater than 600', function() {
-      isOffScreenRight();
+      var rock = new Rock({});
+      var world = new World ({});
+      rock.isOffScreenRight();
       assert.equal();
     });
   });
