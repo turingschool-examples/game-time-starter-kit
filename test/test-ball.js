@@ -9,11 +9,11 @@ describe('Ball', function() {
     var ball = new Ball(options);
 
     it('should have a default x coordinate', function() {
-      assert.equal(ball.x, 350);
+      assert.equal(ball.x, 450);
     });
 
     it('should have a default y coordinate', function() {
-      assert.equal(ball.y, 450);
+      assert.equal(ball.y, 350);
     });
 
     it('should have a default height', function() {
