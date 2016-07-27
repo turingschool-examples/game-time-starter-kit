@@ -1,5 +1,4 @@
 const assert = require('chai').assert;
-
 const Surfer = require('../lib/surfer');
 
 describe('Surfer', function() {
@@ -18,7 +17,8 @@ describe('Surfer', function() {
         assert.equal(surfer.height, 30);
       });
     });
-    // context of rock
-    // set default attribute for one rock
+
+
+
 
 });
