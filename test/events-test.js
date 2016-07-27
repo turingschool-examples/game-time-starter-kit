@@ -12,6 +12,8 @@ describe('player inputs', function() {
   context('when up key is pressed', function() {
     it('should change snakes direction to move up', function() {
       $(document).trigger('keydown', { keyCode: 38 });
+      assert.equal(snake.y, 250);
+      snake.moveUp();
       assert.equal(snake.y, 249);
     });
   });
