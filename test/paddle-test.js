@@ -4,7 +4,7 @@ const Paddle = require('../lib/paddle');
 describe('Paddle', function() {
   context('checks default values', function() {
 
-    var paddle = new Paddle();
+    var paddle = new Paddle;
 
     it('has default values', function() {
       assert.equal(paddle.height, 5);
@@ -48,24 +48,24 @@ describe('Paddle', function() {
 
  context('check that paddle methods exist', function() {
     it('should have a method called "moveRight()"', function() {
-      var paddle = new Paddle({});
+      var paddle = new Paddle;
       assert.isFunction(paddle.moveRight)
     });
 
     it('should have a method called "moveLeft()"', function() {
-      var paddle = new Paddle({});
+      var paddle = new Paddle;
       assert.isFunction(paddle.moveLeft)
     });
   });
 
   context('paddle should be able to move left and right', function() {
     it('should move one to the right on x axis', function() {
-      var paddle = new Paddle({});
+      var paddle = new Paddle;
       paddle.moveRight()
       assert.equal(paddle.x, 51)
     });
     it('should move one to the left on x axis', function() {
-      var paddle = new Paddle({});
+      var paddle = new Paddle;
       paddle.moveLeft()
       assert.equal(paddle.x, 49);
     });
