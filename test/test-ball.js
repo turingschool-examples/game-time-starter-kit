@@ -37,42 +37,29 @@ describe('Ball', function() {
     });
   });
 
-  context('ball should have different movement methods', function() {
+  context('ball should have methods for changing directionX and directionY', function() {
 
-    it('should move up and to the right when bounceUpRight is called', function() {
-      var ball = new Ball({x: 350, y: 450});
+    it('should have directionX inverted when invertX called', function() {
+      var ball = new Ball({x: 350, y: 450, directionX: 2,});
 
-      ball.bounceUpRight();
+      ball.invertX();
 
-      assert.equal(ball.x, 352);
-      assert.equal(ball.y, 448);
+      assert.equal(ball.directionX, -2);
     });
 
-    it('should move up and to the left when bounceUpLeft is called', function() {
+    it('should have directionY inverted when invertY called', function() {
       var ball = new Ball({x: 350, y: 450});
-
-      ball.bounceUpLeft();
-
-      assert.equal(ball.x, 348);
-      assert.equal(ball.y, 448);
+      ball.invertY();
+      assert.equal(ball.directionY, 2);
     });
 
-    it('should move down and to the right when bounceDownRight is called', function() {
+    it('should have directionX inverted when invertX called', function() {
       var ball = new Ball({x: 350, y: 450});
 
-      ball.bounceDownRight();
+      ball.invert();
 
-      assert.equal(ball.x, 352);
-      assert.equal(ball.y, 452);
-    });
-
-    it('should move down and to the left when bounceDownLeft is called', function() {
-      var ball = new Ball({x: 350, y: 450});
-
-      ball.bounceDownLeft();
-
-      assert.equal(ball.x, 348);
-      assert.equal(ball.y, 448);
+      assert.equal(ball.directionX, -2);
+      assert.equal(ball.directionY, 2);
     });
   });
 });
