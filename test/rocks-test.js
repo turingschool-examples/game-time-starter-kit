@@ -46,7 +46,7 @@ describe('Rock', function() {
     });
 
     it('has a default y value', function(){
-      assert.equal(rock.y, 165);
+      assert.equal(rock.y, 190 - rock.height);
     });
 
     it('has a default width value', function(){
@@ -54,7 +54,7 @@ describe('Rock', function() {
     });
 
     it('has a default height value', function(){
-      assert.equal(rock.height, 40);
+      assert.equal(rock.height, 25);
     });
   });
 
@@ -88,7 +88,7 @@ describe('Rock', function() {
     it('"moveLeft()" should decrement the "x" property by 10', function () {
       var avgRock = new Rock({x: 100});
       avgRock.moveLeft();
-      assert.equal(avgRock.x, 90);
+      assert.equal(avgRock.x, 97);
     });
   });
 
