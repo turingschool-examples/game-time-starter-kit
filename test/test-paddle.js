@@ -10,16 +10,20 @@ describe('Paddle', function(){
     it('should have a default x coordinate', function(){
       assert.equal(paddle.x, 350);
     });
+
     it('should have a default y coordinate', function() {
-      assert.equal(paddle.y, 460);
+      assert.equal(paddle.y, 470);
     });
+
     it ('should have a default height', function() {
-      assert.equal(paddle.height, 20);
+      assert.equal(paddle.height, 15);
     });
+
     it ('should have a default width', function() {
       assert.equal(paddle.width, 100);
     });
   });
+
   context('accepts defined values', function() {
     var xValue = 35;
     var yValue = 46;
@@ -44,16 +48,16 @@ describe('Paddle', function(){
 
   describe ('movement', function(){
 
-      it('should decrement x by 4 when moveLeft is called', function(){
-        var paddle = new Paddle({x: 10});
-        paddle.moveLeft();
-        assert.equal(paddle.x, 6);
-      });
+    it('should decrement x by 4 when moveLeft is called', function(){
+      var paddle = new Paddle({x: 10});
+      paddle.moveLeft();
+      assert.equal(paddle.x, 6);
+    });
 
-      it('should increment x by 4 when moveRight is called', function(){
-        var paddle = new Paddle({x: 10});
-        paddle.moveRight();
-        assert.equal(paddle.x, 14);
-      });
+    it('should increment x by 4 when moveRight is called', function(){
+      var paddle = new Paddle({x: 10});
+      paddle.moveRight();
+      assert.equal(paddle.x, 14);
+    });
   });
 });

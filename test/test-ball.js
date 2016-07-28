@@ -9,11 +9,11 @@ describe('Ball', function() {
     var ball = new Ball(options);
 
     it('should have a default x coordinate', function() {
-      assert.equal(ball.x, 450);
+      assert.equal(ball.x, 395);
     });
 
     it('should have a default y coordinate', function() {
-      assert.equal(ball.y, 350);
+      assert.equal(ball.y, 460);
     });
 
     it('should have a default height', function() {
@@ -43,6 +43,7 @@ describe('Ball', function() {
       var ball = new Ball({x: 350, y: 450});
 
       ball.bounceUpRight();
+
       assert.equal(ball.x, 352);
       assert.equal(ball.y, 448);
     });
@@ -51,6 +52,7 @@ describe('Ball', function() {
       var ball = new Ball({x: 350, y: 450});
 
       ball.bounceUpLeft();
+
       assert.equal(ball.x, 348);
       assert.equal(ball.y, 448);
     });
@@ -59,6 +61,7 @@ describe('Ball', function() {
       var ball = new Ball({x: 350, y: 450});
 
       ball.bounceDownRight();
+
       assert.equal(ball.x, 352);
       assert.equal(ball.y, 452);
     });
@@ -67,6 +70,7 @@ describe('Ball', function() {
       var ball = new Ball({x: 350, y: 450});
 
       ball.bounceDownLeft();
+
       assert.equal(ball.x, 348);
       assert.equal(ball.y, 448);
     });
