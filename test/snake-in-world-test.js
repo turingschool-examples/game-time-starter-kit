@@ -7,7 +7,8 @@ describe('Snake in relation to world', function() {
 
   it('should know about the world if it is passed in', function () {
     var world = new World();
-    var snake = new Snake(250,250,10,10,world);
+    // var snake = new Snake(250,250,10,10,world);
+    var snake = world.snake;
     assert.equal(snake.world, world);
   });
 });
