@@ -22,6 +22,8 @@ describe('world', function () {
     assert.isObject(world);
   });
 
+  
+
   // it('should have a "snake" property which starts off as an object', function() {
   //   var world = new World();
   //   var snake = new Snake();

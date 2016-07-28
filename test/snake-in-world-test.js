@@ -13,10 +13,13 @@ describe('Snake in relation to world', function() {
   });
 });
 
-describe('World in relation to snake', function() {
-  it('should have a default snake', function () {
-    var snake = new Snake();
-    var world = new World();
-    assert.equal(world.snake, snake.world);
+
+
+
+describe('Snake colliding with an object', function() {
+
+it('should have a method called isSnakeColliding()', function () {
+  var world = new World();
+  assert.isFunction(world.isSnakeColliding);
   });
 });

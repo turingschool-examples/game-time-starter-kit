@@ -1,5 +1,4 @@
 const assert = require('chai').assert;
-const $ = require('jquery');
 
 const Snake = require('../lib/snake');
 

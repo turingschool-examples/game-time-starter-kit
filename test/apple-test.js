@@ -1,9 +1,8 @@
-//   const assert = require('chai').assert;
-//
-//   const Apple = require('../lib/apple');
-//
-//   describe('apple', function() {
-//     context('with default attributes', function() {
+  const assert = require('chai').assert;
+  const Apple = require('../lib/apple');
+
+  describe('apple', function() {
+    context('with default attributes', function() {
 //       var apple = new Apple();
 //       // it('should assign a random x coordinate', function() {
 //       //   assert.equal(apple.x, 5//this needs to be changes to random);
@@ -25,8 +24,8 @@
 //     context('changing coordinates', function() {
 //
 //
-//   });
-// });
+  });
+});
 
 //Other modules this things needs?
 //Game rules - Module
