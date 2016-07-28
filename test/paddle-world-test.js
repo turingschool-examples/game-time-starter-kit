@@ -4,7 +4,7 @@ const World = require('../lib/world');
 
 describe('Paddle in relation to world', function() {
 
-  it('should know about a world if it is passed it', function (){
+  it('should know about a world if it is passed in', function (){
     var world = new World
     var paddle = new Paddle({}, world)
     assert.equal(paddle.world, world)
