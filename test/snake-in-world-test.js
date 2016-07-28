@@ -15,8 +15,8 @@ describe('Snake in relation to world', function() {
 
 describe('World in relation to snake', function() {
   it('should have a default snake', function () {
-    var snake = new Snake(250,250,10,10);
-    var world = new World(null, null, snake);
-    assert.equal(world.snake, snake);
+    var snake = new Snake();
+    var world = new World();
+    assert.equal(world.snake, snake.world);
   });
 });
