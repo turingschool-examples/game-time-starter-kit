@@ -7,8 +7,8 @@ describe('Paddle', function() {
     var paddle = new Paddle;
 
     it('has default values', function() {
-      assert.equal(paddle.height, 100);
-      assert.equal(paddle.width, 10);
+      assert.equal(paddle.height, 10);
+      assert.equal(paddle.width, 100);
       assert.equal(paddle.x, 400);
       assert.equal(paddle.y, 450);
     });
@@ -62,12 +62,12 @@ describe('Paddle', function() {
     it('should move one to the right on x axis', function() {
       var paddle = new Paddle;
       paddle.moveRight()
-      assert.equal(paddle.x, 401)
+      assert.equal(paddle.x, 410)
     });
     it('should move one to the left on x axis', function() {
       var paddle = new Paddle;
       paddle.moveLeft()
-      assert.equal(paddle.x, 399);
+      assert.equal(paddle.x, 390);
     });
   });
 });
