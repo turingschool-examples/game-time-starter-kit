@@ -12,7 +12,7 @@ describe('World', function() {
 
     it('world has a paddle', function() {
       const world = new World;
-      assert.equal(typeof world.paddle, "object")
+      assert.equal(typeof world.paddles, "object")
     })
 
     it('should take take the first argument and set it as the "height" property', function() {

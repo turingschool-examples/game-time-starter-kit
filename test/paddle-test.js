@@ -62,12 +62,12 @@ describe('Paddle', function() {
     it('should move one to the right on x axis', function() {
       var paddle = new Paddle;
       paddle.moveRight()
-      assert.equal(paddle.x, 401)
+      assert.equal(paddle.x, 410)
     });
     it('should move one to the left on x axis', function() {
       var paddle = new Paddle;
       paddle.moveLeft()
-      assert.equal(paddle.x, 399);
+      assert.equal(paddle.x, 390);
     });
   });
 });
