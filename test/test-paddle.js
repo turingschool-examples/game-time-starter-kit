@@ -48,16 +48,16 @@ describe('Paddle', function(){
 
   describe ('movement', function(){
 
-    it('should decrement x by 4 when moveLeft is called', function(){
-      var paddle = new Paddle({x: 10});
+    it('should decrement x by 20 when moveLeft is called', function(){
+      var paddle = new Paddle({x: 20});
       paddle.moveLeft();
-      assert.equal(paddle.x, 6);
+      assert.equal(paddle.x, 0);
     });
 
-    it('should increment x by 4 when moveRight is called', function(){
-      var paddle = new Paddle({x: 10});
+    it('should increment x by 20 when moveRight is called', function(){
+      var paddle = new Paddle({x: 20});
       paddle.moveRight();
-      assert.equal(paddle.x, 14);
+      assert.equal(paddle.x, 40);
     });
   });
 });
