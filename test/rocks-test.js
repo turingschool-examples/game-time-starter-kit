@@ -46,7 +46,7 @@ describe('Rock', function() {
     });
 
     it('has a default y value', function(){
-      assert.equal(rock.y, 100);
+      assert.equal(rock.y, 165);
     });
 
     it('has a default width value', function(){

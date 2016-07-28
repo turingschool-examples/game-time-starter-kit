@@ -11,13 +11,13 @@ describe('when surfing', function() {
     it('should have a method called "isCollision()"', function() {
       let surfer = new Surfer({});
       let rock = new Rock({});
-      let world = new World(600, 150, surfer, rock);
+      let world = new World(600, 200, surfer, rock);
       assert.isFunction(world.isCollision);
     });
     it('should return collision on', function(){
       let surfer = new Surfer({});
       let rock = new Rock({});
-      let world = new World(600, 150, surfer, rock);
+      let world = new World(600, 200, surfer, rock);
 
       surfer.x = 20;
       rock.x = 20;
