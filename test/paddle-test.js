@@ -7,8 +7,8 @@ describe('Paddle', function() {
     var paddle = new Paddle;
 
     it('has default values', function() {
-      assert.equal(paddle.height, 100);
-      assert.equal(paddle.width, 10);
+      assert.equal(paddle.height, 10);
+      assert.equal(paddle.width, 100);
       assert.equal(paddle.x, 400);
       assert.equal(paddle.y, 450);
     });
