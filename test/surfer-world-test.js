@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const Surfer = require('../lib/surfer');
-const World = require('./world');
+const World = require('../lib/world');
 
 describe('Jump', function() {
   context('jump method and attributes', function () {
@@ -10,9 +10,9 @@ describe('Jump', function() {
     });
 
     it('"jump()" should decrement the "y" property by 70', function () {
-      var surfer = new Surfer({y: 110});
+      var surfer = new Surfer({y: 130});
       surfer.jump();
-      assert.equal(surfer.y, 40);
+      assert.equal(surfer.y, 60);
     });
 
     it('should have a spacebarWasPressed() method', function () {

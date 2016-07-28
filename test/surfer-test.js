@@ -8,17 +8,14 @@ describe('Surfer', function() {
         assert.equal(surfer.x, 20);
       });
       it('has a default y value', function(){
-        assert.equal(surfer.y, 110);
+        assert.equal(surfer.y, 130);
       });
       it('has a default width value', function(){
-        assert.equal(surfer.width, 20);
+        assert.equal(surfer.width, 50);
       });
       it('has a default height value', function(){
-        assert.equal(surfer.height, 30);
+        assert.equal(surfer.height, 60);
       });
     });
-
-
-
 
 });
