@@ -11,7 +11,7 @@ describe('player inputs', function() {
       var snake = new Snake();
       assert.equal(snake.y, 250);
       snake.moveUp();
-      assert.equal(snake.y, 240);
+      assert.equal(snake.y, 249);
     });
   });
 
@@ -21,7 +21,7 @@ describe('player inputs', function() {
         var snake = new Snake();
         assert.equal(snake.y, 250);
         snake.moveDown();
-        assert.equal(snake.y, 260);
+        assert.equal(snake.y, 251);
       });
   });
 
@@ -31,7 +31,7 @@ describe('player inputs', function() {
       var snake = new Snake();
       assert.equal(snake.x, 250);
       snake.moveLeft();
-      assert.equal(snake.x, 240);
+      assert.equal(snake.x, 249);
       });
   });
 
@@ -41,7 +41,7 @@ describe('player inputs', function() {
       var snake = new Snake();
       assert.equal(snake.x, 250);
       snake.moveRight();
-      assert.equal(snake.x, 260);
+      assert.equal(snake.x, 251);
       });
   });
 

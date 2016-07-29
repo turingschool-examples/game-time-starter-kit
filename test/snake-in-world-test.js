@@ -12,12 +12,12 @@ describe('Snake in relation to world', function() {
   });
 });
 
-// describe('Snake colliding with an object', function() {
-//   it('should have a method called isSnakeColliding()', function () {
-//     var world = new World();
-//     assert.isFunction(world.isSnakeColliding);
-//     });
-// });
+describe('Snake colliding with', function() {
+  it('should call checkCollision() on contact', function () {
+    var world = new World();
+    assert.isFunction(world.checkCollision);
+  });
+});
 //
 // describe('Snake starting the game', function () {
 //   it('should begin moving by pressing an arrow key', function () {
