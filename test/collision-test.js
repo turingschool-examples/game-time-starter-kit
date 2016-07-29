@@ -19,7 +19,7 @@ describe('when surfing', function() {
       let rock = new Rock({});
       let world = new World(600, 200, surfer, rock);
 
-      surfer.x = 20;
+      surfer.x = 25;
       rock.x = 25;
 
       assert.equal(true, world.isCollision());
