@@ -52,14 +52,14 @@ describe('snake', function() {
     it('can move up', function(){
       var snake = new Snake();
       snake.moveUp();
-      assert.equal(snake.y, 240);
+      assert.equal(snake.y, 249);
     });
 
     it('can move up twice', function(){
       var snake = new Snake();
       snake.moveUp();
       snake.moveUp();
-      assert.equal(snake.y, 230);
+      assert.equal(snake.y, 248);
     });
   });
 
@@ -67,14 +67,14 @@ describe('snake', function() {
     it('can move down', function(){
       var snake = new Snake();
       snake.moveDown();
-      assert.equal(snake.y, 260);
+      assert.equal(snake.y, 251);
     });
 
     it('can move down twice', function(){
       var snake = new Snake();
       snake.moveDown();
       snake.moveDown();
-      assert.equal(snake.y, 270);
+      assert.equal(snake.y, 252);
     });
   });
 
@@ -82,14 +82,14 @@ describe('snake', function() {
     it('can move left', function(){
       var snake = new Snake();
       snake.moveLeft();
-      assert.equal(snake.x, 240);
+      assert.equal(snake.x, 249);
     });
 
     it('can move left twice', function(){
       var snake = new Snake();
       snake.moveLeft();
       snake.moveLeft();
-      assert.equal(snake.x, 230);
+      assert.equal(snake.x, 248);
     });
   });
 
@@ -97,14 +97,14 @@ describe('snake', function() {
     it('can move right', function(){
       var snake = new Snake();
       snake.moveRight();
-      assert.equal(snake.x, 260);
+      assert.equal(snake.x, 251);
     });
 
     it('can move up right', function(){
       var snake = new Snake();
       snake.moveRight();
       snake.moveRight();
-      assert.equal(snake.x, 270);
+      assert.equal(snake.x, 252);
     });
   });
 
