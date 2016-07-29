@@ -2,6 +2,7 @@ const chai = require('chai');
 const assert = chai.assert;
 const Ball = require('../lib/ball');
 const World = require('../lib/world');
+
 describe('Objects in the world', function() {
   context('Ball in the relation to the world', function() {
     it('the ball should know about the world if it gets pased in', function() {
@@ -10,6 +11,7 @@ describe('Objects in the world', function() {
       assert.equal(ball.world, pickles);
     });
   });
+
   context('World in relation to the ball', function() {
     it('should create a new ball when a new world is created', function() {
       var world = new World(500, 500);

@@ -6,7 +6,7 @@ const World = require('../lib/world');
 describe('paddle to world', function() {
   it('should stop moving right when it reaches the width of the world', function() {
     var world = new World(500, 500);
-    var paddle = new Paddle({ x: 400});
+    var paddle = new Paddle({ x: 400 });
     if ((paddle.x + paddle.width) < this.width) {
       paddle.moveRight();
     }
