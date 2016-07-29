@@ -1,7 +1,8 @@
-const assert = require('chia').assert;
+const assert = require('chai').assert;
 const Paddle = require('../lib/paddle');
 const World = require('../lib/world');
 const Ball = require('../lib/ball');
+const Brick = require('../lib/brick');
 
 describe('Brick in relation to world', function() {
 
@@ -15,11 +16,11 @@ describe('Brick in relation to world', function() {
     var world = new World
     var brick = new Brick({}, world)
     world.addBrick(brick)
-    assert.equal(paddle.world, world);
+    assert.equal(brick.world, world);
   })
 })
 
-decribe('World in relation to paddle', function () {
+describe('World in relation to brick', function () {
     it('should have a method called addBrick()', function () {
       var world = new World
       assert.isFunction(world.addBrick)

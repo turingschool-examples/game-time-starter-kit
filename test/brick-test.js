@@ -8,8 +8,8 @@ describe('Brick', function() {
     it('has default values', function() {
       var brick = new Brick
 
-      assert.equal(brick.height, 5);
-      assert.equal(brick.width, 10);
+      assert.equal(brick.height, 20);
+      assert.equal(brick.width, 60);
       assert.equal(brick.x, 100);
       assert.equal(brick.y, 100);
     });
@@ -28,7 +28,7 @@ describe('Brick', function() {
       y: yValue
     };
 
-    const ball = new Ball(properties);
+    const brick = new Brick(properties);
 
     it('assigns xValue to brick x', function () {
       assert.equal(brick.x, xValue);
