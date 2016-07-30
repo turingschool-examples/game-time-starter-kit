@@ -6,7 +6,7 @@ describe('Brick', function() {
   context('checks default values', function() {
 
     it('has default values', function() {
-      var brick = new Brick
+      let brick = new Brick
 
       assert.equal(brick.height, 20);
       assert.equal(brick.width, 60);
@@ -17,11 +17,11 @@ describe('Brick', function() {
 
   context('check that we can set all values of brick', function() {
 
-    var heightValue = 20;
-    var widthValue = 30;
-    var xValue = 60;
-    var yValue = 40;
-    var properties = {
+    let heightValue = 20;
+    let widthValue = 30;
+    let xValue = 60;
+    let yValue = 40;
+    let properties = {
       height: heightValue,
       width: widthValue,
       x: xValue,
