@@ -1,4 +1,4 @@
-    const assert = require('chai').assert;
+const assert = require('chai').assert;
 const Paddle = require('../lib/paddle')
 const ball = require('../lib/ball');
 const World = require('../lib/world');
@@ -32,19 +32,19 @@ describe('Ball in relation to world', function() {
       assert.include(world.balls, ball)
     })
 
-    it.skip('should have a method called launchBall()', function() {
-      let world = new World
-      assert.isFunction(world.launchBall)
-    })
-
-    it.skip('should launch the ball when launchBall() is called', function() {
-      let world = new World
-      let ball = new Ball({}, world)
-
-      world.addBall(ball)
-      world.launchBall();
-      assert.equal(ball.x, 5)
-    })
+    // it.skip('should have a method called launchBall()', function() {
+    //   let world = new World
+    //   assert.isFunction(world.launchBall)
+    // })
+    //
+    // it.skip('should launch the ball when launchBall() is called', function() {
+    //   let world = new World
+    //   let ball = new Ball({}, world)
+    //
+    //   world.addBall(ball)
+    //   world.launchBall();
+    //   assert.equal(ball.x, 5)
+    // })
   })
 
 })
