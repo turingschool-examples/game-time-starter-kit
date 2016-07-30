@@ -44,13 +44,13 @@ describe('Ball', function() {
 
       ball.invertX();
 
-      assert.equal(ball.directionX, -2);
+      assert.equal(ball.directionX, -4);
     });
 
     it('should have directionY inverted when invertY called', function() {
       var ball = new Ball({x: 350, y: 450});
       ball.invertY();
-      assert.equal(ball.directionY, 2);
+      assert.equal(ball.directionY, 4);
     });
 
     it('should have directionX inverted when invertX called', function() {
@@ -58,8 +58,8 @@ describe('Ball', function() {
 
       ball.invert();
 
-      assert.equal(ball.directionX, -2);
-      assert.equal(ball.directionY, 2);
+      assert.equal(ball.directionX, -4);
+      assert.equal(ball.directionY, 4);
     });
   });
 });
