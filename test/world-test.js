@@ -21,14 +21,7 @@ describe('world', function () {
     var world = new World();
     assert.isObject(world);
   });
-  // 
-  // it('should have a top boundary', function () {
-  //   var world = new World();
-  //   assert.equal(world.height <= 500);
-  // });
-
 });
-
 
 //WHY?
 //To test edge cases

@@ -18,11 +18,3 @@ describe('Snake colliding with', function() {
     assert.isFunction(world.checkCollision);
   });
 });
-//
-// describe('Snake starting the game', function () {
-//   it('should begin moving by pressing an arrow key', function () {
-//     var snake = world.snake;
-//     assert.isFunction(world.snakeIsMoving);
-//   });
-
-// });
