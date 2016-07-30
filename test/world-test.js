@@ -28,12 +28,12 @@ describe('World', function () {
 });
 
 describe('Game Over', function() {
-  it('should have a method called "gameOver()"', function () {
+  it.skip('should have a method called "gameOver()"', function () {
     var world = new World({});
     assert.isFunction(world.gameOver);
     });
 
-  it('should have a method called "resetGame()"', function () {
+  it.skip('should have a method called "resetGame()"', function () {
     var world = new World({});
     assert.isFunction(world.resetGame);
     });
