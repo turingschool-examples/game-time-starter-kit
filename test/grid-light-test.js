@@ -51,7 +51,7 @@ describe('Creating a new game within the grid', function() {
       [new Light(true), new Light(false), new Light(true)],
       [new Light(true), new Light(false), new Light(false)]
     ];
-    debugger;
+    
     grid.createGame();
 
     assert.equal(grid.game[0][0].state, true);
