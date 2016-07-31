@@ -1,6 +1,7 @@
 const assert = require('chai').assert;
 const Grid = require('../lib/grid');
-const Light = require('../lib/light')
+const Light = require('../lib/light');
+const validGames = require('../lib/validGames');
 
 describe('Grid', function() {
 
@@ -13,34 +14,18 @@ describe('Grid', function() {
     assert.isObject(grid);
   });
 
-  it('should pull in an array of winnable games', function (){
+  it('should pull in an array of winnable games', function () {
     var grid = new Grid();
 
-    var expected = [
-      [
-        ["on", "off", "on"],
-        ["on", "off", "off"]
-      ],
-      [
-        ["on", "off", "on"],
-        ["on", "on", "off"]
-      ]
-    ];
-
-    assert.deepEqual(grid.games, expected);
+    assert.deepEqual(grid.games.validGames);
   });
 
   it('should create a game for the first template', function (){
     var grid = new Grid(0);
 
-    var expected = [
-      ["on", "off", "on"],
-      ["on", "off", "off"]
-    ];
-
-    assert.deepEqual(grid.game, expected);
-    assert.deepEqual(grid.game[0], expected[0]);
-    assert.deepEqual(grid.game[1], expected[1]);
+    assert.deepEqual(grid.game.validGames);
+    // assert.deepEqual(grid.game[0], validGames[0]);
+    // assert.deepEqual(grid.game[1], validGames[1]);
   });
 
   it('should pull in a key that indicates where lights should go', function (){

@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const Grid = require('../lib/grid');
 const Light = require('../lib/light');
-
+const validGames = require('../lib/validGames');
 
 describe('Grid in relation to the Light', function() {
 
@@ -29,37 +29,25 @@ describe('Creating a new game within the grid', function() {
   it('should have a function that creates a new game', function() {
     var grid = new Grid(0);
 
-    var expected = [
-      [new Light(true), new Light(false), new Light(true)],
-      [new Light(true), new Light(false), new Light(false)]
-    ];
-
     assert.isFunction(grid.createGame);
 
     grid.createGame();
 
-    assert.deepEqual(grid.game, expected);
+    assert.deepEqual(grid.game.validGames);
     assert.equal(grid.game[0][0].state, true);
     assert.equal(grid.game[0][1].state, false);
   });
 
-
   it('should have the ability to change the state of the light', function() {
-    var grid = new Grid(0);
+    var grid = new Grid(1);
 
-    var expected = [
-      [new Light(true), new Light(false), new Light(true)],
-      [new Light(true), new Light(false), new Light(false)]
-    ];
-    
     grid.createGame();
 
-    assert.equal(grid.game[0][0].state, true);
+    assert.equal(grid.game[4][4].state, false);
 
-    grid.changeLightState(1);
+    grid.changeLightState(25);
 
-    assert.equal(grid.game[0][0].state, false);
+    assert.equal(grid.game[4][4].state, true);
   });
 
-  //and set the state of each bulb to on or off'
 });
