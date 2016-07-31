@@ -30,7 +30,7 @@ describe('Grid', function() {
     assert.deepEqual(grid.games, expected);
   });
 
-  it('should create an game for the first template', function (){
+  it('should create a game for the first template', function (){
     var grid = new Grid(0);
 
     var expected = [
