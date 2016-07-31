@@ -31,6 +31,6 @@ describe('World in relation to brick', function () {
       let brick = new Brick({}, world)
 
       world.addBrick(brick)
-      assert.include(world.brick, brick)
+      assert.equal(world.brick, brick)
     })
 })

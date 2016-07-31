@@ -1,17 +1,17 @@
 const assert = require('chai').assert;
 const Paddle = require('../lib/paddle')
-const ball = require('../lib/ball');
+const Ball = require('../lib/ball');
 const World = require('../lib/world');
 
 describe('Ball in relation to world', function() {
 
-  it.skip('should know about a world if it is passed in', function() {
+  it('should know about a world if it is passed in', function() {
     let world = new World
     let ball = new Ball({}, world)
-    asert.equal(ball.world, world)
+    assert.equal(ball.world, world)
   })
 
-  it.skip('should know about a world if it is generated using world.addBall()', function() {
+  it('should know about a world if it is generated using world.addBall()', function() {
     let world = new World
     let ball = new Ball({}, world)
     world.addBall(ball)
@@ -19,12 +19,12 @@ describe('Ball in relation to world', function() {
   })
 
   describe('world in relation to ball', function() {
-    it.skip('should have a method called addBall()', function() {
+    it('should have a method called addBall()', function() {
       let world = new World
       assert.isFunction(world.addBall)
     })
 
-    it.skip('should know about the ball added to the world', function() {
+    it('should know about the ball added to the world', function() {
       let world = new World
       let ball = new Ball({}, world)
 
