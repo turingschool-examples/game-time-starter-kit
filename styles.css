@@ -1,0 +1,21 @@
+html {
+  display: flex;
+  justify-content:center;
+  background-color: #445723;
+}
+
+h1 {
+  margin-left: 33%;
+  font-family: 'Black Ops One', cursive;
+  color: #EBEEF3;
+}
+
+p {
+  font-family: 'Black Ops One', cursive;
+  color: #EBEEF3;
+}
+
+canvas {
+  margin-top: 10px;
+  background-color: white;
+}
