@@ -1,4 +1,4 @@
-const assert = require('chai').assert;
+  const assert = require('chai').assert;
 const Snake = require('../lib/snake');
 
 describe('snake', function() {
