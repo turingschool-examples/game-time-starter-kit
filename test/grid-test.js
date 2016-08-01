@@ -74,4 +74,25 @@ describe('Grid', function() {
     assert.deepEqual(grid.key[1], expected[1]);
     assert.deepEqual(grid.key[2], expected[2]);
   });
+
+  describe('checkForLightsOut()', function () {
+
+    it('should return false if there are any lights on', function () {
+      var grid = new Grid(0);
+      assert.isFalse(grid.checkForLightsOut());
+    });
+
+    it('should return true if all lights are off', function () {
+      var grid = new Grid(0);
+
+      grid.rows.forEach(function (row, index) {
+        row.forEach(function (light, index) {
+          light.state = false;
+        });
+      });
+
+      assert.isTrue(grid.checkForLightsOut());
+    });
+
+  });
 });
