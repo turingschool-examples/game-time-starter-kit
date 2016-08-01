@@ -152,19 +152,19 @@ h1 {
 }
 
 
-button {
+.reset {
   background-color: lightblue;
   border-top: 10px solid #05c2d1;
   border-right: 10px solid aqua;
   border-bottom: 10px solid #05c2d1;
   border-left: 10px solid aqua;
   font-family: 'Monoton', cursive;
-  font-size: 35px;
+  font-size: 25px;
   height: 75px;
   width: 200px;
 }
 
-button:hover {
+.reset:hover {
   background-color: #05c2d1;
   border-top: 10px solid aqua;
   border-right: 10px solid lightblue;
