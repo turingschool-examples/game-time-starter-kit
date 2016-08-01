@@ -1,17 +1,173 @@
+body {
+  background-color: black;
+}
+
 .grid {
+  border-collapse: collapse;
   margin:1em auto;
-  border-collapse:collapse;
+  align-content: center;
+}
+
+h1 {
+  color: #05c2d1;
+  font-family: 'Neon', cursive;
+  font-size: 50px;
+  margin: 0;
+}
+
+.blink_me {
+  animation: pulse 1s linear;
+  animation-delay: 1s;
+  animation-duration: 3s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+@keyframes pulse {
+  from {
+  		opacity: 0.5;
+  	}
+  	4% {
+  		opacity: 0.5;
+  	}
+  	6% {
+  		opacity: 0.45;
+  	}
+  	8% {
+  		opacity: 0.55;
+  	}
+  	10% {
+  		opacity: 0.45;
+  	}
+  	11% {
+  		opacity: 0.5;
+  	}
+  	12% {
+  		opacity: 0.65;
+  	}
+  	14% {
+  		opacity: 0;
+  	}
+  	16% {
+  		opacity: 0.70;
+  	}
+  	17% {
+  		opacity: 0.55;
+  	}
+  	19% {
+  		opacity: 0.5;
+  	}
+  	20% {
+  		opacity: 0;
+  	}
+  	24% {
+  		opacity: 0.5;
+  	}
+  	26% {
+  		opacity: 0.69;
+  	}
+  	28% {
+  		opacity: 0.5;
+  	}
+  	38% {
+  		opacity: 0.45;
+  	}
+  	40% {
+  		opacity: 0;
+  	}
+  	42% {
+  		opacity: 0.6;
+  	}
+  	44% {
+  		opacity: 0.5;
+  	}
+  	46% {
+  		opacity: 0.5;
+  	}
+  	56% {
+  		opacity: 0.5;
+  	}
+  	58% {
+  		opacity: 0.75;
+  	}
+  	60% {
+  		opacity: 1.5;
+  	}
+  	68% {
+  		opacity: 1.5;
+  	}
+  	70% {
+  		opacity: 1.6; /*peak*/
+  	}
+  	72% {
+  		opacity: 1.5;
+  	}
+  	93% {
+  		opacity: 1.5;
+  	}
+  	95% {
+  		opacity: 1.6; /*peak*/
+  	}
+  	97% {
+  		opacity: 0.5;
+  	}
+  	to {
+  		opacity: 1;
+  	}
+  }
+}
+
+
+
+.neon {
+  color: #D9E86F;
 }
 
 .grid td {
-  width: 100px; height:100px;
-  border: 3px solid grey;
+  border: 3px solid #87BBE8;
+  height: 80px;
+  width: 80px;
+}
+
+.grid td:hover {
+  cursor: pointer;
+  border-bottom: 3px solid magenta;
+  border-right: 3px solid magenta;
 }
 
 #true {
-  background-color: yellow;
+  background-image: radial-gradient(circle, white, #D9E86F 50px);
 }
 
 #false {
-  background-color: black;
+  background-image: radial-gradient(circle, black, #6D6D73 95px);
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+button {
+  background-color: lightblue;
+  border-top: 10px solid #05c2d1;
+  border-right: 10px solid aqua;
+  border-bottom: 10px solid #05c2d1;
+  border-left: 10px solid aqua;
+  font-family: 'Monoton', cursive;
+  font-size: 35px;
+  height: 75px;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #05c2d1;
+  border-top: 10px solid aqua;
+  border-right: 10px solid lightblue;
+  border-bottom: 10px solid aqua;
+  border-left: 10px solid lightblue;
 }
