@@ -13,8 +13,8 @@ describe('Snake in relation to world', function() {
 });
 
 describe('Snake colliding with', function() {
-  it('should call checkCollision() on contact', function () {
+  it('should call eatFood() on contact with apple', function () {
     var world = new World();
-    assert.isFunction(world.checkCollision);
+    assert.isFunction(world.eatFood);
   });
 });

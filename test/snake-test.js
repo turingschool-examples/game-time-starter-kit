@@ -1,5 +1,4 @@
 const assert = require('chai').assert;
-
 const Snake = require('../lib/snake');
 
 describe('snake', function() {
@@ -19,6 +18,14 @@ describe('snake', function() {
 
     it('should assign a width', function(){
       assert.equal(snake.width, 10);
+    });
+
+    it('should assign a direction',function(){
+      assert.equal(snake.direction, 0);
+    });
+
+    it('should assign a total',function(){
+      assert.equal(snake.total, 0);
     });
   });
 
@@ -78,7 +85,6 @@ describe('snake', function() {
     });
   });
 
-  context('changing coordinates', function() {
     it('can move left', function(){
       var snake = new Snake();
       snake.moveLeft();
@@ -93,7 +99,24 @@ describe('snake', function() {
     });
   });
 
-  context('changing coordinates', function() {
+  context('Snake movement', function() {
+
+
+    it('should have a move function', function () {
+      var snake = new Snake();
+      assert.isFunction(snake.move);
+    });
+
+    it('should have an update function', function () {
+      var snake = new Snake();
+      assert.isFunction(snake.update);
+    });
+
+    it('should have a gameOver function', function () {
+      var snake = new Snake();
+      assert.isFunction(snake.gameOver);
+    });
+
     it('can move right', function(){
       var snake = new Snake();
       snake.moveRight();
@@ -107,5 +130,3 @@ describe('snake', function() {
       assert.equal(snake.x, 252);
     });
   });
-
-});

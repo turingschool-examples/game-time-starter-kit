@@ -17,6 +17,42 @@ describe('world', function () {
     assert.isFunction(World);
   });
 
+  it('should have an render function', function () {
+    var world = new World();
+    assert.isFunction(world.renderWorld);
+  });
+
+  it('should have an eatFood function', function () {
+    var world = new World();
+    assert.isFunction(world.eatFood);
+  });
+
+  it('should have an update function', function () {
+    var world = new World();
+    assert.isFunction(world.updateWorld);
+  });
+
+  // it('should increase snakes total upon apple collision', function(){
+  //   var world = new World();
+  //   world.eatFood();
+  //   assert.equal(world.snake.total, 1);
+  // });
+
+  // it('should generate new apple upon collision', function () {
+  //   var world = new World();
+  //   var oldAppleX = world.apple.x;
+  //   world.eatFood();
+  //   assert.notEqual(world.apple.x, oldAppleX);
+  // });
+
+
+    // it('should generate new apple upon collision', function () {
+    //   var world = new World();
+    //   var oldAppleX = world.apple.x;
+    //   world.eatFood();
+    //   assert.notEqual(world.apple.x, oldAppleX);
+    // });
+
   it('should instantiate an object', function () {
     var world = new World();
     assert.isObject(world);
