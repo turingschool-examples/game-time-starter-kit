@@ -17,7 +17,7 @@ describe('Collision', function() {
   context('when surfer hits a rock', function() {
     it('registers collision if the surfer collides with an obstacle', function(){
       let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
-      let rock = new Rock({ x: 15, right: 40, top: 165 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
       let collision = new Collision(surfer);
 
       assert.equal(true, collision.isCollision(rock));

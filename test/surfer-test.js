@@ -25,13 +25,13 @@ describe('Surfer', function() {
         assert.isFunction(surfer.jump);
       });
 
-      it.skip('"jump()" should decrement the "y" property by 70', function () {
+      it('"jump()" should decrement the "y" property by 70', function () {
         var surfer = new Surfer({y: 130});
         surfer.jump();
         assert.equal(surfer.y, 60);
       });
 
-      it.skip('should have a spacebarWasPressed() method', function () {
+      it('should have a spacebarWasPressed() method', function () {
         var surfer = new Surfer({});
         assert.isFunction(surfer.spacebarWasPressed);
       });
