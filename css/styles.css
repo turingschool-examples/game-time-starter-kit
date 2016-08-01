@@ -16,7 +16,7 @@ h1 {
 }
 
 .blink_me {
-  animation: pulse 1s linear;
+  animation: pulse .25s linear;
   animation-delay: 1s;
   animation-duration: 3s;
   animation-name: pulse;
@@ -27,39 +27,44 @@ h1 {
 @keyframes pulse {
   from {
   		opacity: 0.5;
+      color: #05c2d1;
   	}
   	4% {
-  		opacity: 0.5;
+  		opacity: 1.5;
   	}
   	6% {
-  		opacity: 0.45;
+  		opacity: 1.45;
   	}
   	8% {
   		opacity: 0.55;
   	}
   	10% {
-  		opacity: 0.45;
+  		opacity: 1.45;
   	}
   	11% {
   		opacity: 0.5;
   	}
   	12% {
   		opacity: 0.65;
+      color: magenta;
   	}
   	14% {
   		opacity: 0;
+      color: black;
   	}
   	16% {
   		opacity: 0.70;
   	}
   	17% {
   		opacity: 0.55;
+      color: magenta;
   	}
   	19% {
   		opacity: 0.5;
   	}
   	20% {
-  		opacity: 0;
+  		opacity: 1;
+      color: magenta;
   	}
   	24% {
   		opacity: 0.5;
@@ -75,9 +80,11 @@ h1 {
   	}
   	40% {
   		opacity: 0;
+      color: black;
   	}
   	42% {
   		opacity: 0.6;
+      color: #D9E86F;
   	}
   	44% {
   		opacity: 0.5;
@@ -90,6 +97,7 @@ h1 {
   	}
   	58% {
   		opacity: 0.75;
+      color: #D9E86F;
   	}
   	60% {
   		opacity: 1.5;
@@ -99,21 +107,27 @@ h1 {
   	}
   	70% {
   		opacity: 1.6; /*peak*/
+      color: #D9E86F;
   	}
   	72% {
-  		opacity: 1.5;
+  		opacity: 0.5;
+      color: #05c2d1;
   	}
   	93% {
-  		opacity: 1.5;
+  		opacity: 1.6;
+      color: #05c2d1;
   	}
   	95% {
-  		opacity: 1.6; /*peak*/
+  		opacity: .8; /*peak*/
+      color: #05c2d1;
   	}
   	97% {
   		opacity: 0.5;
+      color: #05c2d1;
   	}
   	to {
   		opacity: 1;
+      color: #05c2d1;
   	}
   }
 }
