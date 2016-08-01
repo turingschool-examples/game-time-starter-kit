@@ -15,6 +15,55 @@ describe('Collision', function() {
   });
 
   context('when surfer hits a rock', function() {
+
+    it('returns true if surfers front collides with rocks front', function(){
+      let surfer = new Surfer({ x: 20, right: 25, bottom: 190 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
+      let collision = new Collision(surfer);
+
+      assert.equal(true, collision.frontsTouching(rock));
+    });
+
+    it('returns false if surfers front collides with rocks front', function(){
+      let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
+      let collision = new Collision(surfer);
+
+      assert.equal(false, collision.frontsTouching(rock));
+    });
+
+    it('returns true if surfers back collides with rocks back', function(){
+      let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
+      let collision = new Collision(surfer);
+
+      assert.equal(true, collision.backsTouching(rock));
+    });
+
+    it('returns false if surfers back collides with rocks back', function(){
+      let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
+      let collision = new Collision(surfer);
+
+      assert.equal(false, collision.backsTouching(rock));
+    });
+
+    it('returns true if surfers bottom collides with rocks top', function(){
+      let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
+      let collision = new Collision(surfer);
+
+      assert.equal(true, collision.surferBottomTouchingObstacleTop(rock));
+    });
+
+    it('returns false if surfers bottom collides with rocks top', function(){
+      let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
+      let rock = new Rock({ x: 25, right: 50, top: 165 });
+      let collision = new Collision(surfer);
+
+      assert.equal(false, collision.surferBottomTouchingObstacleTop(rock));
+    });
+
     it('registers collision if the surfer collides with an obstacle', function(){
       let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
       let rock = new Rock({ x: 25, right: 50, top: 165 });
@@ -23,9 +72,11 @@ describe('Collision', function() {
       assert.equal(true, collision.isCollision(rock));
     });
 
-    it('does not register collision if the surfer does not collide with an obstacle', function(){
+
+
+    it('registers collision if the surfer does collide with an obstacle', function(){
       let surfer = new Surfer({ x: 20, right: 70, bottom: 190 });
-      let rock = new Rock({ x: 75, right: 40, top: 165 });
+      let rock = new Rock({ x: 75, right: 140, top: 165 });
       let collision = new Collision(surfer);
 
       assert.equal(false, collision.isCollision(rock));
