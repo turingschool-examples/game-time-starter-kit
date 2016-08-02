@@ -28,12 +28,14 @@ describe('Ball', function() {
   context('can take variable x and y coordinates', function() {
     var xValue = 20;
     var yValue = 50;
-    var options = { x: xValue, y: yValue };
-    var ball = new Ball(options);
+    var ball = new Ball({ x: 50, y: 75});
+
 
     it('should accept a variable x coordinate', function() {
-      assert.equal(ball.x, xValue);
-      assert.equal(ball.y, yValue);
+      ball.x = xValue;
+      ball.y = yValue;
+      assert.equal(ball.x, 20);
+      assert.equal(ball.y, 50);
     });
   });
 
