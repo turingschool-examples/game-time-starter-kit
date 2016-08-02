@@ -8,7 +8,7 @@ describe('Paddle', function(){
     var paddle = new Paddle(options);
 
     it('should have a default x coordinate', function(){
-      assert.equal(paddle.x, 350);
+      assert.equal(paddle.x, 325);
     });
 
     it('should have a default y coordinate', function() {
