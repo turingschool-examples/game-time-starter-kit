@@ -1,0 +1,15 @@
+body {
+  background-color: black
+}
+
+body h1 {
+  margin: auto;
+  font-family: cursive;
+  color: white;
+}
+
+#game-wrap {
+display: flex;
+justify-content: center;
+cursor: none;
+}
