@@ -19,7 +19,7 @@ describe('Objects in the world', function() {
     });
     it('should create a new ball with default width', function(){
       var world = new World(500, 500);
-      assert.equal(world.ball.width, 10);
+      assert.equal(world.ball.width, 12);
     });
   });
 });

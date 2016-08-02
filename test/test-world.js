@@ -23,9 +23,9 @@ describe('World', function() {
     assert.equal(world.height, 250);
   });
 
-  it('should have a "bricks" property which starts out as an empty array', function() {
+  it('should have a "court" array which starts out as an empty array', function() {
     var world = new World(50, 250);
-    assert.deepEqual(world.bricks, []);
+    assert.deepEqual(world.court, []);
   });
 
   it('should have a "paddle" object', function() {

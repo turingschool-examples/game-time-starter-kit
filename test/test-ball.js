@@ -9,19 +9,19 @@ describe('Ball', function() {
     var ball = new Ball(options);
 
     it('should have a default x coordinate', function() {
-      assert.equal(ball.x, 395);
+      assert.equal(ball.x, 375);
     });
 
     it('should have a default y coordinate', function() {
-      assert.equal(ball.y, 460);
+      assert.equal(ball.y, 458);
     });
 
     it('should have a default height', function() {
-      assert.equal(ball.height, 10);
+      assert.equal(ball.height, 12);
     });
 
     it('should have a default width', function() {
-      assert.equal(ball.width, 10);
+      assert.equal(ball.width, 12);
     });
   });
 

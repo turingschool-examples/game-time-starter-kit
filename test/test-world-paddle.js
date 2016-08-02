@@ -11,10 +11,7 @@ describe('Paddle to world', function() {
     assert.equal(paddle.x, 400);
   });
   it ('should stop moving left when it reaches the left wall of the world', function() {
-    var paddle = new Paddle({ x: 30});
-    if (paddle.x > 0) {
-      paddle.moveLeft();
-    }
+    var paddle = new Paddle({ x: 0});
     if (paddle.x > 0) {
       paddle.moveLeft();
     }
