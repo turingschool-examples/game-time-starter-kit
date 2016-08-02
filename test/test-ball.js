@@ -9,31 +9,33 @@ describe('Ball', function() {
     var ball = new Ball(options);
 
     it('should have a default x coordinate', function() {
-      assert.equal(ball.x, 395);
+      assert.equal(ball.x, 375);
     });
 
     it('should have a default y coordinate', function() {
-      assert.equal(ball.y, 460);
+      assert.equal(ball.y, 458);
     });
 
     it('should have a default height', function() {
-      assert.equal(ball.height, 10);
+      assert.equal(ball.height, 12);
     });
 
     it('should have a default width', function() {
-      assert.equal(ball.width, 10);
+      assert.equal(ball.width, 12);
     });
   });
 
   context('can take variable x and y coordinates', function() {
     var xValue = 20;
     var yValue = 50;
-    var options = { x: xValue, y: yValue };
-    var ball = new Ball(options);
+    var ball = new Ball({ x: 50, y: 75});
+
 
     it('should accept a variable x coordinate', function() {
-      assert.equal(ball.x, xValue);
-      assert.equal(ball.y, yValue);
+      ball.x = xValue;
+      ball.y = yValue;
+      assert.equal(ball.x, 20);
+      assert.equal(ball.y, 50);
     });
   });
 

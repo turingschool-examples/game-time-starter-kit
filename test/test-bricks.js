@@ -9,7 +9,7 @@ describe('Brick', function(){
     var brick = new Brick(options);
 
     it('should have a default height of 30', function(){
-      assert.equal(brick.height, 30);
+      assert.equal(brick.height, 25);
     });
     it('should have a default width of 60', function() {
       assert.equal(brick.width, 60);
