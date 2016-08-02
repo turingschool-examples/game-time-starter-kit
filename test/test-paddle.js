@@ -16,7 +16,7 @@ describe('Paddle', function(){
     });
 
     it ('should have a default height', function() {
-      assert.equal(paddle.height, 15);
+      assert.equal(paddle.height, 10);
     });
 
     it ('should have a default width', function() {
@@ -48,16 +48,16 @@ describe('Paddle', function(){
 
   describe ('movement', function(){
 
-    it('should decrement x by 30 when moveLeft is called', function(){
-      var paddle = new Paddle({x: 30});
+    it('should decrement x by 20 when moveLeft is called', function(){
+      var paddle = new Paddle({x: 20});
       paddle.moveLeft();
       assert.equal(paddle.x, 0);
     });
 
     it('should increment x by 30 when moveRight is called', function(){
-      var paddle = new Paddle({x: 30});
+      var paddle = new Paddle({x: 20});
       paddle.moveRight();
-      assert.equal(paddle.x, 60);
+      assert.equal(paddle.x, 40);
     });
   });
 });
