@@ -1,11 +1,34 @@
+@font-face {
+  font-family: 'Swanky';
+  src: url('img/FontdinerSwanky.ttf');
+}
+
+@font-face {
+  font-family: 'Honey';
+  src: url('img/HoneyScript-Light.ttf');
+}
+
 body {
-  background-color: black
+  background: url(img/Almonds.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 body h1 {
+  text-align: center;
   margin: auto;
-  font-family: cursive;
-  color: white;
+  font-family: 'Swanky', sans-serif;
+  font-size: 60px;
+  color: blanchedalmond;
+  margin: 0;
+}
+
+p {
+  font-family: 'Honey', cursive;
+  font-size: 45px;
+  text-align: center;
+  color: blanchedalmond;
+  margin: 0;
+  /*font-style: italic;*/
 }
 
 h2{
@@ -17,6 +40,7 @@ h2{
 }
 
 #game-wrap {
+  margin-top: 0;
 display: flex;
 justify-content: center;
 cursor: none;
