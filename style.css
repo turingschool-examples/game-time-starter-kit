@@ -31,17 +31,19 @@ p {
   /*font-style: italic;*/
 }
 
-h2{
-  color: white;
-}
-
 .life-counter{
   color: white;
 }
 
 #game-wrap {
   margin-top: 0;
-display: flex;
-justify-content: center;
-cursor: none;
+  display: flex;
+  justify-content: center;
+  cursor: none;
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
