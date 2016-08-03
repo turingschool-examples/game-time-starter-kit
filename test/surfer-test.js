@@ -1,6 +1,5 @@
 const assert = require('chai').assert;
 const Surfer = require('../lib/surfer');
-const World = require('../lib/world');
 
 
 describe('Surfer', function() {
