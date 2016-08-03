@@ -1,0 +1,23 @@
+body {
+  background-color: black
+}
+
+body h1 {
+  margin: auto;
+  font-family: cursive;
+  color: white;
+}
+
+h2{
+  color: white;
+}
+
+.life-counter{
+  color: white;
+}
+
+#game-wrap {
+display: flex;
+justify-content: center;
+cursor: none;
+}
