@@ -55,7 +55,7 @@ describe('Ball', function() {
       assert.equal(ball.directionY, 4);
     });
 
-    it('should have directionX inverted when invertX called', function() {
+    it('should have directionX and directionY inverted when invert called', function() {
       var ball = new Ball({x: 350, y: 450});
 
       ball.invert();

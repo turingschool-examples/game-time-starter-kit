@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 const Ball = require('../lib/ball');
-const Brick = require('../lib/brick')
+const Brick = require('../lib/brick');
 
 
 describe ('Ball Collisions with objects in the court', function(){
