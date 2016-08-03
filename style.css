@@ -8,6 +8,14 @@ body h1 {
   color: white;
 }
 
+h2{
+  color: white;
+}
+
+.life-counter{
+  color: white;
+}
+
 #game-wrap {
 display: flex;
 justify-content: center;
