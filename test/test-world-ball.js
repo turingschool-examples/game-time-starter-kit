@@ -22,80 +22,16 @@ describe('Objects in the world', function() {
       assert.equal(world.ball.width, 12);
     });
   });
+
+  context('Ball bouncing in the world', function() {
+    it('should bounce off the right wall in the world', function() {
+
+    });
+    it('should bounce off the left wall in the world', function() {
+
+    });
+    it ('should bounce off the ceiling in the world', function() {
+
+    });
+  });
 });
-
-
-
-//
-//   skip.it('should know about the blocks added to the world', function () {
-//     var world = new World(100, 100);
-//     var block = new Block(0, 0, 10, 10);
-//
-//     world.addBlock(block);
-//     assert.include(world.blocks, block);
-//   });
-//
-//   skip.it('should have a method called addEnemy()', function () {
-//     var world = new World(100, 100);
-//     assert.isFunction(world.addEnemy);
-//   });
-//
-//   skip.it('should know about the enemies added to the world', function () {
-//     var world = new World(100, 100);
-//     var enemy = new Block(0, 0, 10, 10);
-//
-//     world.addEnemy(enemy);
-//     assert.include(world.enemies, enemy);
-//   });
-//
-//   skip.it('should have a rightArrowWasPressed() method', function () {
-//     var world = new World(100, 100);
-//     assert.isFunction(world.rightArrowWasPressed);
-//   });
-//
-//   skip.it('should move all the blocks right when rightArrowWasPressed() is called', function () {
-//     var world = new World(100, 100);
-//     var block = new Block(0, 0, 10, 10);
-//     world.addBlock(block);
-//
-//     world.rightArrowWasPressed();
-//
-//     assert.equal(block.x, 1);
-//   });
-//
-//   skip.it('should not move all the enemies right when rightArrowWasPressed() is called', function () {
-//     var world = new World(100, 100);
-//     var enemy = new Block(0, 0, 10, 10);
-//     world.addEnemy(enemy);
-//
-//     world.rightArrowWasPressed();
-//
-//     assert.equal(enemy.x, 0);
-//   });
-//
-//   skip.it('should have a method called isBlockyColliding()', function () {
-//     var world = new World(100, 100);
-//     assert.isFunction(world.isBlockyColliding);
-//   });
-//
-//   skip.it('should return the enemy Blocky is colliding with', function () {
-//     var world = new World(100, 100);
-//     var blocky = new Block(0, 0, 10, 10);
-//     var enemy = new Block(1, 1, 10, 10);
-//
-//     world.addBlock(blocky);
-//     world.addEnemy(enemy);
-//     assert.equal(world.isBlockyColliding(), enemy);
-//   });
-//
-//   skip.it('should return the undefined if Blocky is not colliding', function () {
-//     var world = new World(100, 100);
-//     var blocky = new Block(0, 0, 10, 10);
-//     var enemy = new Block(90, 90, 10, 10);
-//
-//     world.addBlock(blocky);
-//     world.addEnemy(enemy);
-//     assert.isUndefined(world.isBlockyColliding());
-//   });
-//
-// });
