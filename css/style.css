@@ -1,17 +1,25 @@
 header h1 {
   font-family: 'Covered By Your Grace', cursive;
   font-size: 100px;
-  color: #15607F;
+  color: #black;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 50px;
 }
 
-/*body {
-  background: url(../images/53319-O7FLID.jpg) no-repeat;
-}*/
+body {
+  background: url(../img/wave-bkgd.jpg) no-repeat;
+}
 
 .container {
   display: flex;
   justify-content: center;
+}
+
+h2 {
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 50px;
+  color: black;
+  text-align: center;
+  margin-top: 50px;
 }
