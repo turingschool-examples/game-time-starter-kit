@@ -1,10 +1,7 @@
 
 const assert = require('chai').assert;
 const World = require('../lib/world');
-// require('../lib/index');
 
-
-//is world created with default attributes
 describe('World', function () {
 
   it('should be a function', function () {
