@@ -1,37 +1,53 @@
 const assert = require('chai').assert;
 const Grid = require('../lib/grid');
 const Light = require('../lib/light');
-
-describe('Light in relation to the Grid', function() {
-
-  it('should know about a grid if it is passed in', function () {
-    var grid = new Grid(500, 500);
-    var light = new Light(1, 1, 100, 100, true || false, grid);
-    assert.equal(light.grid, grid);
-  });
-
-  it('should know about a grid if it is created using grid.addLight()', function() {
-    var grid = new Grid(500, 500);
-    var light = new Light(1, 1, 100, 100, true || false);
-    grid.addLight(light);
-    assert.equal(light.grid, grid);
-  });
-
-});
+const validGames = require('../lib/validGames');
 
 describe('Grid in relation to the Light', function() {
 
   it('should have a method called addLight()', function() {
-    var grid = new Grid(500, 500);
+    var grid = new Grid();
     assert.isFunction(grid.addLight);
   })
 
-  it('should know about the lights added to the grid', function (){
-    var grid = new Grid(500, 500);
-    var light = new Light(1, 1, 100, 100, true || false);
 
-    grid.addLight(light);
-    assert.include(grid.lights, light);
-  })
+  it('should know about the states of the lights added to the grid', function () {
+    var grid = new Grid();
+    var onLight = new Light(true);
+    var offLight = new Light(false);
+
+    assert.isObject(grid.addLight(true));
+    assert.equal(grid.addLight(true).state, true);
+    assert.equal(grid.addLight(true).state, onLight.state);
+    assert.equal(grid.addLight(false).state, false);
+    assert.equal(grid.addLight(false).state, offLight.state);
+  });
+});
+
+describe('Creating a new game within the grid', function() {
+
+  it('should have a function that creates a new game', function() {
+    var grid = new Grid(0);
+
+    assert.isFunction(grid.createGame);
+
+    grid.createGame();
+
+    assert.deepEqual(grid.game.validGames);
+    assert.equal(grid.game[0][0].state, true);
+    assert.equal(grid.game[0][1].state, false);
+  });
+
+  it('should have the ability to change the state of the light', function() {
+    var grid = new Grid(1);
+
+    grid.createGame();
+
+    assert.equal(grid.game[4][4].state, false);
+
+    grid.changeLightState(25);
+
+    assert.equal(grid.game[4][4].state, true);
+  });
 
 });

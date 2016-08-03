@@ -1,72 +1,98 @@
 const assert = require('chai').assert;
 const Grid = require('../lib/grid');
-const Light = require('../lib/light')
+const Light = require('../lib/light');
+const validGames = require('../lib/validGames');
 
 describe('Grid', function() {
-  // it('should be a function', function() {
-  //   assert.isFunction(Grid);
-  // });
-  //
-  // it('should instantiate an object', function(){
-  //   var grid = new Grid();
-  //   assert.isObject(grid);
-  // });
-  //
-  // it('should take the first property of the object and set it as the "rows" property', function() {
-  //   var grid = new Grid(5);
-  //   assert.equal(grid.rows, 5);
-  // });
-  //
-  // it('should take the second property of the object and set it as the "columns" property', function() {
-  //   var grid = new Grid(5, 5);
-  //   assert.equal(grid.columns, 5);
-  // });
 
-  it('should create a game template', function (){
-    var grid = new Grid(0)
+  it('should create a function', function() {
+    assert.isFunction(Grid);
+  });
+
+  it('should be an Object', function() {
+    var grid = new Grid();
+    assert.isObject(grid);
+  });
+
+  it('should pull in an array of winnable games', function () {
+    var grid = new Grid();
+
+    assert.deepEqual(grid.games.validGames);
+  });
+
+  it('should create a game from the first template', function (){
+    var grid = new Grid(0);
 
     var expected = [
-      ["on", "off", "on"],
-      ["on", "off", "off"]
-    ]
+        ["on", "off", "on", "on", "off"],
+        ["off", "on", "on", "on", "off"],
+        ["on", "on", "on", "off", "off"],
+        ["on", "on", "off", "on", "on"],
+        ["off", "off", "off", "on", "on"]
+      ]
 
-    assert.deepEqual(grid.game, expected)
-    assert.deepEqual(grid.game[0], expected[0])
-    assert.deepEqual(grid.game[1], expected[1])
-  })
+    assert.deepEqual(grid.game.validGames);
+    assert.deepEqual(grid.game[0], expected[0]);
+    assert.deepEqual(grid.game[1], expected[1]);
+    assert.deepEqual(grid.game[2], expected[2]);
+    assert.deepEqual(grid.game[3], expected[3]);
+    assert.deepEqual(grid.game[4], expected[4]);
+  });
 
-  it('should add lights to game template', function (){
-    var grid = new Grid(0)
+  it('should pull in a key that indicates where lights should go', function (){
+    var grid = new Grid();
 
-    var expected = [
-      ["on", "off", "on"],
-      ["on", "off", "off"]
-    ]
+    var expected = {
+      1: [0, 0],
+      2: [0, 1],
+      3: [0, 2],
+      4: [0, 3],
+      5: [0, 4],
+      6: [1, 0],
+      7: [1, 1],
+      8: [1, 2],
+      9: [1, 3],
+      10: [1, 4],
+      11: [2, 0],
+      12: [2, 1],
+      13: [2, 2],
+      14: [2, 3],
+      15: [2, 4],
+      16: [3, 0],
+      17: [3, 1],
+      18: [3, 2],
+      19: [3, 3],
+      20: [3, 4],
+      21: [4, 0],
+      22: [4, 1],
+      23: [4, 2],
+      24: [4, 3],
+      25: [4, 4]
+    }
 
-    assert.deepEqual(grid.game, expected)
+    assert.deepEqual(grid.key, expected);
+    assert.deepEqual(grid.key[1], expected[1]);
+    assert.deepEqual(grid.key[2], expected[2]);
+  });
 
-    grid.createGame()
+  describe('checkForLightsOut()', function () {
 
-    assert.equal(grid.game[0][0].state, true)
-    assert.equal(grid.game[0][1].state, false)
+    it('should return false if there are any lights on', function () {
+      var grid = new Grid(0);
+      assert.isFalse(grid.checkForLightsOut());
+    });
 
-    assert.equal(grid.game[1][0].state, true)
-    assert.equal(grid.game[1][2].state, false)
-  })
-  // it('should take the first argument and set it as the "width" property of the instantiated object', function() {
-  //   var grid = new Grid(500);
-  //   assert.equal(grid.width, 500);
-  // });
-  //
-  // it('should take the second argument and set it as the "height" property of the instantiated object', function() {
-  //   var grid = new Grid(500, 500);
-  //   assert.equal(grid.height, 500);
-  // });
-  //
-  // it('should have a "lights" property, which starts out as an open array', function() {
-  //   var grid = new Grid(500, 500);
-  //   assert.isArray(grid.lights);
-  //   assert.deepEqual(grid.lights, []);
-  // });
+    it('should return true if all lights are off', function () {
+      var grid = new Grid(0);
 
+      grid.rows.forEach(function (row, index) {
+        row.forEach(function (light, index) {
+          light.state = false;
+        });
+      });
+
+      assert.isTrue(grid.checkForLightsOut());
+    });
+
+  });
 });
