@@ -35,7 +35,6 @@ describe('Creating a new game within the grid', function() {
 
     assert.deepEqual(grid.game.validGames);
     assert.equal(grid.game[0][0].state, true);
-    assert.equal(grid.game[0][1].state, false);
   });
 
   it('should have the ability to change the state of the light', function() {
@@ -45,7 +44,7 @@ describe('Creating a new game within the grid', function() {
 
     assert.equal(grid.game[4][4].state, false);
 
-    grid.changeLightState(25);
+    grid.changeLightState(24);
 
     assert.equal(grid.game[4][4].state, true);
   });
