@@ -20,20 +20,6 @@ describe('Grid', function() {
     assert.deepEqual(grid.games, validGames);
   });
 
-  it('should create a game from the first template', function (){
-    var grid = new Grid(0);
-
-    var expected = [
-        ["on", "off", "on", "on", "off"],
-        ["off", "on", "on", "on", "off"],
-        ["on", "on", "on", "off", "off"],
-        ["on", "on", "off", "on", "on"],
-        ["off", "off", "off", "on", "on"]
-      ]
-
-    assert.deepEqual(grid.game.validGames);
-    assert.equal(grid.game[0], expected[0]);
-  });
 
   it('should pull in a key that indicates where lights should go', function (){
     var grid = new Grid();
