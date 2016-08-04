@@ -10,11 +10,19 @@
   <p>Healthful and Declicious "fun" for the whole family!</p>
   <h2>Lives</h2>
     <div id="life-counter-js" class="life-counter"></div>
+    <div id="level-select" class="level-select">
+      <h2 class="level-text">
+        Change current level:
+      </h2>
+      <button type="button" name="level-up" id="level-up">+</button>
+      <button type="button" name="level-down" id="level-down">-</button>
+    </div>
     <div id="game-wrap">
       <canvas id="arkannoyed-canvas" width="750" height="500"></canvas>
     </div>
     <div class="start-button">
       <button type="button" name="start" id="start">Start Blanchin'!</button>
+      <button type="button" name="reset" class="button" id="reset" disabled>Reset Game</button>
     </div>
   <script src="main.bundle.js"></script>
 </body>
