@@ -98,12 +98,16 @@ button {
   height: 25px;
 }
 
+button:hover{
+  background-color: #005E96;
+}
+
 button:disabled{
   opacity: 0.7;
 }
 
-button:hover{
-  background-color: #005E96;
+button:disabled:hover{
+  background-color: #00253b;
 }
 
 .life-counter{
