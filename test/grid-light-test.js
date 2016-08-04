@@ -32,13 +32,12 @@ describe('Creating a new game within the grid', function() {
     assert.isFunction(grid.createGame);
 
     grid.createGame();
-    debugger;
-
 
 
     assert.deepEqual(grid.game.validGames);
     assert.equal(grid.game[0][0].state, false);
     assert.equal(grid.game[0][1].state, false);
+    assert.equal(grid.game[0][4].state, true);
 
   });
 
