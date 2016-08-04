@@ -6,20 +6,18 @@ const World = require('../lib/world');
 const Game = require('../lib/game');
 
 
-describe('Game', function() {
-  context('createRocks()', function() {
-    it('should have a method called createRocks() that makes an array of rocks', function() {
+describe('The Game', function() {
+  context('Functions', function() {
+    it.skip('should have a method called "createRocks()" that makes an array of rocks', function() {
       // var rock = new Rock({});
 
-      // game.createRocks();
+      game.createRocks();
 
-      // assert.isFunction(game.createRocks);
+      assert.isFunction(game.createRocks);
       assert.equal([{rock}, {rock}, {rock}], game.createRocks );
     });
-  });
-});
-  context('speedUpRock()', function() {
-    it('should speed up the rock when the score is divisible by 101', function() {
+
+    it.skip('"speedUpRock()" should speed up the rock when the score is divisible by 101', function() {
       var rock = new Rock({});
       var game = new Game({});
 
@@ -28,8 +26,26 @@ describe('Game', function() {
 
       game.speedUpRock();
 
-
-      // assert.isFunction(game.createRocks);
       assert.equal(1.05, rock.speed);
     });
+
+    it.skip('"gameOver()" should end the game when a surfer hits a rock', function() {
+      var surfer = new Surfer({});
+      var rock = new Rock({});
+      var collision = new Collision(surfer);
+
+      surfer.right = 25;
+      rock.x = 24;
+
+      assert.equal(true, game.gameOver);
+    });
+
+    it.skip('"cycle()" controls the game', function() {
+
+    });
+
+    it.skip('"renderWorld()" ', function() {
+
+    });
   });
+});
