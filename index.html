@@ -2,10 +2,32 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Game Time</title>
+  <title>Arkannoyed</title>
+  <link rel="stylesheet" href="style.css" charset="utf-8">
 </head>
 <body>
-
+  <div id="oval">
+    <h1>BLANCHED ALMONOID!</h1>
+    <p>Healthful and Declicious "fun" for the whole family!</p>
+  </div>
+  <div id="game-wrap">
+    <canvas id="arkannoyed-canvas" width="750" height="500"></canvas>
+  </div>
+  <div id="button-bank">
+    <div id="level-select" class="level-select">
+      <p class="level-text">Change current level:</p>
+      <button type="button" name="level-up" id="level-up">+</button>
+      <button type="button" name="level-down" id="level-down">-</button>
+    </div>
+    <div id = "gameplay-buttons">
+      <button type="button" name="start" id="start">Start Blanchin'!</button>
+      <button type="button" name="reset" class="button" id="reset" disabled>Reset Game</button>
+    </div>
+    <div id = "lives-counter">
+      <p>Lives:</p>
+      <p id="life-counter-js" class="life-counter"></p>
+    </div>
+  </div>
   <script src="main.bundle.js"></script>
 </body>
 </html>
