@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'Swanky';
+  src: url('img/FontdinerSwanky.ttf');
+}
+
+@font-face {
+  font-family: 'Honey';
+  src: url('img/HoneyScript-Light.ttf');
+}
+
+body {
+  background: url(img/Almonds.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+#oval {
+  width: 700px;
+  height: 100px;
+  background: #00253b;
+  border-radius: 200px / 100px;
+  margin: auto;
+  margin-bottom: 10px;
+
+}
+
+body h1 {
+  text-align: center;
+  margin: auto;
+  font-family: 'Swanky', sans-serif;
+  font-size: 45px;
+  color: blanchedalmond;
+  margin: 0;
+}
+
+#oval p {
+  font-family: 'Honey', cursive;
+  font-size: 30px;
+  text-align: center;
+  color: blanchedalmond;
+  margin: 0;
+  /*font-style: italic;*/
+}
+
+#game-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+#arkannoyed-canvas {
+  cursor: none;
+}
+
+#button-bank {
+  padding: 5px;
+  width: 740px;
+  display:block;
+  margin: auto;
+  background-color: blanchedalmond;
+}
+
+#button-bank p {
+  color: #00253b;
+  display: inline;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+#level-select {
+  display:inline;
+}
+
+#level-select button{
+  display:inline;
+  width: 25px;
+}
+
+#gameplay-buttons {
+  display: inline;
+}
+
+#level-down {
+  margin-right: 60px;
+}
+
+#reset {
+  margin-right: 100px;
+}
+
+#lives-counter {
+  display: inline;
+}
+
+button {
+  background-color: #00253b;
+  color: blanchedalmond;
+  display: inline;
+  border-style: none;
+  height: 25px;
+}
+
+button:hover{
+  background-color: #005E96;
+}
+
+button:disabled{
+  opacity: 0.7;
+}
+
+button:disabled:hover{
+  background-color: #00253b;
+}
+
+.life-counter{
+  color: white;
+}
