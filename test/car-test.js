@@ -8,9 +8,19 @@ describe('Cars', function() {
   });
 
   it('"Cars" should take a variable for x and y', function() {
-    var car = new Car(150, 200);
+    var car = new Car();
     assert.equal(car.x, 150);
     assert.equal(car.y, 200);
+  });
+
+  it('should have a method called "carDraw" that puts it on the canvas', function() {
+    var car = new Car();
+    assert.isFunction(car.carDraw);
+  });
+
+  it('should have a method called "carMove"', function() {
+    var car = new Car
+    assert.isFunction(car.carMove);
   });
 
   // it('"Cars", should have a width, height, and color', function(){
