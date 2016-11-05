@@ -19,5 +19,29 @@ describe('Frogger', function() {
     assert.equal(frog.y, 500);
   });
 
-  
+  it('should have a method called "moveLeft"', function() {
+    var frog = new Frog();
+    assert.isFunction(frog.moveLeft);
+  });
+
+  it('should have a method called "moveUp"', function() {
+    var frog = new Frog();
+    assert.isFunction(frog.moveUp);
+  });
+
+  it('should have a method called "moveRight"', function() {
+    var frog = new Frog();
+    assert.isFunction(frog.moveRight);
+  });
+
+  it('should have a method called "moveDown"', function() {
+    var frog = new Frog();
+    assert.isFunction(frog.moveDown);
+  });
+
+  it('should have a method called "frogDraw" that puts it on the browser', function() {
+    var frog = new Frog();
+    assert.isFunction(frog.frogDraw);
+  })
+
 });
