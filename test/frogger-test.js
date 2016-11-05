@@ -7,7 +7,7 @@ describe('Frogger', function() {
   assert.isFunction(Frog);
   });
 
-  it('"Frog", should have a width and height', function() {
+  it('"Frog" should have a width and height', function() {
     var frog = new Frog();
     assert.equal(frog.width, 40);
     assert.equal(frog.height, 40);
@@ -39,7 +39,7 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveDown);
   });
 
-  it('should have a method called "frogDraw" that puts it on the browser', function() {
+  it('should have a method called "frogDraw" that puts it on the canvas', function() {
     var frog = new Frog();
     assert.isFunction(frog.frogDraw);
   })
