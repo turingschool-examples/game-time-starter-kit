@@ -14,8 +14,8 @@ describe('Frogger', function() {
   });
 
   it('can take a variable for x and y', function() {
-    var frog = new Frog(275, 500);
-    assert.equal(frog.x, 275);
+    var frog = new Frog(375, 500);
+    assert.equal(frog.x, 375);
     assert.equal(frog.y, 500);
   });
 
@@ -24,9 +24,21 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveLeft);
   });
 
+  it('should increment the frog to the left by 50', function() {
+    var frog = new Frog(375, 500);
+    frog.moveLeft();
+    assert.equal(frog.x, 325);
+  });
+
   it('should have a method called "moveUp"', function() {
     var frog = new Frog();
     assert.isFunction(frog.moveUp);
+  });
+
+  it('should increment the frog up by 50', function() {
+    var frog = new Frog(375, 500);
+    frog.moveUp();
+    assert.equal(frog.y, 450);
   });
 
   it('should have a method called "moveRight"', function() {
@@ -34,9 +46,21 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveRight);
   });
 
+  it('should increment the frog right by 50', function() {
+    var frog = new Frog(375, 500);
+    frog.moveRight();
+    assert.equal(frog.x, 425);
+  });
+
   it('should have a method called "moveDown"', function() {
     var frog = new Frog();
     assert.isFunction(frog.moveDown);
+  });
+
+  it('should increment the frog down by 50', function() {
+    var frog = new Frog(375, 500);
+    frog.moveDown();
+    assert.equal(frog.y, 550);
   });
 
   it('should have a method called "frogDraw" that puts it on the canvas', function() {
