@@ -24,7 +24,7 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveLeft);
   });
 
-  it('should increment the frog to the left by 50', function() {
+  it('"moveLeft" should increment the frog to the left by 50', function() {
     var frog = new Frog(375, 500);
     frog.moveLeft();
     assert.equal(frog.x, 325);
@@ -35,7 +35,7 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveUp);
   });
 
-  it('should increment the frog up by 50', function() {
+  it('"moveUp" should increment the frog up by 50', function() {
     var frog = new Frog(375, 500);
     frog.moveUp();
     assert.equal(frog.y, 450);
@@ -46,7 +46,7 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveRight);
   });
 
-  it('should increment the frog right by 50', function() {
+  it('"moveRight" should increment the frog right by 50', function() {
     var frog = new Frog(375, 500);
     frog.moveRight();
     assert.equal(frog.x, 425);
@@ -57,7 +57,7 @@ describe('Frogger', function() {
     assert.isFunction(frog.moveDown);
   });
 
-  it('should increment the frog down by 50', function() {
+  it('"moveDown" should increment the frog down by 50', function() {
     var frog = new Frog(375, 500);
     frog.moveDown();
     assert.equal(frog.y, 550);
