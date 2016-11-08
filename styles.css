@@ -1,4 +1,8 @@
 #canvas {
   border: 5px solid black;
-  
+}
+
+#splash-screen #win-screen #lose-screen {
+
+  background-color: "darksalmon";
 }
