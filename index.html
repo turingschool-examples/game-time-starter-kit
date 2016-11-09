@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link type="text/css" rel="stylesheet" href="reset.css">
+  <link type="text/css" rel="stylesheet" href="styles.css">
   <meta charset="utf-8">
-  <title>Game Time</title>
+  <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+  <title>Frogger</title>
 </head>
 <body>
+  <h1>Frogger</h1>
+  <section id="splash-screen" width="800" height="600">
+    <button id="start-btn">Play!</button>
+  </section>
+  <canvas id="canvas" width="800" height="600">
+  </canvas>
+  <section id="win-screen">
+    <button id="play-again-btn">Play Again!</button>
+  </section>
+  <section id="lose-screen">
+    <button id="try-again-btn">Try Again</button>
+  </section>
 
-  <script src="main.bundle.js"></script>
+  <img src="./img/frog.png" id="frog-img" width="40" height="40">
+  <img src="./img/orangecar.png" id="orange-car" width="65" height="40">
+  <img src="./img/brightgreencar.png" id="green-car" width="65" height="40">
+  <img src="./img/magentacar.png" id="pink-car" width="65" height="40">
+  <img src="./img/redcar.jpg" id="red-car" width="65" height="40">
+  <img src="./img/woodlog.svg" id="log-img">
+  <img src="./img/turtle.png" id="turtle" width="40" height="40">
+  <img src="./img/background.jpeg" id="background" width="800" height="600">
 </body>
+<script src="main.bundle.js"></script>
 </html>
