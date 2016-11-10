@@ -1,0 +1,82 @@
+body img {
+  display: inline-block;
+  margin-left: -9990px;
+}
+
+body {
+  background-color: #DEEDF9;
+  font-family: 'Shrikhand', cursive;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#start-screen {
+  background-color: #F7E960;
+  width: 800px;
+  height: 600px;
+}
+
+#start-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+  margin-top: 20px;
+  padding: 15px;
+  width: 200px;
+  border-radius: 15%;
+}
+
+#canvas {
+  border: 5px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-image: url('./img/background.png');
+}
+
+#win-screen {
+  image: url('.img/YouWin.png');
+}
+
+#play-again-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+  margin-top: 20px;
+  padding: 15px;
+  width: 200px;
+  border-radius: 15%;
+}
+
+#lose-screen {
+  background-color: #F7E960;
+  width: 800px;
+  height: 600px;
+}
+
+#try-again-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+  margin-top: 20px;
+  padding: 15px;
+  width: 200px;
+  border-radius: 15%;
+}
