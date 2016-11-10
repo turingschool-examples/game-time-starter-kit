@@ -42,3 +42,41 @@ h1 {
   display: block;
   background-image: url('./img/background.png');
 }
+
+#win-screen {
+  image: url('.img/YouWin.png');
+}
+
+#play-again-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+  margin-top: 20px;
+  padding: 15px;
+  width: 200px;
+  border-radius: 15%;
+}
+
+#lose-screen {
+  background-color: #F7E960;
+  width: 800px;
+  height: 600px;
+}
+
+#try-again-btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+  margin-top: 20px;
+  padding: 15px;
+  width: 200px;
+  border-radius: 15%;
+}
