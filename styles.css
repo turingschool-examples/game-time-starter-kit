@@ -15,8 +15,16 @@ h1 {
   margin-bottom: 10px;
 }
 
+#canvas {
+  border: 5px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-image: url('./img/background.png');
+}
+
 #start-screen {
-  background-color: #F7E960;
+  background-color: #DEEDF9;
   width: 800px;
   height: 600px;
 }
@@ -35,16 +43,10 @@ h1 {
   border-radius: 15%;
 }
 
-#canvas {
-  border: 5px solid black;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  background-image: url('./img/background.png');
-}
-
 #win-screen {
-  image: url('.img/YouWin.png');
+  background-color: #DEEDF9;
+  width: 800px;
+  height: 600px;
 }
 
 #play-again-btn {
@@ -62,7 +64,7 @@ h1 {
 }
 
 #lose-screen {
-  background-color: #F7E960;
+  background-color: #DEEDF9;
   width: 800px;
   height: 600px;
 }
