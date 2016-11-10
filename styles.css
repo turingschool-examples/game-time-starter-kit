@@ -32,15 +32,15 @@ h1 {
 #start-btn {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
   display: block;
+  width: 200px;
+  border-radius: 15%;
   font-family: 'Shrikhand', cursive;
   font-size: 40px;
   color: #42843A;
   background-color: #DDE0DC;
-  margin-top: 20px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 15%;
 }
 
 #win-screen {
@@ -52,15 +52,15 @@ h1 {
 #play-again-btn {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
   display: block;
+  width: 200px;
+  border-radius: 15%;
   font-family: 'Shrikhand', cursive;
   font-size: 40px;
   color: #42843A;
   background-color: #DDE0DC;
-  margin-top: 20px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 15%;
 }
 
 #lose-screen {
@@ -72,13 +72,13 @@ h1 {
 #try-again-btn {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
   display: block;
+  width: 200px;
+  border-radius: 15%;
   font-family: 'Shrikhand', cursive;
   font-size: 40px;
   color: #42843A;
   background-color: #DDE0DC;
-  margin-top: 20px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 15%;
 }
