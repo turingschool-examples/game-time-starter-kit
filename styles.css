@@ -30,13 +30,7 @@ p, h2 {
   background-image: url('./img/background.png');
 }
 
-#start-screen {
-  background-color: #DEEDF9;
-  width: 800px;
-  height: 600px;
-}
-
-#start-btn {
+#start-btn, #play-again-btn, #try-again-btn {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -50,42 +44,8 @@ p, h2 {
   background-color: #DDE0DC;
 }
 
-#win-screen {
+#win-screen, #lose-screen, #start-screen {
   background-color: #DEEDF9;
   width: 800px;
   height: 600px;
-}
-
-#play-again-btn {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  padding: 15px;
-  display: block;
-  width: 200px;
-  border-radius: 15%;
-  font-family: 'Shrikhand', cursive;
-  font-size: 40px;
-  color: #42843A;
-  background-color: #DDE0DC;
-}
-
-#lose-screen {
-  background-color: #DEEDF9;
-  width: 800px;
-  height: 600px;
-}
-
-#try-again-btn {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  padding: 15px;
-  display: block;
-  width: 200px;
-  border-radius: 15%;
-  font-family: 'Shrikhand', cursive;
-  font-size: 40px;
-  color: #42843A;
-  background-color: #DDE0DC;
 }

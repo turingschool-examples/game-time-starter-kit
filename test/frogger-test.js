@@ -66,6 +66,5 @@ describe('Frogger', function() {
   it('should have a method called "frogDraw" that puts it on the canvas', function() {
     var frog = new Frog();
     assert.isFunction(frog.frogDraw);
-  })
-
+  });
 });
