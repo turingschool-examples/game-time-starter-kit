@@ -15,26 +15,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-#start-screen {
-  background-color: #F7E960;
-  width: 800px;
-  height: 600px;
-}
-
-#start-btn {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  font-family: 'Shrikhand', cursive;
-  font-size: 40px;
-  color: #42843A;
-  background-color: #DDE0DC;
-  margin-top: 20px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 15%;
-}
-
 #canvas {
   border: 5px solid black;
   margin-left: auto;
@@ -43,26 +23,48 @@ h1 {
   background-image: url('./img/background.png');
 }
 
+#start-screen {
+  background-color: #DEEDF9;
+  width: 800px;
+  height: 600px;
+}
+
+#start-btn {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
+  display: block;
+  width: 200px;
+  border-radius: 15%;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+}
+
 #win-screen {
-  image: url('.img/YouWin.png');
+  background-color: #DEEDF9;
+  width: 800px;
+  height: 600px;
 }
 
 #play-again-btn {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
   display: block;
+  width: 200px;
+  border-radius: 15%;
   font-family: 'Shrikhand', cursive;
   font-size: 40px;
   color: #42843A;
   background-color: #DDE0DC;
-  margin-top: 20px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 15%;
 }
 
 #lose-screen {
-  background-color: #F7E960;
+  background-color: #DEEDF9;
   width: 800px;
   height: 600px;
 }
@@ -70,13 +72,13 @@ h1 {
 #try-again-btn {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
   display: block;
+  width: 200px;
+  border-radius: 15%;
   font-family: 'Shrikhand', cursive;
   font-size: 40px;
   color: #42843A;
   background-color: #DDE0DC;
-  margin-top: 20px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 15%;
 }
