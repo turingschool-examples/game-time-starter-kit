@@ -1,0 +1,51 @@
+body img {
+  display: inline-block;
+  margin-left: -9990px;
+}
+
+body {
+  background-color: #DEEDF9;
+  font-family: 'Shrikhand', cursive;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+p, h2 {
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#canvas {
+  border: 5px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-image: url('./img/background.png');
+}
+
+#start-btn, #play-again-btn, #try-again-btn {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 15px;
+  display: block;
+  width: 200px;
+  border-radius: 15%;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  color: #42843A;
+  background-color: #DDE0DC;
+}
+
+#win-screen, #lose-screen, #start-screen {
+  background-color: #DEEDF9;
+  width: 800px;
+  height: 600px;
+}
