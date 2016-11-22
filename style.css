@@ -1,0 +1,12 @@
+canvas {
+  border: 2px solid black;
+  display: block;
+  margin: 100px auto;
+  background: url('http://wallpapercave.com/wp/nXidHnP.jpg') no-repeat;
+  background-size: cover;
+}
+
+body {
+  background: url('http://wallpaperwarrior.com/wp-content/uploads/2016/08/Hockey-Wallpaper-19.jpg') no-repeat;
+  background-size: cover;
+}
