@@ -6,9 +6,16 @@
   <title>Game Time</title>
 </head>
 <body>
+  <h1 class="game_title">Mine Escape</h1>
+  <h2 class="score_counter" hidden>0</h2>
+  <div class="instructions_container">
+    <p class="instructions_message">Jump from rock to rock in order to escape from the mine shaft! <br /> Space = jump <br /> left-arrow = left <br /> right-arrow = right</p>
+  </div>
+  <button class="button start_button">Start game</button>
+  <button class="button restart_button">Restart game</button>
   <canvas id="game"
           width="500"
-          height="500">
+          height="600">
   </canvas>
 
   <script src="main.bundle.js"></script>
