@@ -8,19 +8,25 @@
 <body>
   <main class="main_container">
     <h1 class="game_title">Mine Escape</h1>
-    <h2 class="score_counter" hidden>0</h2>
     <div class="instructions_container">
       <p class="instructions_message">Jump from rock to rock in order to escape from the mine shaft! <br /> Space = jump <br /> left-arrow = left <br /> right-arrow = right</p>
     </div>
     <button class="button start_button">Start game</button>
   </main>
-    <section class="end-game_section">
-      <button class="button restart_button" hidden>Restart game</button>
-    </section>
-  <canvas id="game"
-          width="500"
-          height="600">
-  </canvas>
+  <section class="end-game_section">
+    <button class="button restart_button" hidden>Restart game</button>
+  </section>
+  <section class="next-level_screen">
+    <p> Great Job! You have escaped this far!</p>
+    <button class="button next-level_button"></button>
+  </section>
+  <section class="canvas_screen">
+    <h2 class="score_counter">counter: <span class="score_amount">0</span></h2>
+    <canvas id="game"
+            width="500"
+            height="600">
+    </canvas>
+  </section>  
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
