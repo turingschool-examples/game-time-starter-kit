@@ -47,7 +47,9 @@ describe('Rabbit', () => {
     })
 
     it('should move the rabbit left, right, and upwards on keydown', () => {
-        moveRabbit(event).to.equal();
+        let event = {'keycode': 32}
+        rabbit.moveRabbit(event);
+        console.log(rabbit.vY)
         expect(rabbit.vY).to.equal(-8);
         expect(rabbit.gravity).to.equal(.2);
     })
