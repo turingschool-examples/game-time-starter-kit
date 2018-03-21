@@ -11,17 +11,17 @@
     <div class="instructions_container">
       <p class="instructions_message">Jump from rock to rock in order to escape from the mine shaft! <br /> Space = jump <br /> left-arrow = left <br /> right-arrow = right</p>
     </div>
-    <button class="button start_button">Start game</button>
+    <button class="button start_button">START GAME</button>
   </main>
   <section class="end-game_section">
-    <button class="button restart_button" hidden>Restart game</button>
+    <button class="button restart_button" hidden>RESTART GAME</button>
   </section>
-  <section class="next-level_screen">
+  <section class="next-level_screen" hidden>
     <p> Great Job! You have escaped this far!</p>
-    <button class="button next-level_button"></button>
+    <button class="button next-level_button">NEXT LEVEL</button>
   </section>
   <section class="canvas_screen">
-    <h2 class="score_counter">counter: <span class="score_amount">0</span></h2>
+    <h2 class="score_counter" hidden>ROCKS JUMPED : <span class="score_amount">0</span></h2>
     <canvas id="game"
             width="500"
             height="600">

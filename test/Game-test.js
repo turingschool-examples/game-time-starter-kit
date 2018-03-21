@@ -34,11 +34,21 @@ describe('Game', () => {
         expect(game.runGameLoop).to.equal(false);
     })
 
-    it('should add 10 to the score everytime you hit a bell', () => {
-        game.score = 0;
+    // it('should add 10 to the score everytime you hit a bell', () => {
+    //     game.score = 0;
 
-        game.scoring();
+    //     game.scoring();
 
-        expect(game.score).to.equal(10);
+    //     expect(game.score).to.equal(10);
+    // })
+
+    // endLevel to startLevel may need to be tested.
+
+    it('should toggle the property of runGameLoop off and on', () => {
+        runGameLoop = false;
+
+        game.toggleGameLoop();
+
+        expect(runGameLoop).to.equal(true;)
     })
 })

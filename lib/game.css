@@ -56,13 +56,20 @@ body {
 }
 
 .score_counter {
-    text-align: right;
+    text-align: center;
+    display: hidden;
+}
+
+.canvas_screen {
+    width: 1100px;
 }
 
 .end-game_section {
     width: 1100px;
 }
-.next-level_screen{
+
+.next-level_screen {
+    display: hidden;
 
 }
 
