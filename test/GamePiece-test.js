@@ -3,13 +3,13 @@ const expect = chai.expect;
 const assert = chai.assert;
 const GamePiece = require('../lib/GamePiece');
 
-describe('GamePiece', function () {
+describe('GamePiece', () => {
 
-  beforeEach(function() {
+  beforeEach(() => {
     let gamePiece = new GamePiece(10, 10, 10, 10);
   });
 
-  it('should instantiate our good friend GamePiece', function () {
+  it('should instantiate our good friend GamePiece', () => {
     expect(GamePiece).to.exist;
   })
   

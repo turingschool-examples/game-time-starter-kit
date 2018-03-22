@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
   <link rel="stylesheet" href="./lib/game.css" type="text/css">
   <meta charset="utf-8">
   <title>Game Time</title>
 </head>
 <body>
-  <canvas id="game"
-          width="500"
-          height="500">
-  </canvas>
-
+  <main class="main_container">
+    <h1 class="game_title">Mine Escape</h1>
+    <div class="instructions_container">
+      <p class="instructions_message">Jump from rock to rock in order to escape from the mine shaft! <br /> Space = jump <br /> left-arrow = left <br /> right-arrow = right</p>
+    </div>
+    <button class="button start_button">START GAME</button>
+  </main>
+  <section class="end-game_section" hidden>
+    <h1>Game Over!</h1>
+    <button class="button restart_button">RESTART GAME</button>
+  </section>
+  <section class="next-level_screen" hidden>
+    <h1> Great Job! You have escaped this far!</h1>
+    <button class="button next-level_button">NEXT LEVEL</button>
+  </section>
+  <section class="canvas_screen">
+    <h2 class="score_counter" hidden>ROCKS JUMPED : <span class="score_amount">0</span></h2>
+    <canvas id="game"
+            width="500"
+            height="600">
+    </canvas>
+  </section>  
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
   <script src="main.bundle.js"></script>
 </body>
 </html>
