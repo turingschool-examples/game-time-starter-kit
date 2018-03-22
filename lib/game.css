@@ -20,8 +20,7 @@ body {
 .main_container {
     width: 1100px;
     display: flex;
-    flex-direction: column;
-}
+    flex-direction: column;}
 
 h1 {
     text-align: center;
@@ -36,13 +35,20 @@ h1 {
     border: 7px black solid;
     padding: 30px;
     margin: 0 auto;
+    background-image: url('../lib/images/plad.jpeg');
+
+}
+
+canvas {
+    background-color: #9D9184;
 }
 
 .instructions_message {
     margin: 0 auto;
     padding: 30px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
+    background-color : #F5F3BB;
     border: 3px #000000 solid;
     width: 400px;
 
@@ -55,6 +61,13 @@ h1 {
     height: 64px;
     font-family: 'Righteous';
     font-size: 30px;
+    background-color: #856C50;
+    color:
+}
+
+.button:hover {
+    background-color: #D4A36A;
+
 }
 
 .score_counter {
