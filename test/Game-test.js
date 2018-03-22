@@ -4,7 +4,6 @@ const Bells = require('../lib/Bells');
 const Rabbit = require('../lib/Rabbit');
 const Game = require('../lib/Game');
 
-
 describe('Game', () => {
   let game;
 
@@ -74,6 +73,4 @@ describe('Game', () => {
     // drawBells?
 
     // generateRandomBells
-
-
 });

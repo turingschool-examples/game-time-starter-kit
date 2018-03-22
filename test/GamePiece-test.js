@@ -22,7 +22,4 @@ describe('GamePiece', function () {
     expect(gamePiece.width).to.equal(10);
     expect(gamePiece.height).to.equal(10);
   })
-
-  
-
 })

@@ -27,7 +27,6 @@ describe('Rabbit', () => {
   it('should have set properties for vX, vY, friction, gravity, and gravitySpeed', () => {
     expect(rabbit.vX).to.equal(0);
     expect(rabbit.vY).to.equal(0);
-    expect(rabbit.friction).to.equal(17.15);
     expect(rabbit.gravity).to.equal(0);
     expect(rabbit.gravitySpeed).to.equal(0);
   });
@@ -53,8 +52,8 @@ describe('Rabbit', () => {
 
     rabbit.moveRabbit(event);
 
-    expect(rabbit.vX).to.equal(-20);
-    expect(rabbit.x).to.equal(-10);
+    expect(rabbit.vX).to.equal(-25);
+    expect(rabbit.x).to.equal(-15);
   });
 
   it('should move the rabbit right on keydown', () => {
@@ -62,10 +61,9 @@ describe('Rabbit', () => {
 
     rabbit.moveRabbit(event);
 
-    expect(rabbit.vX).to.equal(20);
-    expect(rabbit.x).to.equal(30);
+    expect(rabbit.vX).to.equal(25);
+    expect(rabbit.x).to.equal(35);
   });
-
 
     it('should make our rabbit jump', () => {
         rabbit.gravitySpeed = 1; 
@@ -77,8 +75,6 @@ describe('Rabbit', () => {
 
         expect(rabbit.y).to.equal(4)
         expect(rabbit.gravitySpeed).to.equal(2);
-
-
     })
 
     it('should reset the vX, vY, gravity, and gravitySpeed to 0', () => {
@@ -101,8 +97,5 @@ describe('Rabbit', () => {
         rabbit.x = 0;
         rabbit.boundries();
         expect(rabbit.x).to.equal(5);
-
     })
-    
-
 })
