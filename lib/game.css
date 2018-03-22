@@ -51,18 +51,17 @@ canvas {
     background-color : #F5F3BB;
     border: 3px #000000 solid;
     width: 400px;
-
 }
 
 .button  {
     text-align: center;
-    margin: 20px 440px;
-    width: 225px;
+    margin: 20px 408px;
+    width: 265px;
     height: 64px;
     font-family: 'Righteous';
     font-size: 30px;
     background-color: #856C50;
-    color:
+    padding: 0 10px;
 }
 
 .button:hover {
