@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Bells = require('../lib/Bells');
-const Rabbit = require('../lib/Rabbit');
+// const Rabbit = require('../lib/Rabbit');
 const Game = require('../lib/Game');
 
 describe('Game', () => {
@@ -14,12 +14,12 @@ describe('Game', () => {
   });
 
   it('should instantiate our good friend Game', () => {
-    expect('Game').to.exist;
+    expect(game).to.exist;
   });
 
   it('should instantiate a new instance of our wonderful friend Rabbit', () => {
-    expect(Rabbit).to.exist;
-  });
+    expect(game.rabbit).to.exist;
+  }); 
 
   it('should have a property of score with and intial value of 0', () => {
     expect(game.score).to.equal(0);
@@ -33,20 +33,18 @@ describe('Game', () => {
     expect(game.runGameLoop).to.equal(false);
   });
 
-  it.skip('should add 10 to the score everytime you hit a bell', () => {
-    game.score = 0;
-
+  it('should add 10 to the score everytime you hit a bell', () => {
     game.scoring();
 
     expect(game.score).to.equal(10);
   });
 
-  it.skip('should shift all bells downwrd on contact', () => {
-    game.bells = [0,0];
+  it('should shift all bells downwrd on contact', () => {
+    game.bells = [new Bells(10, 10, 10, 10)];
 
-    game.scrolling(rabbit, game.bells);
+    game.scrolling();
         
-    expect(game.bells).to.equal([0, 75]);
+    expect(game.bells).to.deep.equal([new Bells(10, 60, 10, 10)]);
   });
 
   it('should toggle the property of runGameLoop off and on', () => {
@@ -62,15 +60,10 @@ describe('Game', () => {
 
     expect(game.rabbit.y).to.equal(500);
   }); 
-  // ReferenceError: $ is not defined.  Does this mean that we cannot test anything in this function?
 
     // bellFreaquency
     // it.'should genertate a random bell on the screen', () => {
     // }
 
-    // drawRabbit?
-
-    // drawBells?
-
-    // generateRandomBells
+    // generateRandomBells, how many, where they land
 });
