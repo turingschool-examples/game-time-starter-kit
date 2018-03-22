@@ -34,21 +34,47 @@ describe('Game', () => {
         expect(game.runGameLoop).to.equal(false);
     })
 
-    // it('should add 10 to the score everytime you hit a bell', () => {
-    //     game.score = 0;
+    it.skip('should add 10 to the score everytime you hit a bell', () => {
+        game.score = 0;
 
-    //     game.scoring();
+        game.scoring();
 
-    //     expect(game.score).to.equal(10);
-    // })
+        expect(game.score).to.equal(10);
+    })
 
-    // endLevel to startLevel may need to be tested.
+    it.skip('should shift all bells downwrd on contact', () => {
+        game.bells = [0,0];
+
+        game.scrolling(rabbit, game.bells);
+        
+        expect(game.bells).to.equal([0, 75]);
+    })
+
+
+    it.skip('should set the y value for rabbit back to 500 after the new level starts', () => {
+        game.rabbit.y = -10;
+
+        game.startNextLevel();
+
+        expect(game.rabbit.y).to.equal(500);
+    }) 
+    // ReferenceError: $ is not defined.  Does this mean that we cannot test anything in this function?
 
     it('should toggle the property of runGameLoop off and on', () => {
-        runGameLoop = false;
-
         game.toggleGameLoop();
 
-        expect(runGameLoop).to.equal(true;)
+        expect(game.runGameLoop).to.equal(true);
     })
+
+    // bellFreaquency
+    // it.'should genertate a random bell on the screen', () => {
+    // }
+
+    // drawRabbit?
+
+    // drawBells?
+
+    // generateRandomBells
+
+
 })
