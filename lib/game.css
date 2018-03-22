@@ -57,7 +57,7 @@ body {
 
 .score_counter {
     text-align: center;
-    display: hidden;
+    display: none;
 }
 
 .canvas_screen {
