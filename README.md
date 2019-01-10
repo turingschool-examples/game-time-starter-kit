@@ -1,3 +1,6 @@
+Note: *This repository is deprecated for student usage.* Do not use this repository. See the updated `gametime-starter` repository for the updated repository currently used for the Game Time project.
+
+
 # Game Time Starter Kit
 
 To install the dependencies:
