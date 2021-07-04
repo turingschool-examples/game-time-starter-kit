@@ -42,15 +42,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
-	'use strict';
+	
 
-	var sayHello = function sayHello() {
-	  return console.log('Hello');
-	};
-
-	sayHello();
-
-/***/ }
+/***/ })
 /******/ ]);
